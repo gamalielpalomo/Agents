@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parser;
+package Agent;
 
 import java.io.File;
+import parser.SyntacticAnalyzer;
 import tools.FileTools;
 
 /**
@@ -18,10 +19,10 @@ public class Agenda
     public static void main( String args[] )
     {
 
-        File lexFile = new File( "src/agenda/LexicalAnalyzer.flex" );
+        File lexFile = new File( "src/parser/LexicalAnalyzer.flex" );
         String[] syntaxArgs =
         {
-            "-parser", "SyntacticAnalyzer", "src/agenda/SyntacticAnalyzer.cup"
+            "-parser", "SyntacticAnalyzer", "src/parser/SyntacticAnalyzer.cup"
         };
         String synFile = "SyntacticAnalyzer.cup";
         jflex.Main.generate( lexFile );
@@ -39,7 +40,7 @@ public class Agenda
             System.out.println( "Testing..." );
             String[] testInput =
             {
-                "src/agenda/input"
+                "src/parser/input"
             };
             SyntacticAnalyzer.main( testInput );
         }
