@@ -6,7 +6,6 @@
 package Agent;
 
 import java.io.File;
-import parser.SyntacticAnalyzer;
 import tools.FileTools;
 
 /**
@@ -42,7 +41,7 @@ public class Agenda
             {
                 "src/parser/input"
             };
-            SyntacticAnalyzer.main( testInput );
+            parser.SyntacticAnalyzer.main( testInput );
         }
     }
 

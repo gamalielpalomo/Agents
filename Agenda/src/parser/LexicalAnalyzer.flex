@@ -1,4 +1,4 @@
-package agenda;
+package parser;
 import java_cup.runtime.*;
 import java.io.Reader;
 
