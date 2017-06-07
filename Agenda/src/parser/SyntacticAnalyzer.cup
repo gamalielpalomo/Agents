@@ -8,7 +8,7 @@ parser code{:
         try
         {
             SyntacticAnalyzer sa = new SyntacticAnalyzer(new LexicalAnalyzer(new FileReader(args[0])));
-            Object resutl = sa.parse().value;
+            Object result = sa.parse().value;
             System.out.println("Executed!");
         }
         catch(Exception e)
