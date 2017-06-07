@@ -5,6 +5,8 @@
  */
 package Agent;
 
+import Agenda.Event;
+
 /**
  *
  * @author gamaa_000
@@ -12,12 +14,16 @@ package Agent;
 public class Instruction
 {
 
-    enum order
+    enum Command
     {
         CREATE, SCHEDULE, REMOVE, MOVE
     }
-    
+    Event event;
+    Command command;
 
-    public void Instruction()
-    {    }
+    public void Instruction( Command command, Event event )
+    {
+        this.command = command;
+        this.event = event;
+    }
 }

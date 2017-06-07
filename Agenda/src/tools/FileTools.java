@@ -22,7 +22,7 @@ public class FileTools
         File file = new File( filename );
         if ( file.exists() )
         {
-            System.out.println("Moving "+filename);
+            System.out.println( "Moving " + filename );
             Path currentRelativePath = Paths.get( "" );
             String newDir = currentRelativePath.toAbsolutePath().toString()
                     + File.separator + "src" + File.separator
