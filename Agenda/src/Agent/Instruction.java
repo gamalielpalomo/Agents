@@ -16,7 +16,7 @@ public class Instruction
 
     public static enum Command
     {
-        CREATE, SCHEDULE, REMOVE, MOVE
+        CREATE, SCHEDULE, REMOVE, MOVE, NOTHING
     }
     Event event;
     Command command;

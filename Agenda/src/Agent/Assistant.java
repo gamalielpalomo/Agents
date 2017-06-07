@@ -28,8 +28,17 @@ public class Assistant extends Agent
                 ACLMessage inputMsg = receive();
                 if ( inputMsg != null && inputMsg.getPerformative() == ACLMessage.INFORM )
                 {
-                    Instruction instruction = Interpreter.generateInstruction( inputMsg.toString() );
-                    
+                    Instruction instruction = Interpreter.generateInstruction( inputMsg.getContent() );
+                    switch(instruction.command){
+                        case SCHEDULE:
+                            System.out.println("[Assistant]: Schedule request received");
+                            break;
+                        case NOTHING:
+                            System.out.println("[Assistant]: Nothing to do...");
+                            break;
+                        default:
+                            System.out.println("[Assistant]: I dont understand the instruction");
+                    }
                 }
             }
 

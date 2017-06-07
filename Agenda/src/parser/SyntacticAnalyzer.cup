@@ -25,15 +25,23 @@ action code{:
     Instruction instruction;
 :}
 
-terminal SEMI, SLASH, DOUBLE, SCHEDULE, REMOVE, CHANGE, AT, FROM, TO, PERSONAL, MEDICAL, SPACE;
+terminal SEMI, SLASH, DOUBLE, SCHEDULE, REMOVE, CHANGE, AT, FROM, TO, PERSONAL, MEDICAL, SPACE, GEN;
 terminal int INT;
 terminal String WORK;
-non terminal Object create;
+non terminal Object create, nothing, todo;
 
+todo ::= create|nothing;
 
 create ::= SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
     System.out.format("\nWork date scheduled today at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
     event = new Event(hour,day,description);
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+:};
+
+nothing ::= GEN
+{:
+    System.out.print("Generic Instruction");
+    event = new Event();
+    instruction = new Instruction(Instruction.Command.NOTHING,event);
 :};

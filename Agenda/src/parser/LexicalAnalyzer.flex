@@ -92,5 +92,5 @@ intgr     = [0-9]+
 }
 [^]
 {
-    throw new Error("Ilegal character <"+yytext()+"> found in line "+yyline+" column "+yycolumn);
+    return symbol(sym.GEN);
 }

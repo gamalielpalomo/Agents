@@ -17,7 +17,8 @@ public class Event
     Calendar start, finish;
     String description;
     String[] companion;
-
+    
+    public Event(){}
     public Event( int hInitial, int hFinal )
     {
         start.set( Calendar.HOUR, hInitial );

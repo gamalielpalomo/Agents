@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Agenda;
+package tools;
 
 import java.io.File;
 import tools.FileTools;
@@ -12,7 +12,7 @@ import tools.FileTools;
  *
  * @author gamaa_000
  */
-public class Agenda
+public class Builder
 {
 
     public static void main( String args[] )
