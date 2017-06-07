@@ -6,6 +6,7 @@
 package parser;
 
 import Agent.Instruction;
+import Agenda.Event;
 import java.io.StringReader;
 
 /**
@@ -17,7 +18,7 @@ public class Interpreter
 
     public static Instruction generateInstruction( String phrase )
     {
-        Instruction instruction = null;
+        Instruction instruction = new Instruction(Agent.Instruction.Command.NOTHING, new Event());
         SyntacticAnalyzer sa = new SyntacticAnalyzer( new LexicalAnalyzer( new StringReader( phrase ) ) );
         try
         {
@@ -26,7 +27,7 @@ public class Interpreter
         }
         catch ( Exception e )
         {
-            System.out.println( "[Interpreter]: Exception" );
+            System.out.println( "\n[Interpreter]: Cant interprete that instruction" );
         }
         return instruction;
     }

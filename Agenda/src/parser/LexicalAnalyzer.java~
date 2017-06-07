@@ -641,7 +641,7 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { //throw new Error("Ilegal character <"+yytext()+"> found in line "+yyline+" column "+yycolumn);
+            { System.out.println("Generic Symbol: "+yytext());
     return symbol(sym.GEN);
             }
           case 16: break;

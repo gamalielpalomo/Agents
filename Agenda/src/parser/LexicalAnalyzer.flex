@@ -92,5 +92,6 @@ intgr     = [0-9]+
 }
 [^]
 {
+    System.out.println("Generic Symbol: "+yytext());
     return symbol(sym.GEN);
 }
