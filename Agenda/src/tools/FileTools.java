@@ -26,7 +26,7 @@ public class FileTools
             Path currentRelativePath = Paths.get( "" );
             String newDir = currentRelativePath.toAbsolutePath().toString()
                     + File.separator + "src" + File.separator
-                    + "agenda" + File.separator + file.getName();
+                    + "parser" + File.separator + file.getName();
             File oldFile = new File( newDir );
             oldFile.delete();
             if ( file.renameTo( new File( newDir ) ) )
