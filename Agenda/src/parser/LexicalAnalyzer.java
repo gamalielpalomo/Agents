@@ -683,7 +683,7 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
           case 24: break;
           case 10: 
             { System.out.print(" WORK");
-    return symbol(sym.WORK);
+    return symbol(sym.WORK,yytext().toString());
             }
           case 25: break;
           case 11: 

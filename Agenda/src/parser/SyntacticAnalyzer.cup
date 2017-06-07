@@ -1,6 +1,8 @@
 package parser;
 import java_cup.runtime.*;
 import java.io.FileReader;
+import Agenda.Event;
+import Agent.Instruction;
 
 parser code{:
     public static void main(String args[])
@@ -18,12 +20,24 @@ parser code{:
     }
 :}
 
-terminal SEMI, SLASH, DOUBLE, SCHEDULE, REMOVE, CHANGE, AT, FROM, TO, WORK, PERSONAL, MEDICAL, SPACE;
+action code{:
+    Event event;
+    Instruction instruction;
+    enum Command
+        {
+            CREATE, SCHEDULE, REMOVE, MOVE
+        }
+:}
+
+terminal SEMI, SLASH, DOUBLE, SCHEDULE, REMOVE, CHANGE, AT, FROM, TO, PERSONAL, MEDICAL, SPACE;
 terminal int INT;
+terminal String WORK;
 non terminal Object create;
 
 
-create ::= SCHEDULE WORK AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+create ::= SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
     System.out.format("\nWork date scheduled today at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
+    event = new Event(hour,day,description);
+    instruction = new Instruction(Command.SCHEDULE,event);
 :};

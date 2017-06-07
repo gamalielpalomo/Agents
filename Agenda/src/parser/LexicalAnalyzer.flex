@@ -71,7 +71,7 @@ intgr     = [0-9]+
 "work"
 {
     System.out.print(" WORK");
-    return symbol(sym.WORK);
+    return symbol(sym.WORK,yytext().toString());
 }
 "personal"
 {

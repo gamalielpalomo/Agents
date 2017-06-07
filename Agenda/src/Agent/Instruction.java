@@ -14,7 +14,7 @@ import Agenda.Event;
 public class Instruction
 {
 
-    enum Command
+    public enum Command
     {
         CREATE, SCHEDULE, REMOVE, MOVE
     }

@@ -41,7 +41,8 @@ public class Event
         description = "Single event";
         this.companion = companion;
     }
-
+    
+    /*
     public Event( int hInitial, int hFinal, String description )
     {
         start.set( Calendar.HOUR, hInitial );
@@ -49,7 +50,8 @@ public class Event
         this.description = description;
         companion = new String[0];
     }
-
+    */
+    
     public Event( int hInitial, int hFinal, String description, String[] companion )
     {
         start.set( Calendar.HOUR, hInitial );
@@ -66,5 +68,16 @@ public class Event
         finish.set( Calendar.DATE, dFinal );
         this.description = description;
         this.companion = companion;
+    }
+    public Event( int hInitial, int dInitial, String description )
+    {
+        start = Calendar.getInstance();
+        finish = Calendar.getInstance();
+        start.set( Calendar.HOUR_OF_DAY, hInitial );
+        start.set( Calendar.DATE, dInitial );
+        finish.set( Calendar.HOUR, hInitial+1 );
+        finish.set( Calendar.DATE, dInitial );
+        this.description = description;
+        this.companion = new String[0];
     }
 }
