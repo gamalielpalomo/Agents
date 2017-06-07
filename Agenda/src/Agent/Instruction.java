@@ -14,14 +14,14 @@ import Agenda.Event;
 public class Instruction
 {
 
-    public enum Command
+    public static enum Command
     {
         CREATE, SCHEDULE, REMOVE, MOVE
     }
     Event event;
     Command command;
 
-    public void Instruction( Command command, Event event )
+    public Instruction( Command command, Event event )
     {
         this.command = command;
         this.event = event;

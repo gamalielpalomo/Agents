@@ -8,6 +8,7 @@ package Agent;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
+import parser.Interpreter;
 
 /**
  *
@@ -27,7 +28,8 @@ public class Assistant extends Agent
                 ACLMessage inputMsg = receive();
                 if ( inputMsg != null && inputMsg.getPerformative() == ACLMessage.INFORM )
                 {
-
+                    Instruction instruction = Interpreter.generateInstruction( inputMsg.toString() );
+                    
                 }
             }
 
