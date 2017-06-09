@@ -23,6 +23,8 @@ public class Event
 
     public Event( int hInitial, int dInitial, String description, String companion )
     {
+        start = Calendar.getInstance();
+        finish = Calendar.getInstance();
         start.set( Calendar.HOUR, hInitial );
         start.set( Calendar.DATE, dInitial );
         finish.set( Calendar.HOUR, hInitial+1 );

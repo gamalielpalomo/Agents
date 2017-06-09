@@ -57,9 +57,18 @@ SCHEDULE MEDICAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour 
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :};
 
-schedule2 ::= SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+schedule2 ::= 
+SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.format("\nMeeting with %s date scheduled today at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
+    System.out.format("\nMeeting with %s scheduled at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
     event = new Event(hour, day, "meeting", companion);
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
-:};
+:}
+|
+SCHEDULE MEETING AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+{:
+    System.out.format("\nMeeting at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
+    event = new Event(hour, day, "meeting");
+    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+:}
+;

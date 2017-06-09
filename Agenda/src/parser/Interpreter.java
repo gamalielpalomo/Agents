@@ -27,7 +27,7 @@ public class Interpreter
         }
         catch ( Exception e )
         {
-            System.out.println( "\n[Interpreter]: Cant interprete that instruction" );
+            System.out.println( "\n[Interpreter]: Cannot interprete that instruction" );
         }
         return instruction;
     }

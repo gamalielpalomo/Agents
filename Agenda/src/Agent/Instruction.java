@@ -26,4 +26,8 @@ public class Instruction
         this.command = command;
         this.event = event;
     }
+    public String getCommandString()
+    {
+        return command.toString();
+    }
 }
