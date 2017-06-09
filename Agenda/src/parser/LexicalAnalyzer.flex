@@ -21,7 +21,8 @@ import java.io.Reader;
 
 jump    = \r|\n|\r\n
 space   = {jump}|[\t\f]
-intgr     = [0-9]+
+intgr   = [0-9]+
+string  = [a-zA-Z]+
 
 
 %%
@@ -76,12 +77,22 @@ intgr     = [0-9]+
 "personal"
 {
     System.out.print(" PERSONAL");
-    return symbol(sym.PERSONAL);
+    return symbol(sym.PERSONAL,yytext().toString());
 }
 "medical"
 {
     System.out.print(" MEDICAL");
-    return symbol(sym.MEDICAL);
+    return symbol(sym.MEDICAL,yytext().toString());
+}
+"meeting"
+{
+    System.out.print(" MEETING");
+    return symbol(sym.MEETING,yytext().toString());
+}
+"with"
+{
+    System.out.print(" WITH");
+    return symbol(sym.WITH,yytext().toString()  );
 }
 {space}
 {}
@@ -89,6 +100,11 @@ intgr     = [0-9]+
 {
     System.out.print(" "+yytext());
     return symbol(sym.INT,Integer.parseInt(yytext()));
+}
+{string}
+{
+    System.out.print(" "+yytext());
+    return symbol(sym.STR, yytext().toString());
 }
 [^]
 {

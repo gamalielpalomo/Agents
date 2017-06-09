@@ -32,6 +32,7 @@ public class Assistant extends Agent
                     switch(instruction.command){
                         case SCHEDULE:
                             System.out.println("[Assistant]: Schedule request received");
+                            System.out.println("[Assistant]: Instruction -> "+instruction.event.getDescription());
                             break;
                         case NOTHING:
                             System.out.println("[Assistant]: Nothing to do...");

@@ -25,23 +25,41 @@ action code{:
     Instruction instruction;
 :}
 
-terminal SEMI, SLASH, DOUBLE, SCHEDULE, REMOVE, CHANGE, AT, FROM, TO, PERSONAL, MEDICAL, SPACE, GEN;
+terminal SEMI, SCHEDULE, SLASH, DOUBLE, REMOVE, CHANGE, AT, FROM, TO, SPACE, GEN;
 terminal int INT;
-terminal String WORK;
-non terminal Object create, nothing, todo;
+terminal String WORK, MEDICAL, PERSONAL, WITH, MEETING, STR;
+non terminal Object create, nothing, todo, agend, schedule1, schedule2;
+non terminal String reason;
 
-todo ::= create|nothing;
+todo ::= create|agend;
+agend ::= schedule1|schedule2;
+reason ::= WORK|MEDICAL|PERSONAL;
 
-create ::= SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+schedule1 ::= 
+SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.format("\nWork date scheduled today at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
+    System.out.format("\n%s date scheduled today at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
+    event = new Event(hour,day,description);
+    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+:}
+|
+SCHEDULE PERSONAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+{:
+    System.out.format("\n%s date scheduled today at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
+    event = new Event(hour,day,description);
+    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+:}
+|
+SCHEDULE MEDICAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+{:
+    System.out.format("\n%s date scheduled today at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
     event = new Event(hour,day,description);
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :};
 
-nothing ::= GEN
+schedule2 ::= SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.print("Generic Instruction");
-    event = new Event();
-    instruction = new Instruction(Instruction.Command.NOTHING,event);
+    System.out.format("\nMeeting with %s date scheduled today at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
+    event = new Event(hour, day, "meeting", companion);
+    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :};
