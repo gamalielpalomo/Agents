@@ -35,6 +35,11 @@ public class Assistant extends Agent
                             System.out.println("[Assistant]: Description -> "+instruction.event.getDescription());
                             System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
                             break;
+                        case REMOVE:
+                            System.out.println("[Assistant]: Remove request received");
+                            System.out.println("[Assistant]: Description -> "+instruction.event.getDescription());
+                            System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
+                            break;
                         case NOTHING:
                             System.out.println("[Assistant]: Nothing to do...");
                             break;

@@ -20,7 +20,10 @@ public class Event
     
     public Event(){}
     
-
+    public Event(String description)
+    {
+        this.description = description;
+    }
     public Event( int hInitial, int dInitial, String description, String companion )
     {
         start = Calendar.getInstance();
