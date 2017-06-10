@@ -17,12 +17,14 @@ import parser.Interpreter;
 public class Assistant extends Agent
 {
 
+    @Override
     protected void setup()
     {
-
+        Agenda.Agenda.initRegistry();
         addBehaviour( new CyclicBehaviour( this )
         {
 
+            @Override
             public void action()
             {
                 ACLMessage inputMsg = receive();
@@ -34,6 +36,7 @@ public class Assistant extends Agent
                             System.out.println("[Assistant]: Schedule request received");
                             System.out.println("[Assistant]: Description -> "+instruction.event.getDescription());
                             System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
+                            Agenda.Agenda.registerEvent(instruction.event);
                             break;
                         case REMOVE:
                             System.out.println("[Assistant]: Remove request received");

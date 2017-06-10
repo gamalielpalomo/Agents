@@ -6,12 +6,13 @@
 package Agenda;
 
 import java.util.Calendar;
+import java.io.Serializable;
 
 /**
  *
  * @author gamaa_000
  */
-public class Event
+public class Event implements Serializable
 {
 
     Calendar start, finish;
