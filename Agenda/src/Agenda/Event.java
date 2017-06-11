@@ -32,7 +32,7 @@ public class Event implements Serializable
         start.set( Calendar.HOUR, hInitial );
         start.set( Calendar.DATE, dInitial );
         finish.set( Calendar.HOUR, hInitial+1 );
-        finish.set( Calendar.DATE, hInitial );
+        finish.set( Calendar.DATE, dInitial );
         this.description = description;
         this.companion = companion;
     }
@@ -50,5 +50,13 @@ public class Event implements Serializable
     public String getDescription()
     {
         return this.description;
+    }
+    public Calendar getStartDate()
+    {
+        return start;
+    }
+    public Calendar getFinishDate()
+    {
+        return finish;
     }
 }

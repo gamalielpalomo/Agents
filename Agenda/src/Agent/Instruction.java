@@ -16,11 +16,16 @@ public class Instruction
 
     public static enum Command
     {
-        CREATE, SCHEDULE, REMOVE, MOVE, NOTHING
+        CREATE, SCHEDULE, REMOVE, MOVE, SHOW, NOTHING
     }
     Event event;
     Command command;
 
+    public Instruction(Command command)
+    {
+        this.command = command;
+        this.event = null;
+    }
     public Instruction( Command command, Event event )
     {
         this.command = command;

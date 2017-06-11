@@ -25,12 +25,12 @@ action code{:
     Instruction instruction;
 :}
 
-terminal SEMI, SCHEDULE, SLASH, REMOVE, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN;
+terminal SEMI, SCHEDULE, SLASH, REMOVE, SHOW, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN;
 terminal int INT;
 terminal String WORK, MEDICAL, PERSONAL, WITH, MEETING, STR;
-non terminal Object create, nothing, todo, agend, rem, schedule1, schedule2;
+non terminal Object create, nothing, todo, agend, rem, display, schedule1, schedule2;
 
-todo ::= create|agend|rem;
+todo ::= create|agend|rem|display;
 agend ::= schedule1|schedule2;
 
 schedule1 ::= 
@@ -76,5 +76,12 @@ rem ::=  REMOVE STR:description AT INT:month SLASH INT:day SLASH INT:year INT:ho
     System.out.format("\nRemove %s",description);
     event = new Event(description);
     instruction = new Instruction(Instruction.Command.REMOVE, event);
+:}
+;
+
+display ::= SHOW
+{:
+    System.out.println("Show the agenda");
+    instruction = new Instruction(Instruction.Command.SHOW);
 :}
 ;

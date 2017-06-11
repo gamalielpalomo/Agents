@@ -43,6 +43,10 @@ public class Assistant extends Agent
                             System.out.println("[Assistant]: Description -> "+instruction.event.getDescription());
                             System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
                             break;
+                        case SHOW:
+                            System.out.println("[Assistant]: These are your scheduled events");
+                            Agenda.Agenda.showRegistry();
+                            break;
                         case NOTHING:
                             System.out.println("[Assistant]: Nothing to do...");
                             break;

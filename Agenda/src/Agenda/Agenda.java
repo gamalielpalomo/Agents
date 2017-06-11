@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
 /**
  *
  * @author gamaa
@@ -68,6 +69,18 @@ public class Agenda {
         }
         catch(IOException|ClassNotFoundException ioe)
         {            System.out.println("[Agenda/readRegistryFromFile]: Exception");        }
+    }
+    
+    public static void showRegistry()
+    {
+        for (Iterator it = registry.iterator(); it.hasNext();) {
+            Object element = it.next();
+            Event event = (Event) element;
+            System.out.println("---------------------------------------------");
+            System.out.println("Event:\t"+event.getDescription());
+            System.out.println("Start:\t"+event.getStartDate().getTime().toString());
+            System.out.println("Finish:\t"+event.getFinishDate().getTime().toString());
+        }
     }
     
 }

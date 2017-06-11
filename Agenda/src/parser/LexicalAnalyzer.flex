@@ -94,6 +94,10 @@ string  = [a-zA-Z]+
     System.out.print(" WITH");
     return symbol(sym.WITH,yytext().toString()  );
 }
+"show"
+{
+    return symbol(sym.SHOW);
+}
 {space}
 {}
 {intgr}
