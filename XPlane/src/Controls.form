@@ -80,10 +80,19 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JSpinner" name="pitch">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="pitchStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="roll">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rollStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="yaw">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="yawStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

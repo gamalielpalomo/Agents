@@ -37,6 +37,24 @@ public class Controls extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FLIGHT CONTROL");
 
+        pitch.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pitchStateChanged(evt);
+            }
+        });
+
+        roll.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rollStateChanged(evt);
+            }
+        });
+
+        yaw.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                yawStateChanged(evt);
+            }
+        });
+
         jLabel1.setText("PITCH");
 
         jLabel2.setText("ROLL");
@@ -93,6 +111,31 @@ public class Controls extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pitchStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pitchStateChanged
+        // TODO add your handling code here:
+        //System.out.println(""+(int)pitch.getModel().getValue());
+	byte[] value = ByteArrayTool.float2ByteArray((int)pitch.getModel().getValue());
+	byte[] XPData = ByteArrayTool.getXPData("pitch", value);
+	ByteArrayTool.printArray(XPData);
+	Messenger.sendMessage(XPData);
+    }//GEN-LAST:event_pitchStateChanged
+
+    private void rollStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rollStateChanged
+        // TODO add your handling code here:
+        byte[] value = ByteArrayTool.float2ByteArray((int)roll.getModel().getValue());
+	byte[] XPData = ByteArrayTool.getXPData("roll", value);
+	Messenger.sendMessage(XPData);
+	ByteArrayTool.printArray(XPData);
+    }//GEN-LAST:event_rollStateChanged
+
+    private void yawStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yawStateChanged
+        // TODO add your handling code here:
+        byte[] value = ByteArrayTool.float2ByteArray((int)yaw.getModel().getValue());
+	byte[] XPData = ByteArrayTool.getXPData("yaw", value);
+	Messenger.sendMessage(XPData);
+	ByteArrayTool.printArray(XPData);
+    }//GEN-LAST:event_yawStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -119,7 +162,9 @@ public class Controls extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        byte [] data = { 68, 65, 84, 65, 0, 11, 0, 0, 0, 0, 0, (byte)128, 63, 0, (byte)192, 121, (byte)196, 0, (byte)192, 121, (byte)196, 0, (byte)192, 121, (byte)196, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	ByteArrayTool.printArray(data);
+	Messenger.sendMessage(data);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
