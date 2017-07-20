@@ -1,3 +1,9 @@
+package GUI;
+
+
+import Tools.Messenger;
+import Tools.ByteArrayTool;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -161,8 +167,6 @@ public class Controls extends javax.swing.JFrame {
                     .addComponent(cPitch))
                 .addGap(10, 10, 10))
         );
-
-        getAccessibleContext().setAccessibleName("XP-C");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
