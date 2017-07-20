@@ -30,7 +30,8 @@ public class Controls extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,55 +56,67 @@ public class Controls extends javax.swing.JFrame {
         jLabel4.setText("NAVIGATION");
 
         pitch.setForeground(new java.awt.Color(153, 0, 0));
-        pitch.setMaximum(20);
-        pitch.setMinimum(-20);
+        pitch.setMaximum(30);
+        pitch.setMinimum(-30);
         pitch.setOrientation(javax.swing.JSlider.VERTICAL);
         pitch.setValue(0);
-        pitch.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        pitch.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 pitchStateChanged(evt);
             }
         });
 
         roll.setForeground(new java.awt.Color(153, 0, 0));
-        roll.setMaximum(20);
-        roll.setMinimum(-20);
+        roll.setMaximum(30);
+        roll.setMinimum(-30);
         roll.setOrientation(javax.swing.JSlider.VERTICAL);
         roll.setValue(0);
-        roll.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        roll.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 rollStateChanged(evt);
             }
         });
 
         yaw.setForeground(new java.awt.Color(153, 0, 0));
-        yaw.setMaximum(20);
-        yaw.setMinimum(-20);
+        yaw.setMaximum(30);
+        yaw.setMinimum(-30);
         yaw.setOrientation(javax.swing.JSlider.VERTICAL);
         yaw.setValue(0);
-        yaw.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        yaw.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 yawStateChanged(evt);
             }
         });
 
         cPitch.setText("C");
-        cPitch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cPitch.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cPitchActionPerformed(evt);
             }
         });
 
         cRoll.setText("C");
-        cRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cRollActionPerformed(evt);
             }
         });
 
         cYaw.setText("C");
-        cYaw.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cYaw.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cYawActionPerformed(evt);
             }
         });
@@ -173,27 +186,30 @@ public class Controls extends javax.swing.JFrame {
 
     private void pitchStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pitchStateChanged
         // TODO add your handling code here:
-        byte[] value = ByteArrayTool.float2ByteArray((int)pitch.getModel().getValue());
+	float sensor = ((float)pitch.getModel().getValue())/10;
+        byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("pitch", value);
-        System.out.println("Sending PITCH: "+ByteArrayTool.byteArray2Float(value));
+        System.out.println("Sending PITCH: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_pitchStateChanged
 
     private void rollStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rollStateChanged
         // TODO add your handling code here:
-        byte[] value = ByteArrayTool.float2ByteArray((int)roll.getModel().getValue());
+	float sensor = ((float)roll.getModel().getValue())/10;
+        byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("roll", value);
-        System.out.println("Sending ROLL: "+ByteArrayTool.byteArray2Float(value));
+        System.out.println("Sending ROLL: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_rollStateChanged
 
     private void yawStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yawStateChanged
         // TODO add your handling code here:
-        byte[] value = ByteArrayTool.float2ByteArray((int)yaw.getModel().getValue());
+        float sensor = ((float)yaw.getModel().getValue())/10;
+        byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("yaw", value);
-        System.out.println("Sending YAW: "+ByteArrayTool.byteArray2Float(value));
+        System.out.println("Sending YAW: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_yawStateChanged
