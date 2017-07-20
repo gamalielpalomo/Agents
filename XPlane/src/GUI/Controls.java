@@ -3,6 +3,7 @@ package GUI;
 
 import Tools.Messenger;
 import Tools.ByteArrayTool;
+import InputDataTools.Service;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -261,6 +262,7 @@ public class Controls extends javax.swing.JFrame {
                 new Controls().setVisible(true);
             }
         });
+	Service.executeService();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

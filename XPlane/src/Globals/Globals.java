@@ -14,4 +14,6 @@ public class Globals {
     //X-PLANE connection variables
     public static String    XPLANE_ADDR     =   "localhost";
     public static int       PORT            =   49000; 
+    //Local variables
+    public static int	    RECEIVE_PORT    =	49005;
 }
