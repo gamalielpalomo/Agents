@@ -239,9 +239,6 @@ public class Controls extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        byte [] data = { 68, 65, 84, 65, 0, 11, 0, 0, 0, 0, 0, (byte)128, 63, 0, (byte)192, 121, (byte)196, 0, (byte)192, 121, (byte)196, 0, (byte)192, 121, (byte)196, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	ByteArrayTool.printArray(data);
-	Messenger.sendMessage(data);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
