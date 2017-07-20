@@ -1,5 +1,6 @@
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +16,11 @@ public class ByteArrayTool
 {
     public static byte [] float2ByteArray (float value)
     {  
-	return ByteBuffer.allocate(4).putFloat(value).array();
+	return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putFloat(value).array();
+        
+    }
+    public static float byteArray2Float (byte[] values){
+        return ByteBuffer.wrap(values).order(ByteOrder.LITTLE_ENDIAN).getFloat();
     }
     public static byte [] getXPData(String index, byte[] values){
 	byte [] data = { 68, 65, 84, 65, 0, 

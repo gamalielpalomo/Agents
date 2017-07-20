@@ -26,34 +26,19 @@ public class Controls extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pitch = new javax.swing.JSpinner();
-        roll = new javax.swing.JSpinner();
-        yaw = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        pitch = new javax.swing.JSlider();
+        roll = new javax.swing.JSlider();
+        yaw = new javax.swing.JSlider();
+        cPitch = new javax.swing.JButton();
+        cRoll = new javax.swing.JButton();
+        cYaw = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("FLIGHT CONTROL");
-
-        pitch.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                pitchStateChanged(evt);
-            }
-        });
-
-        roll.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rollStateChanged(evt);
-            }
-        });
-
-        yaw.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                yawStateChanged(evt);
-            }
-        });
+        setTitle("XP-C");
 
         jLabel1.setText("PITCH");
 
@@ -63,78 +48,166 @@ public class Controls extends javax.swing.JFrame {
 
         jLabel4.setText("NAVIGATION");
 
+        pitch.setForeground(new java.awt.Color(153, 0, 0));
+        pitch.setMaximum(20);
+        pitch.setMinimum(-20);
+        pitch.setOrientation(javax.swing.JSlider.VERTICAL);
+        pitch.setValue(0);
+        pitch.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pitchStateChanged(evt);
+            }
+        });
+
+        roll.setForeground(new java.awt.Color(153, 0, 0));
+        roll.setMaximum(20);
+        roll.setMinimum(-20);
+        roll.setOrientation(javax.swing.JSlider.VERTICAL);
+        roll.setValue(0);
+        roll.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rollStateChanged(evt);
+            }
+        });
+
+        yaw.setForeground(new java.awt.Color(153, 0, 0));
+        yaw.setMaximum(20);
+        yaw.setMinimum(-20);
+        yaw.setOrientation(javax.swing.JSlider.VERTICAL);
+        yaw.setValue(0);
+        yaw.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                yawStateChanged(evt);
+            }
+        });
+
+        cPitch.setText("C");
+        cPitch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cPitchActionPerformed(evt);
+            }
+        });
+
+        cRoll.setText("C");
+        cRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cRollActionPerformed(evt);
+            }
+        });
+
+        cYaw.setText("C");
+        cYaw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cYawActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(9, 9, 9))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel4)
-                .addGap(102, 102, 102))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                    .addComponent(cYaw)
+                    .addComponent(cRoll)
+                    .addComponent(cPitch))
+                .addGap(10, 10, 10))
         );
+
+        getAccessibleContext().setAccessibleName("XP-C");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void pitchStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pitchStateChanged
         // TODO add your handling code here:
-        //System.out.println(""+(int)pitch.getModel().getValue());
-	byte[] value = ByteArrayTool.float2ByteArray((int)pitch.getModel().getValue());
+        byte[] value = ByteArrayTool.float2ByteArray((int)pitch.getModel().getValue());
 	byte[] XPData = ByteArrayTool.getXPData("pitch", value);
-	ByteArrayTool.printArray(XPData);
+        System.out.println("Sending PITCH: "+ByteArrayTool.byteArray2Float(value));
 	Messenger.sendMessage(XPData);
+	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_pitchStateChanged
 
     private void rollStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rollStateChanged
         // TODO add your handling code here:
         byte[] value = ByteArrayTool.float2ByteArray((int)roll.getModel().getValue());
 	byte[] XPData = ByteArrayTool.getXPData("roll", value);
+        System.out.println("Sending ROLL: "+ByteArrayTool.byteArray2Float(value));
 	Messenger.sendMessage(XPData);
-	ByteArrayTool.printArray(XPData);
+	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_rollStateChanged
 
     private void yawStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yawStateChanged
         // TODO add your handling code here:
         byte[] value = ByteArrayTool.float2ByteArray((int)yaw.getModel().getValue());
 	byte[] XPData = ByteArrayTool.getXPData("yaw", value);
+        System.out.println("Sending YAW: "+ByteArrayTool.byteArray2Float(value));
 	Messenger.sendMessage(XPData);
-	ByteArrayTool.printArray(XPData);
+	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_yawStateChanged
+
+    private void cPitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPitchActionPerformed
+        // TODO add your handling code here:
+        pitch.setValue(0);
+    }//GEN-LAST:event_cPitchActionPerformed
+
+    private void cRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cRollActionPerformed
+        // TODO add your handling code here:
+        roll.setValue(0);
+    }//GEN-LAST:event_cRollActionPerformed
+
+    private void cYawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cYawActionPerformed
+        // TODO add your handling code here:
+        yaw.setValue(0);
+    }//GEN-LAST:event_cYawActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,12 +247,15 @@ public class Controls extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cPitch;
+    private javax.swing.JButton cRoll;
+    private javax.swing.JButton cYaw;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner pitch;
-    private javax.swing.JSpinner roll;
-    private javax.swing.JSpinner yaw;
+    private javax.swing.JSlider pitch;
+    private javax.swing.JSlider roll;
+    private javax.swing.JSlider yaw;
     // End of variables declaration//GEN-END:variables
 }

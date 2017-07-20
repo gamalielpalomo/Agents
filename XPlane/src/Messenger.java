@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import Globals.Globals;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,8 +19,8 @@ public class Messenger
 {
     public static void sendMessage(byte[] MsgBArray){
 	try {
-	    String host = "localhost";
-	    int port = 49000;
+	    String host = Globals.XPLANE_ADDR;
+	    int port = Globals.PORT;
 
 	    // Get the internet address of the specified host
 	    InetAddress address = InetAddress.getByName(host);
