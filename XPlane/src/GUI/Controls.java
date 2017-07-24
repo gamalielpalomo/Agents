@@ -48,17 +48,17 @@ public class Controls extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("XP-C");
 
-        jLabel1.setText("PITCH");
+        jLabel1.setText("ELEV");
 
-        jLabel2.setText("ROLL");
+        jLabel2.setText("AILRN");
 
-        jLabel3.setText("YAW");
+        jLabel3.setText("RUDDR");
 
         jLabel4.setText("NAVIGATION");
 
         pitch.setForeground(new java.awt.Color(153, 0, 0));
-        pitch.setMaximum(30);
-        pitch.setMinimum(-30);
+        pitch.setMaximum(200);
+        pitch.setMinimum(-310);
         pitch.setOrientation(javax.swing.JSlider.VERTICAL);
         pitch.setValue(0);
         pitch.addChangeListener(new javax.swing.event.ChangeListener()
@@ -70,8 +70,8 @@ public class Controls extends javax.swing.JFrame {
         });
 
         roll.setForeground(new java.awt.Color(153, 0, 0));
-        roll.setMaximum(30);
-        roll.setMinimum(-30);
+        roll.setMaximum(260);
+        roll.setMinimum(-260);
         roll.setOrientation(javax.swing.JSlider.VERTICAL);
         roll.setValue(0);
         roll.addChangeListener(new javax.swing.event.ChangeListener()
@@ -83,8 +83,8 @@ public class Controls extends javax.swing.JFrame {
         });
 
         yaw.setForeground(new java.awt.Color(153, 0, 0));
-        yaw.setMaximum(30);
-        yaw.setMinimum(-30);
+        yaw.setMaximum(600);
+        yaw.setMinimum(-600);
         yaw.setOrientation(javax.swing.JSlider.VERTICAL);
         yaw.setValue(0);
         yaw.addChangeListener(new javax.swing.event.ChangeListener()
@@ -142,20 +142,22 @@ public class Controls extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                                 .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(6, 6, 6)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

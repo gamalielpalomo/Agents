@@ -42,13 +42,14 @@
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="cPitch" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                               <Component id="cRoll" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -57,12 +58,13 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="cYaw" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="yaw" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,17 +103,17 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="PITCH"/>
+        <Property name="text" type="java.lang.String" value="ELEV"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ROLL"/>
+        <Property name="text" type="java.lang.String" value="AILRN"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="YAW"/>
+        <Property name="text" type="java.lang.String" value="RUDDR"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -124,8 +126,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="maximum" type="int" value="30"/>
-        <Property name="minimum" type="int" value="-30"/>
+        <Property name="maximum" type="int" value="200"/>
+        <Property name="minimum" type="int" value="-310"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="value" type="int" value="0"/>
       </Properties>
@@ -138,8 +140,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="maximum" type="int" value="30"/>
-        <Property name="minimum" type="int" value="-30"/>
+        <Property name="maximum" type="int" value="260"/>
+        <Property name="minimum" type="int" value="-260"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="value" type="int" value="0"/>
       </Properties>
@@ -152,8 +154,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="maximum" type="int" value="30"/>
-        <Property name="minimum" type="int" value="-30"/>
+        <Property name="maximum" type="int" value="600"/>
+        <Property name="minimum" type="int" value="-600"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="value" type="int" value="0"/>
       </Properties>

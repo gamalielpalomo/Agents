@@ -20,7 +20,7 @@ public class Service
     public static void executeService(){
 	try{
 	    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
-	    byte[] inputData = new byte[1024];
+	    byte[] inputData = new byte[128];
 	    byte[] XPData;
 
 	    while (true)
@@ -42,14 +42,13 @@ public class Service
 		System.out.println("Dataset 20");
 		break;
 	}*/
-	ByteArrayTool.printArray(data);
-	for(int i=9; i<=data.length; i+=4){
+	for(int i=9; i<=50; i+=4){
 	    byte[] tmp = new byte[4];
-	    System.arraycopy(data, i, tmp, 0, 3);
+	    System.arraycopy(data, i, tmp, 0, 4);
 	    float value = ByteArrayTool.byteArray2Float(tmp);
-	    System.out.print(" "+value);
+	    System.out.print("\t"+value);
 	}
-	
+	System.out.println("\n");
     }
     
     
