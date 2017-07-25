@@ -4,7 +4,8 @@ package GUI;
 import Tools.Messenger;
 import Tools.ByteArrayTool;
 import InputDataTools.Service;
-
+import javax.swing.JFileChooser;
+import java.io.File;   
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,9 +45,14 @@ public class Controls extends javax.swing.JFrame {
         cPitch = new javax.swing.JButton();
         cRoll = new javax.swing.JButton();
         cYaw = new javax.swing.JButton();
+        load = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel5 = new javax.swing.JLabel();
+        veh1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("XP-C");
+        setResizable(false);
 
         jLabel1.setText("ELEV");
 
@@ -57,8 +63,8 @@ public class Controls extends javax.swing.JFrame {
         jLabel4.setText("NAVIGATION");
 
         pitch.setForeground(new java.awt.Color(153, 0, 0));
-        pitch.setMaximum(200);
-        pitch.setMinimum(-310);
+        pitch.setMaximum(30);
+        pitch.setMinimum(-30);
         pitch.setOrientation(javax.swing.JSlider.VERTICAL);
         pitch.setValue(0);
         pitch.addChangeListener(new javax.swing.event.ChangeListener()
@@ -70,8 +76,8 @@ public class Controls extends javax.swing.JFrame {
         });
 
         roll.setForeground(new java.awt.Color(153, 0, 0));
-        roll.setMaximum(260);
-        roll.setMinimum(-260);
+        roll.setMaximum(30);
+        roll.setMinimum(-30);
         roll.setOrientation(javax.swing.JSlider.VERTICAL);
         roll.setValue(0);
         roll.addChangeListener(new javax.swing.event.ChangeListener()
@@ -83,8 +89,8 @@ public class Controls extends javax.swing.JFrame {
         });
 
         yaw.setForeground(new java.awt.Color(153, 0, 0));
-        yaw.setMaximum(600);
-        yaw.setMinimum(-600);
+        yaw.setMaximum(30);
+        yaw.setMinimum(-30);
         yaw.setOrientation(javax.swing.JSlider.VERTICAL);
         yaw.setValue(0);
         yaw.addChangeListener(new javax.swing.event.ChangeListener()
@@ -122,49 +128,84 @@ public class Controls extends javax.swing.JFrame {
             }
         });
 
+        load.setText("VEHN");
+        load.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                loadActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("AIRCRAFT");
+
+        veh1.setText("VEH1");
+        veh1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                veh1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(load)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(veh1)))
+                        .addGap(118, 118, 118))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(load))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,16 +213,17 @@ public class Controls extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cPitch)
                     .addComponent(cYaw)
                     .addComponent(cRoll)
-                    .addComponent(cPitch))
-                .addGap(10, 10, 10))
+                    .addComponent(veh1))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -232,6 +274,36 @@ public class Controls extends javax.swing.JFrame {
         yaw.setValue(0);
     }//GEN-LAST:event_cYawActionPerformed
 
+    private void loadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loadActionPerformed
+    {//GEN-HEADEREND:event_loadActionPerformed
+        // TODO add your handling code here:
+	/*
+	JFileChooser chooser = new JFileChooser();
+	chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+	int result = chooser.showOpenDialog(this);
+	if (result == JFileChooser.APPROVE_OPTION) {
+	    File selectedFile = chooser.getSelectedFile();
+	    //System.out.println("Selected file: " + selectedFile.getName().toString());
+	    //String dir = "Aircraft\\Heavy Metal\\B747-400 United\\";
+	    String aircraft = selectedFile.getName();
+	    dir = dir.concat(aircraft);
+	    System.out.println("Dir length: "+dir.length());
+	}*/
+	String dir = "Aircraft/Fighters/FA-22 Raptor/FA-22A.acf";
+	byte[] b_aircraft;
+	b_aircraft = dir.getBytes();
+	System.out.println("Dir length: "+b_aircraft.length);
+	Messenger.sendMessage(ByteArrayTool.getVEHNData((byte)0, b_aircraft));
+    }//GEN-LAST:event_loadActionPerformed
+
+    private void veh1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_veh1ActionPerformed
+    {//GEN-HEADEREND:event_veh1ActionPerformed
+        // TODO add your handling code here:
+	byte [] data = ByteArrayTool.getVEH1Data((byte)212);
+	System.out.println("VEH1 array length: "+data.length);
+	Messenger.sendMessage(data);
+    }//GEN-LAST:event_veh1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,8 +347,12 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JButton load;
     private javax.swing.JSlider pitch;
     private javax.swing.JSlider roll;
+    private javax.swing.JButton veh1;
     private javax.swing.JSlider yaw;
     // End of variables declaration//GEN-END:variables
 }

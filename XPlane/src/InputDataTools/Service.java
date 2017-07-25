@@ -41,14 +41,14 @@ public class Service
 	    case 20:
 		System.out.println("Dataset 20");
 		break;
-	}*/
+	
 	for(int i=9; i<=50; i+=4){
 	    byte[] tmp = new byte[4];
 	    System.arraycopy(data, i, tmp, 0, 4);
 	    float value = ByteArrayTool.byteArray2Float(tmp);
 	    System.out.print("\t"+value);
 	}
-	System.out.println("\n");
+	System.out.println("\n");}*/
     }
     
     

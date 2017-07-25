@@ -24,6 +24,44 @@ public class ByteArrayTool
     public static float byteArray2Float (byte[] values){
         return ByteBuffer.wrap(values).order(ByteOrder.LITTLE_ENDIAN).getFloat();
     }
+    public static byte[] double2ByteArray (double value)
+    {
+	return ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putDouble(value).array();
+    }
+    public static byte [] getVEHNData(byte craft, byte[] values){
+	byte [] data = new byte[1024];
+	byte [] header = {86, 69, 72, 78};
+	System.arraycopy(header, 0, data, 0, 4);
+	data[4] = craft;
+	System.arraycopy(values, 0, data, 5, values.length);
+	return data;
+    }
+    public static byte [] getVEH1Data(byte craft){
+	byte [] lat = double2ByteArray(20.659698);
+	byte [] lon = double2ByteArray(-103.349609);
+	byte [] ele = double2ByteArray(5300);
+	byte [] lat_lon_ele = new byte[24];
+	System.arraycopy(lat, 0, lat_lon_ele, 0, 8);
+	System.arraycopy(lon, 0, lat_lon_ele, 8, 8);
+	System.arraycopy(ele, 0, lat_lon_ele, 15, 8);
+	
+	byte [] psi_the_phi = {0, 0, 0, 0, 
+				0, 0, 0, 0,
+				 0, 0, 0, 0};
+	
+	byte [] gear_flap_vect = {0, 0, 0, 0, 
+				    0, 0, 0, 0,
+				     0, 0, 0, 0};
+	
+	byte [] header = { 86, 69, 72, 49, craft};
+	byte [] data = new byte[53];
+	
+	System.arraycopy(lat_lon_ele, 0, data, 5, 24);
+	System.arraycopy(psi_the_phi, 0, data, 29, 12);
+	System.arraycopy(gear_flap_vect, 0, data, 41, 12);
+	
+	return data;
+    }
     public static byte [] getXPData(String index, byte[] values){
 	byte [] data = { 68, 65, 84, 65, 0, 
 			    11, 0, 0, 0, 
@@ -37,15 +75,15 @@ public class ByteArrayTool
 			    0, 0, 0, 0 };	
 	switch(index){
 	    case "pitch":
-		System.out.println("Setting pitch");
+		System.out.println("Setting elevators");
 		System.arraycopy(values, 0, data, 9, 4);
 		break;
 	    case "roll":
-		System.out.println("Setting roll");
+		System.out.println("Setting ailerons");
 		System.arraycopy(values, 0, data, 13, 4);
 		break;
 	    case "yaw":
-		System.out.println("Setting yaw");
+		System.out.println("Setting rudder");
 		System.arraycopy(values, 0, data, 17, 4);
 		break;
 	}
