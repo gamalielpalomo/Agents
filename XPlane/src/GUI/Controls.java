@@ -45,7 +45,7 @@ public class Controls extends javax.swing.JFrame {
         cPitch = new javax.swing.JButton();
         cRoll = new javax.swing.JButton();
         cYaw = new javax.swing.JButton();
-        load = new javax.swing.JButton();
+        vehn = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         veh1 = new javax.swing.JButton();
@@ -128,12 +128,12 @@ public class Controls extends javax.swing.JFrame {
             }
         });
 
-        load.setText("VEHN");
-        load.addActionListener(new java.awt.event.ActionListener()
+        vehn.setText("VEHN");
+        vehn.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                loadActionPerformed(evt);
+                vehnActionPerformed(evt);
             }
         });
 
@@ -161,7 +161,7 @@ public class Controls extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(load)
+                        .addComponent(vehn)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -204,7 +204,7 @@ public class Controls extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(load))
+                    .addComponent(vehn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -274,8 +274,8 @@ public class Controls extends javax.swing.JFrame {
         yaw.setValue(0);
     }//GEN-LAST:event_cYawActionPerformed
 
-    private void loadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loadActionPerformed
-    {//GEN-HEADEREND:event_loadActionPerformed
+    private void vehnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_vehnActionPerformed
+    {//GEN-HEADEREND:event_vehnActionPerformed
         // TODO add your handling code here:
 	/*
 	JFileChooser chooser = new JFileChooser();
@@ -290,16 +290,17 @@ public class Controls extends javax.swing.JFrame {
 	    System.out.println("Dir length: "+dir.length());
 	}*/
 	String dir = "Aircraft/Fighters/FA-22 Raptor/FA-22A.acf";
-	byte[] b_aircraft;
-	b_aircraft = dir.getBytes();
+	byte[] b_aircraft = new byte[150];
+	byte [] bytes = dir.getBytes();
+	System.arraycopy(bytes, 0, b_aircraft, 0, bytes.length);
 	System.out.println("Dir length: "+b_aircraft.length);
-	Messenger.sendMessage(ByteArrayTool.getVEHNData((byte)0, b_aircraft));
-    }//GEN-LAST:event_loadActionPerformed
+	Messenger.sendMessage(ByteArrayTool.getVEHNData(0, b_aircraft));
+    }//GEN-LAST:event_vehnActionPerformed
 
     private void veh1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_veh1ActionPerformed
     {//GEN-HEADEREND:event_veh1ActionPerformed
         // TODO add your handling code here:
-	byte [] data = ByteArrayTool.getVEH1Data((byte)212);
+	byte [] data = ByteArrayTool.getVEH1Data(6);
 	System.out.println("VEH1 array length: "+data.length);
 	Messenger.sendMessage(data);
     }//GEN-LAST:event_veh1ActionPerformed
@@ -349,10 +350,10 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JButton load;
     private javax.swing.JSlider pitch;
     private javax.swing.JSlider roll;
     private javax.swing.JButton veh1;
+    private javax.swing.JButton vehn;
     private javax.swing.JSlider yaw;
     // End of variables declaration//GEN-END:variables
 }

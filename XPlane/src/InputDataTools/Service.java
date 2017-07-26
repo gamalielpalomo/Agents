@@ -41,6 +41,7 @@ public class Service
 	    case 20:
 		System.out.println("Dataset 20");
 		break;
+	System.out.println("\n");}*/
 	
 	for(int i=9; i<=50; i+=4){
 	    byte[] tmp = new byte[4];
@@ -48,7 +49,7 @@ public class Service
 	    float value = ByteArrayTool.byteArray2Float(tmp);
 	    System.out.print("\t"+value);
 	}
-	System.out.println("\n");}*/
+	System.out.println("\n");
     }
     
     
