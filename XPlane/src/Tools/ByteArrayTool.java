@@ -83,15 +83,15 @@ public class ByteArrayTool
 			    0, 0, 0, 0 };	
 	switch(index){
 	    case "pitch":
-		System.out.println("Setting elevators");
+		//System.out.println("Setting elevators");
 		System.arraycopy(values, 0, data, 9, 4);
 		break;
 	    case "roll":
-		System.out.println("Setting ailerons");
+		//System.out.println("Setting ailerons");
 		System.arraycopy(values, 0, data, 13, 4);
 		break;
 	    case "yaw":
-		System.out.println("Setting rudder");
+		//System.out.println("Setting rudder");
 		System.arraycopy(values, 0, data, 17, 4);
 		break;
 	}

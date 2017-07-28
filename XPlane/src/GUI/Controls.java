@@ -46,7 +46,7 @@ public class Controls extends javax.swing.JFrame {
         cRoll = new javax.swing.JButton();
         cYaw = new javax.swing.JButton();
         vehn = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        craft = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         veh1 = new javax.swing.JButton();
 
@@ -153,56 +153,52 @@ public class Controls extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(vehn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(veh1)))
-                        .addGap(118, 118, 118))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(craft, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(vehn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(veh1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cPitch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel4)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(craft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(vehn))
                 .addGap(18, 18, 18)
@@ -211,7 +207,8 @@ public class Controls extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(veh1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,9 +218,8 @@ public class Controls extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cPitch)
                     .addComponent(cYaw)
-                    .addComponent(cRoll)
-                    .addComponent(veh1))
-                .addGap(50, 50, 50))
+                    .addComponent(cRoll))
+                .addContainerGap())
         );
 
         pack();
@@ -234,7 +230,7 @@ public class Controls extends javax.swing.JFrame {
 	float sensor = ((float)pitch.getModel().getValue())/10;
         byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("pitch", value);
-        System.out.println("Sending PITCH: "+sensor);
+        System.out.println("Setting ELEVATORS: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_pitchStateChanged
@@ -244,7 +240,7 @@ public class Controls extends javax.swing.JFrame {
 	float sensor = ((float)roll.getModel().getValue())/10;
         byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("roll", value);
-        System.out.println("Sending ROLL: "+sensor);
+        System.out.println("Setting AILERONS: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_rollStateChanged
@@ -254,7 +250,7 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)yaw.getModel().getValue())/10;
         byte[] value = ByteArrayTool.float2ByteArray(sensor);
 	byte[] XPData = ByteArrayTool.getXPData("yaw", value);
-        System.out.println("Sending YAW: "+sensor);
+        System.out.println("Setting RUDDER: "+sensor);
 	Messenger.sendMessage(XPData);
 	//ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_yawStateChanged
@@ -294,13 +290,13 @@ public class Controls extends javax.swing.JFrame {
 	byte [] bytes = dir.getBytes();
 	System.arraycopy(bytes, 0, b_aircraft, 0, bytes.length);
 	System.out.println("Dir length: "+b_aircraft.length);
-	Messenger.sendMessage(ByteArrayTool.getVEHNData(0, b_aircraft));
+	Messenger.sendMessage(ByteArrayTool.getVEHNData((Integer)craft.getModel().getValue(), b_aircraft));
     }//GEN-LAST:event_vehnActionPerformed
 
     private void veh1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_veh1ActionPerformed
     {//GEN-HEADEREND:event_veh1ActionPerformed
         // TODO add your handling code here:
-	byte [] data = ByteArrayTool.getVEH1Data(6);
+	byte [] data = ByteArrayTool.getVEH1Data((Integer)craft.getModel().getValue());
 	System.out.println("VEH1 array length: "+data.length);
 	Messenger.sendMessage(data);
     }//GEN-LAST:event_veh1ActionPerformed
@@ -344,12 +340,12 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JButton cPitch;
     private javax.swing.JButton cRoll;
     private javax.swing.JButton cYaw;
+    private javax.swing.JSpinner craft;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSlider pitch;
     private javax.swing.JSlider roll;
     private javax.swing.JButton veh1;
