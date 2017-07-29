@@ -20,7 +20,7 @@ public class Service
     public static void executeService(){
 	try{
 	    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
-	    byte[] inputData = new byte[128];
+	    byte[] inputData = new byte[512];
 	    byte[] XPData;
 
 	    while (true)
