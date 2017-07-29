@@ -460,7 +460,7 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)eng_throttle.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
         byte[] XPData = DREF_Builders.createDREF("sim/cockpit2/engine/actuators/throttle_ratio_all", sensor);
-        System.out.println("Throttle ratio: "+sensor*100+"%");
+        System.out.println("Throttle: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_eng_throttleStateChanged
 
