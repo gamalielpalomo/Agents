@@ -7,6 +7,7 @@ import InputDataTools.Service;
 import javax.swing.JFileChooser;
 import java.io.File;   
 import DREF.DREF_Builders;
+import DREF.DREF_Listener;
 import DREF.COMMAND_Builders;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -563,6 +564,7 @@ public class Controls extends javax.swing.JFrame {
             }
         });
 	//Service.executeService();
+	DREF_Listener.executeService();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,12 +37,16 @@ public class DREF_Listener
     }
     
     static void dataFilter(byte[] data){
-	for(int i=0; i<=data.length; i++){
-	    //byte[] tmp = new byte[4];
-	    //System.arraycopy(data, i, tmp, 0, 4);
-	    //float value = ByteArrayTool.byteArray2Float(tmp);
-	    System.out.print("\t"+data[i]);
+	if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
+	{
+	    
+	    //for(int i=5; i<=data.length-1; i++){
+		byte[] tmp = new byte[4];
+		System.arraycopy(data, 5, tmp, 0, 4);
+		float value = ByteArrayTool.byteArray2Float(tmp);
+		System.out.print("\t"+value);
+	    //}
+	    System.out.println("\n");
 	}
-	System.out.println("\n");
     }
 }
