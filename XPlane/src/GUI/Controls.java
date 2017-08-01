@@ -52,6 +52,7 @@ public class Controls extends javax.swing.JFrame {
         roll = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        brake_Button = new javax.swing.JButton();
         Frame_multiplayer = new javax.swing.JInternalFrame();
         craft = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
@@ -160,6 +161,15 @@ public class Controls extends javax.swing.JFrame {
 
         jLabel3.setText("RUDDR");
 
+        brake_Button.setText("Brake");
+        brake_Button.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                brake_ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Frame_principalLayout = new javax.swing.GroupLayout(Frame_principal.getContentPane());
         Frame_principal.getContentPane().setLayout(Frame_principalLayout);
         Frame_principalLayout.setHorizontalGroup(
@@ -180,7 +190,8 @@ public class Controls extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addGroup(Frame_principalLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
-                                .addComponent(jLabel4))))
+                                .addComponent(jLabel4))
+                            .addComponent(brake_Button)))
                     .addGroup(Frame_principalLayout.createSequentialGroup()
                         .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Frame_principalLayout.createSequentialGroup()
@@ -207,7 +218,9 @@ public class Controls extends javax.swing.JFrame {
             .addGroup(Frame_principalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
+                .addComponent(brake_Button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -440,8 +453,8 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
         //byte []XPData = ByteArrayTool.getXPData("pitch", values);
-        //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio", sensor);
-	byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
+        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
+	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
         //System.out.println("PITCH ratio: "+sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
@@ -535,6 +548,13 @@ public class Controls extends javax.swing.JFrame {
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_mult_ruddr_sliderStateChanged
 
+    private void brake_ButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_brake_ButtonActionPerformed
+    {//GEN-HEADEREND:event_brake_ButtonActionPerformed
+        // TODO add your handling code here:
+	 byte[] XPData = DREF_Builders.createDREF("sim/multiplayer/controls/parking_brake[0]", 0);
+	 Messenger.sendMessage(XPData);
+    }//GEN-LAST:event_brake_ButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -575,6 +595,7 @@ public class Controls extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame Frame_multiplayer;
     private javax.swing.JInternalFrame Frame_principal;
+    private javax.swing.JButton brake_Button;
     private javax.swing.JButton cPitch;
     private javax.swing.JButton cRoll;
     private javax.swing.JButton cYaw;
