@@ -7,16 +7,25 @@ package DREF;
 
 import Globals.Globals;
 import Tools.ByteArrayTool;
+import Tools.Messenger;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 /**
  *
- * @author Adrian Gonzalez
+ * @author gamaa
  */
 public class DREF_Listener
 {
+    public static void sendRequests()
+    {
+	//sim/flightmodel2/engines/throttle_used_ratio
+	byte [] request = DREF_Request_Builder.getRequest(1, 0, "sim/cockpit2/engine/actuators/throttle_ratio_all");
+	Messenger.sendMessage(request);
+    }
+    
+    
     public static void executeService(){
 	try{
 	    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
@@ -39,14 +48,8 @@ public class DREF_Listener
     static void dataFilter(byte[] data){
 	if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
 	{
-	    
-	    //for(int i=5; i<=data.length-1; i++){
-		byte[] tmp = new byte[4];
-		System.arraycopy(data, 5, tmp, 0, 4);
-		float value = ByteArrayTool.byteArray2Float(tmp);
-		System.out.print("\t"+value);
-	    //}
-	    System.out.println("\n");
+	    System.out.print(new String(data));
 	}
+	System.out.println("\n");
     }
 }

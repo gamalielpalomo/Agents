@@ -24,12 +24,25 @@ public class ByteArrayTool
     public static float byteArray2Float (byte[] values){
         return ByteBuffer.wrap(values).order(ByteOrder.LITTLE_ENDIAN).getFloat();
     }
-    public static byte[] double2ByteArray (double value)
+    public static byte [] double2ByteArray (double value)
     {
 	return ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putDouble(value).array();
     }
-    public static byte[] int2ByteArray(int value){
+    public static byte [] int2ByteArray(int value){
 	return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(value).array();
+    }
+    public static int byteArray2Int(byte [] values)
+    {
+	return ByteBuffer.wrap(values).order(ByteOrder.LITTLE_ENDIAN).getInt();
+    }
+    
+    public static byte [] string2ByteArray(String string)
+    {
+	char [] ch = string.toCharArray();
+	byte [] ba_string = new byte[ch.length];
+	for(int i = 0; i<ch.length; i++)
+	    ba_string[i] = (byte)ch[i];
+	return ba_string;
     }
     public static byte [] getVEHNData(int craft, byte[] values){
 	byte [] data = new byte[1024];

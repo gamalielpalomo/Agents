@@ -16,7 +16,7 @@ public class DREF_Builders
 	int DataSize = 505;
 	char[] TextMessageX_Plane = new char[DataSize];
 	int StringPosition = 0;
-	Dataref = Dataref + "[0]";
+	//Dataref = Dataref + "[0]";
 	char[] DataReference = Dataref.toCharArray();
 	
 	for (int x = 0; x <= DataReference.length - 1; x++)

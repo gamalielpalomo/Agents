@@ -421,8 +421,9 @@ public class Controls extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_rollStateChanged
         // TODO add your handling code here:
         float sensor = ((float)roll.getModel().getValue())/10;
-        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/roll_ratio", sensor);
-        System.out.println("ROLL ratio: "+sensor);
+        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/roll_ratio[0]", sensor);
+        //System.out.println("ROLL ratio: "+sensor);
+	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_roll_ratio", sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_rollStateChanged
@@ -439,8 +440,9 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
         //byte []XPData = ByteArrayTool.getXPData("pitch", values);
-        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio", sensor);
-        System.out.println("PITCH ratio: "+sensor);
+        //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio", sensor);
+	byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
+        //System.out.println("PITCH ratio: "+sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_pitchStateChanged
@@ -449,8 +451,9 @@ public class Controls extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_yawStateChanged
         // TODO add your handling code here:
         float sensor = ((float)yaw.getModel().getValue())/10;
-        byte[] XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/heading_ratio", sensor);
-        System.out.println("Heading ratio: "+sensor);
+        byte[] XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/heading_ratio[0]", sensor);
+	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_heading_ratio", sensor);
+        //System.out.println("Heading ratio: "+sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
     }//GEN-LAST:event_yawStateChanged
@@ -460,8 +463,8 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
         float sensor = ((float)eng_throttle.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
-        byte[] XPData = DREF_Builders.createDREF("sim/cockpit2/engine/actuators/throttle_ratio_all", sensor);
-        System.out.println("Throttle: "+sensor*100+"%");
+        byte[] XPData = DREF_Builders.createDREF("sim/cockpit2/engine/actuators/throttle_ratio_all[0]", sensor);
+        //System.out.println("Throttle: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_eng_throttleStateChanged
 
@@ -500,7 +503,8 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
 	float sensor = ((float)mult_elev_slider.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
-        byte[] XPData = DREF_Builders.createDREF("", sensor);
+	String drefName = "sim/multiplayer/controls/yoke_pitch_ratio"+"["+(int)craft.getModel().getValue()+"]";
+        byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_mult_elev_sliderStateChanged
@@ -564,6 +568,7 @@ public class Controls extends javax.swing.JFrame {
             }
         });
 	//Service.executeService();
+	DREF_Listener.sendRequests();
 	DREF_Listener.executeService();
     }
 
