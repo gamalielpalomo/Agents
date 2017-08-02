@@ -9,6 +9,7 @@ import java.io.File;
 import DREF.DREF_Builders;
 import DREF.DREF_Listener;
 import DREF.COMMAND_Builders;
+import jade.Boot;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -453,8 +454,8 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
         //byte []XPData = ByteArrayTool.getXPData("pitch", values);
-        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
-	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
+        //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
+	byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
         //System.out.println("PITCH ratio: "+sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
@@ -516,7 +517,7 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
 	float sensor = ((float)mult_elev_slider.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
-	String drefName = "sim/multiplayer/controls/yoke_pitch_ratio"+"["+(int)craft.getModel().getValue()+"]";
+	String drefName = "sim/multiplayer/controls/elevator_trim"+"["+(int)craft.getModel().getValue()+"]";
         byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
@@ -535,7 +536,8 @@ public class Controls extends javax.swing.JFrame {
     private void playSimActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_playSimActionPerformed
     {//GEN-HEADEREND:event_playSimActionPerformed
         // TODO add your handling code here:
-	
+	String []jade_args = {"-gui", "Pilot:JADE.Pilot"};
+	Boot.main(jade_args);
     }//GEN-LAST:event_playSimActionPerformed
 
     private void mult_ruddr_sliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_mult_ruddr_sliderStateChanged
@@ -587,9 +589,6 @@ public class Controls extends javax.swing.JFrame {
                 new Controls().setVisible(true);
             }
         });
-	//Service.executeService();
-	DREF_Listener.sendRequests();
-	DREF_Listener.executeService();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

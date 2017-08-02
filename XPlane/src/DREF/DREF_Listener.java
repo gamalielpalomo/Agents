@@ -31,13 +31,14 @@ public class DREF_Listener
 	    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
 	    byte[] inputData = new byte[509];
 	    byte[] XPData;
+	    int quantity = 2;
 
 	    while (true)
 	    {
 		DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);
 		serverSocket.receive(receivePacket);
 		XPData = receivePacket.getData();
-		dataFilter(XPData);
+		dataFilter(XPData,2);
 	    }
 	}
 	catch(IOException ioe){
@@ -45,11 +46,29 @@ public class DREF_Listener
 	}
     }
     
-    static void dataFilter(byte[] data){
+    static float[] dataFilter(byte[] data, int q){
+	float [] values = new float[q];
 	if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
 	{
-	    System.out.print(new String(data));
+	    String buffer = "";
+	    int counter = 0;
+	    for(int i = 6; i < data.length; i++)
+	    {
+		if(data[i]!=44)
+		    buffer = buffer + (char)data[i];
+		else
+		{
+		    try{
+			values[counter] = new Float(buffer);
+		    }
+		    catch(java.lang.NumberFormatException nfe){break;}
+		    buffer = "";
+		    //System.out.print("\t"+values[counter]);
+		    counter++;
+		}
+	    }
 	}
-	System.out.println("\n");
+	//System.out.println("\n");
+	return values;
     }
 }
