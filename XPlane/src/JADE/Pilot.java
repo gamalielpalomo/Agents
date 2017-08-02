@@ -31,7 +31,7 @@ public class Pilot extends Agent
 		    byte[] XPData;
 		    int quantity = 2;
 		    float [] values;
-		    
+		     
 		    while (true)
 		    {
 			DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);

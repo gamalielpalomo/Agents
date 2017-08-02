@@ -454,8 +454,8 @@ public class Controls extends javax.swing.JFrame {
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
         //byte []XPData = ByteArrayTool.getXPData("pitch", values);
-        //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
-	byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/yoke_pitch_ratio[0]", sensor);
+        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
+	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/elevator_trim[0]", sensor);
         //System.out.println("PITCH ratio: "+sensor);
         Messenger.sendMessage(XPData);
         //ByteArrayTool.printArray(XPData);
