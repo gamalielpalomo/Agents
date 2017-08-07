@@ -38,6 +38,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="playSim" max="32767" attributes="0"/>
                   <Component id="loadScenario" pref="114" max="32767" attributes="0"/>
+                  <Component id="harvestData" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -52,6 +53,8 @@
                       <Component id="loadScenario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="playSim" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="harvestData" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="Frame_multiplayer" max="32767" attributes="0"/>
@@ -460,6 +463,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Load Scenario"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="harvestData">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Harvest"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="harvestDataActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

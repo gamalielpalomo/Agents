@@ -10,6 +10,7 @@ import DREF.DREF_Builders;
 import DREF.DREF_Listener;
 import DREF.COMMAND_Builders;
 import jade.Boot;
+import Tools.DataHarvest;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -69,6 +70,7 @@ public class Controls extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         playSim = new javax.swing.JButton();
         loadScenario = new javax.swing.JButton();
+        harvestData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("XP-C");
@@ -398,6 +400,15 @@ public class Controls extends javax.swing.JFrame {
 
         loadScenario.setText("Load Scenario");
 
+        harvestData.setText("Harvest");
+        harvestData.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                harvestDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -410,7 +421,8 @@ public class Controls extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(playSim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loadScenario, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                    .addComponent(loadScenario, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(harvestData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -421,7 +433,9 @@ public class Controls extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(loadScenario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(playSim))
+                        .addComponent(playSim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(harvestData))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Frame_multiplayer)
                         .addComponent(Frame_principal)))
@@ -453,8 +467,8 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
-        //byte []XPData = ByteArrayTool.getXPData("pitch", values);
-        byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
+       byte []XPData = ByteArrayTool.getXPData("pitch", values);
+         //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
 	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/elevator_trim[0]", sensor);
         //System.out.println("PITCH ratio: "+sensor);
         Messenger.sendMessage(XPData);
@@ -528,7 +542,8 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
 	float sensor = ((float)mult_ail_slider.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
-        byte[] XPData = DREF_Builders.createDREF("", sensor);
+	String drefName = "sim/multiplayer/controls/aileron_trim"+"["+(int)craft.getModel().getValue()+"]";
+        byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_mult_ail_sliderStateChanged
@@ -545,7 +560,8 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
 	float sensor = ((float)mult_ruddr_slider.getModel().getValue())/100;
         float []values = new float[]{sensor, sensor, sensor, sensor};
-        byte[] XPData = DREF_Builders.createDREF("", sensor);
+	String drefName = "sim/multiplayer/controls/rudder_trim"+"["+(int)craft.getModel().getValue()+"]";
+        byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_mult_ruddr_sliderStateChanged
@@ -556,6 +572,13 @@ public class Controls extends javax.swing.JFrame {
 	 byte[] XPData = DREF_Builders.createDREF("sim/multiplayer/controls/parking_brake[0]", 0);
 	 Messenger.sendMessage(XPData);
     }//GEN-LAST:event_brake_ButtonActionPerformed
+
+    private void harvestDataActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_harvestDataActionPerformed
+    {//GEN-HEADEREND:event_harvestDataActionPerformed
+        // TODO add your handling code here:
+	Thread haverstThread = Tools.DataHarvest.Harvest();
+	haverstThread.start();
+    }//GEN-LAST:event_harvestDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -600,6 +623,7 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JButton cYaw;
     private javax.swing.JSpinner craft;
     private javax.swing.JSlider eng_throttle;
+    private javax.swing.JButton harvestData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
