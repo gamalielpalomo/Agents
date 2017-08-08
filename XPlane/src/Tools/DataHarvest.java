@@ -27,7 +27,7 @@ public class DataHarvest
 		DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
 		byte[] inputData = new byte[509];
 		byte[] XPData;
-		int quantity = 21;
+		int quantity = 6;
 		
 		while (true)
 		{
@@ -63,8 +63,8 @@ public class DataHarvest
 		    {
 			if(!"".equals(buffer)){
 			    values[counter] = new Float(buffer);
-			    dataFile.write("\t"+values[counter]);
-			    dataFile.flush();
+			    //dataFile.write("\t"+values[counter]);
+			    //dataFile.flush();
 			    System.out.print("\t"+values[counter]);
 			    buffer = "";
 			    counter++;
