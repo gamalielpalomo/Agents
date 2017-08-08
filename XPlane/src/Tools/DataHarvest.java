@@ -6,16 +6,11 @@
 package Tools;
 
 import Globals.Globals;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.OutputStreamWriter;
 
 /**
  *
@@ -33,7 +28,7 @@ public class DataHarvest
 		    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
 		    byte[] inputData = new byte[509];
 		    byte[] XPData;
-		    int quantity = 14;
+		    int quantity = 21;
 
 		    while (true)
 		    {
@@ -56,7 +51,7 @@ public class DataHarvest
     static Float[] dataFilter(byte[] data, int q){
 	Float [] values = new Float[q];
 	try{
-	    FileWriter dataFile = new FileWriter("data.log");
+	    FileWriter dataFile = new FileWriter("data.log",true);
 	    
 	    if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
 	    {
@@ -70,8 +65,8 @@ public class DataHarvest
 		    {
 			if(buffer!=""){
 			    values[counter] = new Float(buffer);
-			    dataFile.write("\t"+values[counter]);
-			    dataFile.flush();
+			    //dataFile.write("\t"+values[counter]);
+			    //dataFile.flush();
 			    System.out.print("\t"+values[counter]);
 			    buffer = "";
 			    counter++;
@@ -79,6 +74,8 @@ public class DataHarvest
 			else break;
 		    }
 		}
+		//dataFile.write("\n");
+		dataFile.close();
 	    }
 	}
 	catch(IOException e ){}
