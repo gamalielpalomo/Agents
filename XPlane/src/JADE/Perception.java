@@ -12,4 +12,8 @@ package JADE;
 public class Perception
 {
     
+    static Float fce;	    //Forward clearance error between leader and wingman
+    static Float lce;	    //Lateral clearance error between leader and wingman
+    static Float vce;	    //Vertical clearance error between leader and wingman
+    
 }

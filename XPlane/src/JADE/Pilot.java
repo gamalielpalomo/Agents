@@ -7,6 +7,7 @@ package JADE;
 import Globals.Globals;
 import jade.core.Agent;
 import jade.core.behaviours.*;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -19,59 +20,65 @@ public class Pilot extends Agent
     @Override
     protected void setup()
     {
+	
 	addBehaviour( new CyclicBehaviour( this )
 	{
+	    
 	    @Override
 	    public void action()
 	    {
-		
-		try{
+		byte[] inputData = new byte[509];
+		byte[] XPData;
+		int quantity = 27;
+		try
+		{
 		    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
-		    byte[] inputData = new byte[509];
-		    byte[] XPData;
-		    int quantity = 2;
-		    float [] values;
-		     
-		    while (true)
-		    {
-			DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);
-			serverSocket.receive(receivePacket);
-			XPData = receivePacket.getData();
-			values = dataFilter(XPData,quantity);
-			System.out.println(values[0]+","+values[1]);
-		    }
+		    DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);
+		    serverSocket.receive(receivePacket);
+		    XPData = receivePacket.getData();
+		    //data.add(dataFilter(XPData,1));
+		    dataFilter(XPData,quantity);
+		    serverSocket.close();
 		}
-		catch(IOException ioe){
-		    System.err.println(ioe);
-		}
-		
+		catch ( IOException ioe ){ioe.printStackTrace();}
 	    }
+
 	});
     }
     
-    static float[] dataFilter(byte[] data, int q){
-	float [] values = new float[q];
-	if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
-	{
-	    String buffer = "";
-	    int counter = 0;
-	    for(int i = 6; i < data.length; i++)
+    private Float[] dataFilter(byte[] data, int q){
+	Float [] values = new Float[q];
+	try{
+	    FileWriter dataFile = new FileWriter("data.log",true);
+	    
+	    if(data[0]=='D'&&data[1]=='R'&&data[2]=='E'&&data[3]=='F')
 	    {
-		if(data[i]!=44)
-		    buffer = buffer + (char)data[i];
-		else
+		String buffer = "";
+		int counter = 0;
+		for(int i = 6; i < data.length && counter < q ; i++)
 		{
-		    try{
-			values[counter] = new Float(buffer);
+		    if(data[i]!=44)
+			buffer = buffer + (char)data[i];
+		    else
+		    {
+			if(!"".equals(buffer)){
+			    values[counter] = new Float(buffer);
+			    //dataFile.write("\t"+values[counter]);
+			    //dataFile.flush();
+			    System.out.print("\t"+values[counter]);
+			    buffer = "";
+			    counter++;
+			}
+			else break;
 		    }
-		    catch(java.lang.NumberFormatException nfe){break;}
-		    buffer = "";
-		    //System.out.print("\t"+values[counter]);
-		    counter++;
 		}
+		//dataFile.write("\n");
+		dataFile.close();
 	    }
 	}
-	//System.out.println("\n");
+	catch(IOException e ){}
+	
+	System.out.println("\n");
 	return values;
     }
 }
