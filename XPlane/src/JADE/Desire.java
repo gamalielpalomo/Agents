@@ -12,8 +12,14 @@ package JADE;
 public class Desire
 {
     
-    static Float fc    = 100f;	//Predefined forward clearance between leader and wingman in meters.
-    static Float lc    = 100f;	//Predefined lateral clearance between leader and wingman in meters.
-    static Float vc   = 100f;	//Predefined vertical clearance between leader and wingman in meters.
-       
+    static Float fc	= 100f;	//Predefined forward clearance between leader and wingman in meters.
+    static Float lc	= 100f;	//Predefined lateral clearance between leader and wingman in meters.
+    static Float vc	= 100f;	//Predefined vertical clearance between leader and wingman in meters.
+    static Float desiredPosX;
+    static Float desiredPosY;
+    static Float desiredPosZ;
+    
+    public static void updateDPX(Float leaderPosX)
+    { 
+    }
 }
