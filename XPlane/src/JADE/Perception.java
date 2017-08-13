@@ -18,19 +18,19 @@ public class Perception
     
     public static Float getForwardError(Float actual)
     {
-	fce = Desire.fc - actual;
+	fce = Desire.desiredPosX - actual;
 	return fce;
     }
     
     public static Float getLateralError(Float actual)
     {
-	lce = Desire.lc - actual;
+	lce = Desire.desiredPosY - actual;
 	return lce;
     }
     
     public static Float getVerticalError(Float actual)
     {
-	vce = Desire.vc - actual;
+	vce = Desire.desiredPosZ - actual;
 	return vce;
     }
     

@@ -36,8 +36,8 @@ public class Pilot extends Agent
 		    DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);
 		    serverSocket.receive(receivePacket);
 		    XPData = receivePacket.getData();
-		    //data.add(dataFilter(XPData,1));
-		    dataFilter(XPData,quantity);
+		    Float []values = dataFilter(XPData,quantity);
+                    Desire.updateDP(values[24], values[25], values[26]);
 		    serverSocket.close();
 		}
 		catch ( IOException ioe ){ioe.printStackTrace();}

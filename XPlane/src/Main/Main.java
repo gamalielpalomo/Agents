@@ -5,7 +5,7 @@
  */
 package Main;
 
-import GUI.Controls;
+import JADE.Desire;
 
 /**
  *
@@ -15,5 +15,6 @@ public class Main
 {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {Globals.Globals.controls.setVisible(true);});
+        Desire.updateDP(0f,0f,0f);
     }
 }
