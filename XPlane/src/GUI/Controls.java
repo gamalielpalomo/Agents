@@ -49,7 +49,7 @@ public class Controls extends javax.swing.JFrame {
         roll = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        brake_Button = new javax.swing.JButton();
+        brakeSwitch = new javax.swing.JToggleButton();
         Frame_multiplayer = new javax.swing.JInternalFrame();
         craft = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
@@ -159,12 +159,19 @@ public class Controls extends javax.swing.JFrame {
 
         jLabel3.setText("RUDDR");
 
-        brake_Button.setText("Brake");
-        brake_Button.addActionListener(new java.awt.event.ActionListener()
+        brakeSwitch.setText("BRAKES");
+        brakeSwitch.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                brakeSwitchStateChanged(evt);
+            }
+        });
+        brakeSwitch.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                brake_ButtonActionPerformed(evt);
+                brakeSwitchActionPerformed(evt);
             }
         });
 
@@ -189,7 +196,7 @@ public class Controls extends javax.swing.JFrame {
                             .addGroup(Frame_principalLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel4))
-                            .addComponent(brake_Button)))
+                            .addComponent(brakeSwitch)))
                     .addGroup(Frame_principalLayout.createSequentialGroup()
                         .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Frame_principalLayout.createSequentialGroup()
@@ -216,9 +223,9 @@ public class Controls extends javax.swing.JFrame {
             .addGroup(Frame_principalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(brake_Button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
+                .addComponent(brakeSwitch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -434,7 +441,7 @@ public class Controls extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Frame_multiplayer)
                         .addComponent(Frame_principal)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -547,6 +554,7 @@ public class Controls extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_playSimActionPerformed
         // TODO add your handling code here:
 	String []jade_args = {"-gui", "Pilot:JADE.Pilot"};
+	//String []jade_args = {"-gui"};
 	Boot.main(jade_args);
     }//GEN-LAST:event_playSimActionPerformed
 
@@ -561,13 +569,6 @@ public class Controls extends javax.swing.JFrame {
         Messenger.sendMessage(XPData);
     }//GEN-LAST:event_mult_ruddr_sliderStateChanged
 
-    private void brake_ButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_brake_ButtonActionPerformed
-    {//GEN-HEADEREND:event_brake_ButtonActionPerformed
-        // TODO add your handling code here:
-	 byte[] XPData = DREF_Builders.createDREF("sim/multiplayer/controls/parking_brake[0]", 0);
-	 Messenger.sendMessage(XPData);
-    }//GEN-LAST:event_brake_ButtonActionPerformed
-
     private void harvestDataActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_harvestDataActionPerformed
     {//GEN-HEADEREND:event_harvestDataActionPerformed
         // TODO add your handling code here:
@@ -575,44 +576,52 @@ public class Controls extends javax.swing.JFrame {
 	haverstThread.start();
     }//GEN-LAST:event_harvestDataActionPerformed
 
+    private void brakeSwitchActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_brakeSwitchActionPerformed
+    {//GEN-HEADEREND:event_brakeSwitchActionPerformed
+        // TODO add your handling code here:
+	String drefName = "sim/multiplayer/controls/parking_brake[0]";
+	byte[] XPData;
+	if(brakeSwitch.isSelected()){
+	    XPData = DREF_Builders.createDREF(drefName, 1f);
+	}
+	else
+	    XPData = DREF_Builders.createDREF(drefName, 0f);
+	   
+	Messenger.sendMessage(XPData);
+    }//GEN-LAST:event_brakeSwitchActionPerformed
+
+    private void brakeSwitchStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_brakeSwitchStateChanged
+    {//GEN-HEADEREND:event_brakeSwitchStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_brakeSwitchStateChanged
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Controls.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Controls().setVisible(true);
-            }
-        });
+    
+    public void setValues(Float [] values){
+	
+	//values = {ail,elev,ruddr,throttle,brake} 
+	if(values[0]!=-999f)
+	    pitch.setValue(values[0].intValue());
+	if(values[1]!=-999f)
+	    yaw.setValue(values[1].intValue());
+	if(values[2]!=-999f)
+	    roll.setValue(values[2].intValue());
+	if(values[3]!=-999f)
+	    eng_throttle.setValue(values[4].intValue());
+	if(values[4]!=-999f){
+	    Boolean brakeValue=false;
+	    if(values[5].floatValue()==0f)brakeValue=false; else brakeValue=true;
+	    brakeSwitch.setSelected(brakeValue);
+	}
+	
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame Frame_multiplayer;
     private javax.swing.JInternalFrame Frame_principal;
-    private javax.swing.JButton brake_Button;
+    private javax.swing.JToggleButton brakeSwitch;
     private javax.swing.JButton cPitch;
     private javax.swing.JButton cRoll;
     private javax.swing.JButton cYaw;
