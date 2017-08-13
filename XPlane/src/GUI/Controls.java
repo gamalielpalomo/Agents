@@ -5,12 +5,7 @@ import Tools.Messenger;
 import Tools.ByteArrayTool;
 import DREF.DREF_Builders;
 import jade.Boot;
-import Tools.DataHarvest;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -469,7 +464,7 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
         float sensor = ((float)pitch.getModel().getValue())/10;
         byte []values = ByteArrayTool.float2ByteArray(sensor);
-       byte []XPData = ByteArrayTool.getXPData("pitch", values);
+        byte []XPData = ByteArrayTool.getXPData("pitch", values);
          //byte []XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/pitch_ratio[0]", sensor);
 	//byte []XPData = DREF_Builders.createDREF("sim/multiplayer/controls/elevator_trim[0]", sensor);
         //System.out.println("PITCH ratio: "+sensor);
@@ -543,7 +538,6 @@ public class Controls extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_mult_ail_sliderStateChanged
         // TODO add your handling code here:
 	float sensor = ((float)mult_ail_slider.getModel().getValue())/100;
-        float []values = new float[]{sensor, sensor, sensor, sensor};
 	String drefName = "sim/multiplayer/controls/aileron_trim"+"["+(int)craft.getModel().getValue()+"]";
         byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");
@@ -562,7 +556,6 @@ public class Controls extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_mult_ruddr_sliderStateChanged
         // TODO add your handling code here:
 	float sensor = ((float)mult_ruddr_slider.getModel().getValue())/100;
-        float []values = new float[]{sensor, sensor, sensor, sensor};
 	String drefName = "sim/multiplayer/controls/rudder_trim"+"["+(int)craft.getModel().getValue()+"]";
         byte[] XPData = DREF_Builders.createDREF(drefName, sensor);
         //System.out.println("Heading ratio: "+sensor*100+"%");

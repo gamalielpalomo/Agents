@@ -37,13 +37,17 @@ public class Pilot extends Agent
 		    serverSocket.receive(receivePacket);
 		    XPData = receivePacket.getData();
 		    Float []values = dataFilter(XPData,quantity);
-                    Desire.updateDP(values[24], values[25], values[26]);
 		    serverSocket.close();
 		}
-		catch ( IOException ioe ){ioe.printStackTrace();}
+		catch ( IOException ioe ){}
 	    }
 
 	});
+    }
+    
+    private void update(Float []values)
+    {
+        Desire.updateDP(values[24], values[25], values[26]);
     }
     
     private Float[] dataFilter(byte[] data, int q){

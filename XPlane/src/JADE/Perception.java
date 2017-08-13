@@ -16,6 +16,7 @@ public class Perception
     static Float lce = 0f;	    //Lateral clearance error between leader and wingman
     static Float vce = 0f;	    //Vertical clearance error between leader and wingman
     
+    
     public static Float getForwardError(Float actual)
     {
 	fce = Desire.desiredPosX - actual;
