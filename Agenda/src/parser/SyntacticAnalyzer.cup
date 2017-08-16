@@ -30,10 +30,10 @@ action code{:
 
 terminal SEMI, SCHEDULE, FREE, SLASH, REMOVE, SHOW, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN, TELL;
 terminal int INT;
-terminal String WORK, MEDICAL, PERSONAL, WITH, MEETING, STR;
-non terminal Object create, nothing, todo, agend, rem, free1, display, schedule1, schedule2, talk;
+terminal String IS, WORK, MEDICAL, PERSONAL, WITH, MEETING, STR;
+non terminal Object create, nothing, todo, agend, rem, free1, display, schedule1, schedule2, talk, learn;
 
-todo ::= create|agend|rem|free1|display|talk;
+todo ::= create|agend|rem|free1|display|talk|learn;
 agend ::= schedule1|schedule2;
 
 schedule1 ::= 
@@ -152,5 +152,10 @@ display ::= SHOW
 talk ::= TELL STR:name
 {:
     instruction = new Instruction(Instruction.Command.TELL, name);
+:}
+;
+learn ::= STR:name IS STR:pType
+{:
+    instruction = new Instruction(Instruction.Command.LEARN, name, pType);
 :}
 ;

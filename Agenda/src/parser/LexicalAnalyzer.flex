@@ -96,6 +96,10 @@ string  = [a-zA-Z]+
 {
     return symbol(sym.TELL);
 }
+"is my"
+{
+    return symbol(sym.IS);
+}
 {space}
 {}
 {intgr}

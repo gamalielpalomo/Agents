@@ -38,8 +38,8 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
     "\11\0\1\3\1\2\1\0\1\3\1\1\22\0\1\6\16\0\1\10"+
     "\12\4\1\11\1\7\5\0\32\5\6\0\1\25\1\36\1\13\1\16"+
     "\1\15\1\30\1\27\1\14\1\35\1\5\1\33\1\20\1\22\1\26"+
-    "\1\23\1\34\1\5\1\21\1\12\1\31\1\17\1\24\1\32\3\5"+
-    "\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
+    "\1\23\1\34\1\5\1\21\1\12\1\31\1\17\1\24\1\32\1\5"+
+    "\1\37\1\5\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
 
   /** 
    * Translates characters to character classes
@@ -53,13 +53,14 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\2\2\1\3\1\4\1\5\1\6\1\7"+
-    "\16\4\1\10\2\4\1\11\20\4\1\12\4\4\1\13"+
-    "\1\14\1\4\1\15\1\16\6\4\1\0\2\4\1\17"+
-    "\1\20\2\4\1\0\2\4\1\21\1\22\1\0\1\4"+
-    "\1\23\1\0\1\24\4\0\1\25";
+    "\17\4\1\10\2\4\1\11\20\4\1\0\1\4\1\12"+
+    "\4\4\1\13\1\14\1\4\1\15\1\16\1\4\1\0"+
+    "\5\4\1\0\1\4\1\17\1\4\1\20\1\21\2\4"+
+    "\1\0\2\4\1\22\1\23\1\0\1\4\1\24\1\0"+
+    "\1\25\4\0\1\26";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[81];
+    int [] result = new int[86];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -84,20 +85,20 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\37\0\76\0\37\0\135\0\174\0\37\0\37"+
-    "\0\37\0\233\0\272\0\331\0\370\0\u0117\0\u0136\0\u0155"+
-    "\0\u0174\0\u0193\0\u01b2\0\u01d1\0\u01f0\0\u020f\0\u022e\0\174"+
-    "\0\u024d\0\u026c\0\174\0\u028b\0\u02aa\0\u02c9\0\u02e8\0\u0307"+
-    "\0\u0326\0\u0345\0\u0364\0\u0383\0\u03a2\0\u03c1\0\u03e0\0\u03ff"+
-    "\0\u041e\0\u043d\0\u045c\0\174\0\u047b\0\u049a\0\u04b9\0\u04d8"+
-    "\0\174\0\174\0\u04f7\0\174\0\174\0\u0516\0\u0535\0\u0554"+
-    "\0\u0573\0\u0592\0\u05b1\0\u05d0\0\u05ef\0\u060e\0\174\0\174"+
-    "\0\u062d\0\u064c\0\u066b\0\u068a\0\u06a9\0\174\0\174\0\u06c8"+
-    "\0\u06e7\0\174\0\u0706\0\174\0\u0725\0\u0744\0\u0763\0\u0782"+
-    "\0\37";
+    "\0\0\0\40\0\100\0\40\0\140\0\200\0\40\0\40"+
+    "\0\40\0\240\0\300\0\340\0\u0100\0\u0120\0\u0140\0\u0160"+
+    "\0\u0180\0\u01a0\0\u01c0\0\u01e0\0\u0200\0\u0220\0\u0240\0\u0260"+
+    "\0\200\0\u0280\0\u02a0\0\200\0\u02c0\0\u02e0\0\u0300\0\u0320"+
+    "\0\u0340\0\u0360\0\u0380\0\u03a0\0\u03c0\0\u03e0\0\u0400\0\u0420"+
+    "\0\u0440\0\u0460\0\u0480\0\u04a0\0\u04c0\0\u04e0\0\200\0\u0500"+
+    "\0\u0520\0\u0540\0\u0560\0\200\0\200\0\u0580\0\200\0\200"+
+    "\0\u05a0\0\u05c0\0\u05e0\0\u0600\0\u0620\0\u0640\0\u0660\0\u0680"+
+    "\0\u06a0\0\40\0\u06c0\0\200\0\200\0\u06e0\0\u0700\0\u0720"+
+    "\0\u0740\0\u0760\0\200\0\200\0\u0780\0\u07a0\0\200\0\u07c0"+
+    "\0\200\0\u07e0\0\u0800\0\u0820\0\u0840\0\40";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[81];
+    int [] result = new int[86];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -122,52 +123,54 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\2\4\1\5\1\6\1\4\1\7\1\10"+
     "\1\11\1\12\1\13\5\6\1\14\1\15\2\6\1\16"+
-    "\2\6\1\17\1\20\1\21\1\6\1\22\2\6\41\0"+
-    "\1\4\40\0\1\5\37\0\1\6\4\0\25\6\5\0"+
-    "\1\6\4\0\1\6\1\23\1\24\22\6\5\0\1\6"+
-    "\4\0\2\6\1\25\22\6\5\0\1\6\4\0\3\6"+
-    "\1\26\21\6\5\0\1\6\4\0\3\6\1\27\21\6"+
-    "\5\0\1\6\4\0\17\6\1\30\5\6\5\0\1\6"+
-    "\4\0\7\6\1\31\15\6\5\0\1\6\4\0\3\6"+
-    "\1\32\5\6\1\33\13\6\5\0\1\6\4\0\11\6"+
-    "\1\34\11\6\1\35\1\6\5\0\1\6\4\0\3\6"+
-    "\1\36\21\6\5\0\1\6\4\0\2\6\1\37\22\6"+
-    "\5\0\1\6\4\0\11\6\1\40\13\6\5\0\1\6"+
-    "\4\0\13\6\1\41\11\6\5\0\1\6\4\0\10\6"+
-    "\1\42\14\6\5\0\1\6\4\0\3\6\1\43\1\44"+
-    "\20\6\5\0\1\6\4\0\3\6\1\45\5\6\1\46"+
-    "\13\6\5\0\1\6\4\0\6\6\1\47\16\6\5\0"+
-    "\1\6\4\0\7\6\1\50\15\6\5\0\1\6\4\0"+
-    "\17\6\1\51\5\6\5\0\1\6\4\0\7\6\1\52"+
-    "\15\6\5\0\1\6\4\0\3\6\1\53\21\6\5\0"+
-    "\1\6\4\0\20\6\1\54\4\6\5\0\1\6\4\0"+
-    "\14\6\1\55\10\6\5\0\1\6\4\0\11\6\1\56"+
-    "\13\6\5\0\1\6\4\0\17\6\1\57\5\6\5\0"+
-    "\1\6\4\0\23\6\1\60\1\6\5\0\1\6\4\0"+
-    "\3\6\1\61\21\6\5\0\1\6\4\0\10\6\1\62"+
-    "\14\6\5\0\1\6\4\0\6\6\1\63\16\6\5\0"+
-    "\1\6\4\0\21\6\1\64\3\6\5\0\1\6\4\0"+
-    "\2\6\1\65\22\6\5\0\1\6\4\0\1\66\24\6"+
-    "\5\0\1\6\4\0\4\6\1\67\20\6\5\0\1\6"+
-    "\4\0\15\6\1\70\7\6\5\0\1\6\4\0\12\6"+
-    "\1\71\12\6\5\0\1\6\4\0\23\6\1\72\1\6"+
-    "\5\0\1\6\4\0\1\6\1\73\23\6\5\0\1\6"+
-    "\1\74\3\0\25\6\5\0\1\6\4\0\11\6\1\75"+
-    "\13\6\5\0\1\6\4\0\5\6\1\76\17\6\5\0"+
-    "\1\6\4\0\3\6\1\77\21\6\5\0\1\6\4\0"+
-    "\3\6\1\100\21\6\5\0\1\6\4\0\14\6\1\101"+
-    "\10\6\5\0\1\6\4\0\13\6\1\102\11\6\22\0"+
-    "\1\103\21\0\1\6\4\0\14\6\1\104\10\6\5\0"+
-    "\1\6\4\0\6\6\1\105\16\6\5\0\1\6\4\0"+
-    "\15\6\1\106\7\6\5\0\1\6\4\0\6\6\1\107"+
-    "\16\6\15\0\1\110\26\0\1\6\4\0\13\6\1\111"+
-    "\11\6\5\0\1\6\4\0\3\6\1\112\21\6\6\0"+
-    "\1\113\35\0\1\6\4\0\6\6\1\114\16\6\25\0"+
-    "\1\115\47\0\1\116\23\0\1\117\32\0\1\120\50\0"+
-    "\1\121\5\0";
+    "\2\6\1\17\1\20\1\21\1\6\1\22\1\23\2\6"+
+    "\42\0\1\4\41\0\1\5\40\0\1\6\4\0\26\6"+
+    "\5\0\1\6\4\0\1\6\1\24\1\25\23\6\5\0"+
+    "\1\6\4\0\2\6\1\26\23\6\5\0\1\6\4\0"+
+    "\3\6\1\27\22\6\5\0\1\6\4\0\3\6\1\30"+
+    "\22\6\5\0\1\6\4\0\17\6\1\31\6\6\5\0"+
+    "\1\6\4\0\7\6\1\32\16\6\5\0\1\6\4\0"+
+    "\3\6\1\33\5\6\1\34\14\6\5\0\1\6\4\0"+
+    "\11\6\1\35\11\6\1\36\2\6\5\0\1\6\4\0"+
+    "\3\6\1\37\22\6\5\0\1\6\4\0\1\40\25\6"+
+    "\5\0\1\6\4\0\2\6\1\41\23\6\5\0\1\6"+
+    "\4\0\11\6\1\42\14\6\5\0\1\6\4\0\13\6"+
+    "\1\43\12\6\5\0\1\6\4\0\10\6\1\44\15\6"+
+    "\5\0\1\6\4\0\3\6\1\45\1\46\21\6\5\0"+
+    "\1\6\4\0\3\6\1\47\5\6\1\50\14\6\5\0"+
+    "\1\6\4\0\6\6\1\51\17\6\5\0\1\6\4\0"+
+    "\7\6\1\52\16\6\5\0\1\6\4\0\17\6\1\53"+
+    "\6\6\5\0\1\6\4\0\7\6\1\54\16\6\5\0"+
+    "\1\6\1\55\3\0\26\6\5\0\1\6\4\0\3\6"+
+    "\1\56\22\6\5\0\1\6\4\0\20\6\1\57\5\6"+
+    "\5\0\1\6\4\0\14\6\1\60\11\6\5\0\1\6"+
+    "\4\0\11\6\1\61\14\6\5\0\1\6\4\0\17\6"+
+    "\1\62\6\6\5\0\1\6\4\0\23\6\1\63\2\6"+
+    "\5\0\1\6\4\0\3\6\1\64\22\6\5\0\1\6"+
+    "\4\0\10\6\1\65\15\6\5\0\1\6\4\0\6\6"+
+    "\1\66\17\6\5\0\1\6\4\0\21\6\1\67\4\6"+
+    "\5\0\1\6\4\0\2\6\1\70\23\6\5\0\1\6"+
+    "\4\0\1\71\25\6\22\0\1\72\22\0\1\6\4\0"+
+    "\4\6\1\73\21\6\5\0\1\6\4\0\15\6\1\74"+
+    "\10\6\5\0\1\6\4\0\12\6\1\75\13\6\5\0"+
+    "\1\6\4\0\23\6\1\76\2\6\5\0\1\6\4\0"+
+    "\1\6\1\77\24\6\5\0\1\6\1\100\3\0\26\6"+
+    "\5\0\1\6\4\0\11\6\1\101\14\6\37\0\1\102"+
+    "\5\0\1\6\4\0\5\6\1\103\20\6\5\0\1\6"+
+    "\4\0\3\6\1\104\22\6\5\0\1\6\4\0\3\6"+
+    "\1\105\22\6\5\0\1\6\4\0\14\6\1\106\11\6"+
+    "\5\0\1\6\4\0\13\6\1\107\12\6\22\0\1\110"+
+    "\22\0\1\6\4\0\14\6\1\111\11\6\5\0\1\6"+
+    "\4\0\6\6\1\112\17\6\5\0\1\6\4\0\15\6"+
+    "\1\113\10\6\5\0\1\6\4\0\6\6\1\114\17\6"+
+    "\15\0\1\115\27\0\1\6\4\0\13\6\1\116\12\6"+
+    "\5\0\1\6\4\0\3\6\1\117\22\6\6\0\1\120"+
+    "\36\0\1\6\4\0\6\6\1\121\17\6\25\0\1\122"+
+    "\50\0\1\123\24\0\1\124\33\0\1\125\51\0\1\126"+
+    "\6\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1953];
+    int [] result = new int[2144];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -205,12 +208,12 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\1\1\1\11\2\1\3\11\62\1\1\0"+
-    "\6\1\1\0\4\1\1\0\2\1\1\0\1\1\4\0"+
-    "\1\11";
+    "\1\0\1\11\1\1\1\11\2\1\3\11\43\1\1\0"+
+    "\14\1\1\0\5\1\1\0\1\1\1\11\5\1\1\0"+
+    "\4\1\1\0\2\1\1\0\1\1\4\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[81];
+    int [] result = new int[86];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -316,7 +319,7 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 114) {
+    while (i < 118) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -682,87 +685,91 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
           case 1: 
             { return symbol(sym.GEN);
             }
-          case 22: break;
+          case 23: break;
           case 2: 
             { 
             }
-          case 23: break;
+          case 24: break;
           case 3: 
             { return symbol(sym.INT,Integer.parseInt(yytext()));
             }
-          case 24: break;
+          case 25: break;
           case 4: 
             { return symbol(sym.STR, yytext().toString());
             }
-          case 25: break;
+          case 26: break;
           case 5: 
             { return symbol(sym.SEMI);
             }
-          case 26: break;
+          case 27: break;
           case 6: 
             { return symbol(sym.SLASH);
             }
-          case 27: break;
+          case 28: break;
           case 7: 
             { return symbol(sym.DOUBLE);
             }
-          case 28: break;
+          case 29: break;
           case 8: 
             { return symbol(sym.AT);
             }
-          case 29: break;
+          case 30: break;
           case 9: 
             { return symbol(sym.TO);
             }
-          case 30: break;
+          case 31: break;
           case 10: 
             { return symbol(sym.SHOW);
             }
-          case 31: break;
+          case 32: break;
           case 11: 
             { return symbol(sym.FREE);
             }
-          case 32: break;
+          case 33: break;
           case 12: 
             { return symbol(sym.FROM);
             }
-          case 33: break;
+          case 34: break;
           case 13: 
             { return symbol(sym.WORK,yytext().toString());
             }
-          case 34: break;
+          case 35: break;
           case 14: 
             { return symbol(sym.WITH,yytext().toString()  );
             }
-          case 35: break;
-          case 15: 
-            { return symbol(sym.CHANGE);
-            }
           case 36: break;
-          case 16: 
-            { return symbol(sym.REMOVE);
+          case 15: 
+            { return symbol(sym.IS);
             }
           case 37: break;
-          case 17: 
-            { return symbol(sym.MEETING,yytext().toString());
+          case 16: 
+            { return symbol(sym.CHANGE);
             }
           case 38: break;
-          case 18: 
-            { return symbol(sym.MEDICAL,yytext().toString());
+          case 17: 
+            { return symbol(sym.REMOVE);
             }
           case 39: break;
-          case 19: 
-            { return symbol(sym.SCHEDULE);
+          case 18: 
+            { return symbol(sym.MEETING,yytext().toString());
             }
           case 40: break;
-          case 20: 
-            { return symbol(sym.PERSONAL,yytext().toString());
+          case 19: 
+            { return symbol(sym.MEDICAL,yytext().toString());
             }
           case 41: break;
-          case 21: 
-            { return symbol(sym.TELL);
+          case 20: 
+            { return symbol(sym.SCHEDULE);
             }
           case 42: break;
+          case 21: 
+            { return symbol(sym.PERSONAL,yytext().toString());
+            }
+          case 43: break;
+          case 22: 
+            { return symbol(sym.TELL);
+            }
+          case 44: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

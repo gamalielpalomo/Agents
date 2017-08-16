@@ -82,6 +82,13 @@ public class Assistant extends Agent
                             String dType = Knowledge.personTypeToDateType.get( pType );
                             System.out.format("\n[Assistant]: %s is a %s and you can schedule %s dates.",instruction.name, pType,dType);
                             break;
+                        case LEARN:
+                            System.out.format("\n[Assistant]: Learning that %s is your %s",instruction.name,instruction.pType);
+                            String type = instruction.pType;
+                            String name = instruction.name;
+                            //int index = Knowledge.nameToPersonType.indexOf();
+                            System.out.format("\n[Assistant]:");
+                            break;
                         case NOTHING:
                             System.out.println( "[Assistant]: Nothing to do..." );
                             Agenda.Agenda.showRegistry();

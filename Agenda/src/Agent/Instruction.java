@@ -17,12 +17,13 @@ public class Instruction
 
     public static enum Command
     {
-        CREATE, SCHEDULE, REMOVE, CHANGE, FREE, SHOW, NOTHING, TELL
+        CREATE, SCHEDULE, REMOVE, CHANGE, FREE, SHOW, NOTHING, TELL, LEARN
     }
     Event event, event2;
     ArrayList events;
     Command command;
     String name;
+    String pType;
 
     public Instruction(Command command)
     {
@@ -35,6 +36,12 @@ public class Instruction
     {
         this.command = command;
         this.name = name;
+    }
+    public Instruction(Command command, String name, String type)
+    {
+        this.command = command;
+        this.name = name;
+        this.pType = type;
     }
     public Instruction( Command command, Event event )
     {
