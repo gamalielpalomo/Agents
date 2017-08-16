@@ -11,15 +11,19 @@ import java.util.ArrayList;
  *
  * @author gamaa
  */
-public class Belief {
-    
-    ArrayList schedulingPreferences;
-    public void Belief()
+public class Belief
+{
+
+    public static ArrayList schedulingPreferences;
+
+    public static void initBeliefs()
     {
+        //Aqu? se establecen las prioridades que el agente tiene al momento de tener que decidir
+        //Se realiza la selecci?n de acuerdo al ?ndice de la situaci?n en el arraylist
         schedulingPreferences = new ArrayList<>();
-        schedulingPreferences.add("MEDICAL");
-        schedulingPreferences.add("WORK");      
-        schedulingPreferences.add("PERSONAL");
+        schedulingPreferences.add( new String("medical") );       //Prioridad 0
+        schedulingPreferences.add( new String("work") );          //Prioridad 1
+        schedulingPreferences.add( new String("personal") );      //Prioridad 2
     }
-    
+
 }

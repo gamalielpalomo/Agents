@@ -28,6 +28,7 @@ public class Interpreter
         catch ( Exception e )
         {
             System.out.println( "\n[Interpreter]: Cannot interprete that instruction" );
+            e.printStackTrace();
         }
         return instruction;
     }

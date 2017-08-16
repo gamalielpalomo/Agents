@@ -41,6 +41,11 @@ public class Agenda {
         registry.add(event);
         objectWritter();
     }
+    public static void removeEvent(Event event)
+    {
+        registry.remove( event );
+        objectWritter();
+    }
     
     static void objectWritter()
     {

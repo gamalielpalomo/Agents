@@ -16,10 +16,10 @@ import java.util.Comparator;
  * @author gamaa
  */ 
 public class EventArray {
-    public static boolean checkSplice(Event newEvent)
+    public static Event checkSplice(Event newEvent)
     {
         SerializableArrayList localRegistry = registry;
-        boolean result = false;
+        Event result = null;
         for (Iterator it = localRegistry.iterator(); it.hasNext();)
         {
             Object element = it.next();
@@ -28,23 +28,25 @@ public class EventArray {
             if( compResult == 0 ) 
             {
                 //Inician en la misma fecha, hay empalme
-                return true;
+                return event;
             }
             else if ( compResult < 0 ) 
             {
                 //event comienza antes que newEvent
                 int finishDateComp = event.getFinishDate().compareTo(newEvent.getStartDate());
-                if(finishDateComp > 1)
-                    //event termina despu?s que newEvent comience, hay empalme
-                    return true;
+                if(finishDateComp > 0)
+                {
+                    //event termina despues que newEvent comience, hay empalme
+                    return event;
+                }
             } 
             else
             {
-                //event comienza despu?s que newEvent
+                //event comienza despues que newEvent
                 int finishDateComp = event.getStartDate().compareTo(newEvent.getFinishDate());
                 if(finishDateComp < 0)
                     //event comienza antes de que newEvent termine, hay empalme
-                    return true;
+                    return event;
             }
             
         }
