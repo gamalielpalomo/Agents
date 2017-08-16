@@ -92,6 +92,10 @@ string  = [a-zA-Z]+
 {
     return symbol(sym.SHOW);
 }
+"tell me about"
+{
+    return symbol(sym.TELL);
+}
 {space}
 {}
 {intgr}

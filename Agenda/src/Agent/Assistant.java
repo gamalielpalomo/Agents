@@ -76,6 +76,12 @@ public class Assistant extends Agent
                             EventArray.sortEvents();
                             Agenda.Agenda.showRegistry();
                             break;
+                        case TELL:
+                            System.out.format("\n[Assistant]: Do you wanna know something about %s?",instruction.name);
+                            String pType = Knowledge.nameToPersonType.get( instruction.name );
+                            String dType = Knowledge.personTypeToDateType.get( pType );
+                            System.out.format("\n[Assistant]: %s is a %s and you can schedule %s dates.",instruction.name, pType,dType);
+                            break;
                         case NOTHING:
                             System.out.println( "[Assistant]: Nothing to do..." );
                             Agenda.Agenda.showRegistry();
