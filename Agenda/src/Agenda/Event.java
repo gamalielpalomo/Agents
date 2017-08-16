@@ -25,23 +25,8 @@ public class Event implements Serializable
     {
         this.description = description;
     }
-    public Event( int hInitial, int dInitial, String description, String companion )
+    public Event( int hInitial, int hFinal, int dInitial, int dFinal,  String description, String companion )
     {
-        start = Calendar.getInstance();
-        finish = Calendar.getInstance();
-        start.set( Calendar.HOUR, hInitial );
-        start.set( Calendar.DATE, dInitial );
-        start.set( Calendar.SECOND, 0 );
-        start.set( Calendar.MILLISECOND, 0 );
-        finish.set( Calendar.HOUR, hInitial+1 );
-        finish.set( Calendar.DATE, dInitial );
-        finish.set( Calendar.SECOND, 0 );
-        this.description = description;
-        this.companion = companion;
-    }
-    public Event( int hInitial, int hFinal, int dInitial, int dFinal,  String description )
-    {
-        System.out.println("Event constructor-----------------------");
         start = Calendar.getInstance();
         finish = Calendar.getInstance();
         start.set( Calendar.HOUR_OF_DAY, hInitial );

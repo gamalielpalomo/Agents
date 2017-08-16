@@ -36,41 +36,72 @@ agend ::= schedule1|schedule2;
 schedule1 ::= 
 SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description);
-    System.out.println("Comparing result: "+tools.EventComparator.checkSplice(event));
-    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+    //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
+    event = new Event(hour, hour+1, day, day, description, "nobody");
+    //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
+    if(tools.EventArray.checkSplice(event))
+    {
+        System.out.println("[Assistant]: You have another event at that date");
+        instruction = new Instruction(Instruction.Command.NOTHING);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+    
 :}
 |
 SCHEDULE PERSONAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description);
-    System.out.println("Comparing result: "+tools.EventComparator.checkSplice(event));
-    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+    //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
+    event = new Event(hour, hour+1, day, day, description, "nobody");
+    //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
+    if(tools.EventArray.checkSplice(event))
+    {
+        System.out.println("[Assistant]: You have another event at that date");
+        instruction = new Instruction(Instruction.Command.NOTHING);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :}
 |
 SCHEDULE MEDICAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
-    System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description);
-    System.out.println("Comparing result: "+tools.EventComparator.checkSplice(event));
-    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+    //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
+    event = new Event(hour, hour+1, day, day, description, "nobody");
+    //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
+    if(tools.EventArray.checkSplice(event))
+    {
+        System.out.println("[Assistant]: You have another event at that date");
+        instruction = new Instruction(Instruction.Command.NOTHING);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :};
 
 schedule2 ::= 
 SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
     System.out.format("\nMeeting with %s scheduled at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
-    event = new Event(hour, day, "meeting", companion);
+    event = new Event(hour, hour+1, day, day, "meeting", companion);
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :}
 |
 SCHEDULE MEETING AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
 {:
     System.out.format("\nMeeting at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, "meeting");
+    event = new Event(hour, hour+1, day, day, "meeting", "nobody");
     instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+:}
+|
+SCHEDULE MEETING AT INT:month SLASH INT:day SLASH INT:year FROM INT:hour DOUBLE INT:minutes TO  INT:hour2 DOUBLE INT:minutes2
+{:
+    event = new Event(hour, hour2, day, day, "meeting", "nobody");
+    if(tools.EventArray.checkSplice(event))
+    {
+        System.out.println("[Assistant]: You have another event at that date");
+        instruction = new Instruction(Instruction.Command.NOTHING);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :}
 ;
 
@@ -84,7 +115,6 @@ rem ::=  REMOVE STR:description AT INT:month SLASH INT:day SLASH INT:year INT:ho
 
 display ::= SHOW
 {:
-    System.out.println("Show the agenda");
     instruction = new Instruction(Instruction.Command.SHOW);
 :}
 ;

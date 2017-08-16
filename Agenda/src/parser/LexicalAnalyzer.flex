@@ -34,17 +34,14 @@ string  = [a-zA-Z]+
 }
 "/"
 {
-    System.out.print("/");
     return symbol(sym.SLASH);
 }
 ":"
 {
-    System.out.print(":");
     return symbol(sym.DOUBLE);
 }
 "schedule"
 {
-    System.out.print(" SCHEDULE");
     return symbol(sym.SCHEDULE);
 }
 "remove"
@@ -57,7 +54,6 @@ string  = [a-zA-Z]+
 }
 "at"
 {
-    System.out.print(" AT");
     return symbol(sym.AT);
 }
 "from"
@@ -66,32 +62,26 @@ string  = [a-zA-Z]+
 }
 "to"
 {
-    System.out.print(" TO");
     return symbol(sym.TO);
 }
 "work"
 {
-    System.out.print(" WORK");
     return symbol(sym.WORK,yytext().toString());
 }
 "personal"
 {
-    System.out.print(" PERSONAL");
     return symbol(sym.PERSONAL,yytext().toString());
 }
 "medical"
 {
-    System.out.print(" MEDICAL");
     return symbol(sym.MEDICAL,yytext().toString());
 }
 "meeting"
 {
-    System.out.print(" MEETING");
     return symbol(sym.MEETING,yytext().toString());
 }
 "with"
 {
-    System.out.print(" WITH");
     return symbol(sym.WITH,yytext().toString()  );
 }
 "show"
@@ -102,16 +92,13 @@ string  = [a-zA-Z]+
 {}
 {intgr}
 {
-    System.out.print(" "+yytext());
     return symbol(sym.INT,Integer.parseInt(yytext()));
 }
 {string}
 {
-    System.out.print(" "+yytext());
     return symbol(sym.STR, yytext().toString());
 }
 [^]
 {
-    System.out.println("Generic Symbol: "+yytext());
     return symbol(sym.GEN);
 }

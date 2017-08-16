@@ -27,6 +27,7 @@ public class Agenda {
         {
             System.out.println("[Agenda/initRegistry]: registry already exists, reading...");
             readRegistryFromFile();
+            showRegistry();
         }
         else
         {
@@ -65,6 +66,7 @@ public class Agenda {
             FileInputStream fis = new FileInputStream("src/Agenda/registry.obj");
             ObjectInputStream ois = new ObjectInputStream(fis);
             registry = (SerializableArrayList) ois.readObject();
+            tools.EventArray.sortEvents();
         }
         catch(IOException|ClassNotFoundException ioe)
         {            System.out.println("[Agenda/readRegistryFromFile]: Exception"); ioe.printStackTrace();        }

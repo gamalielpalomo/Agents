@@ -669,8 +669,7 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println("Generic Symbol: "+yytext());
-    return symbol(sym.GEN);
+            { return symbol(sym.GEN);
             }
           case 20: break;
           case 2: 
@@ -678,13 +677,11 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 21: break;
           case 3: 
-            { System.out.print(" "+yytext());
-    return symbol(sym.INT,Integer.parseInt(yytext()));
+            { return symbol(sym.INT,Integer.parseInt(yytext()));
             }
           case 22: break;
           case 4: 
-            { System.out.print(" "+yytext());
-    return symbol(sym.STR, yytext().toString());
+            { return symbol(sym.STR, yytext().toString());
             }
           case 23: break;
           case 5: 
@@ -692,23 +689,19 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 24: break;
           case 6: 
-            { System.out.print("/");
-    return symbol(sym.SLASH);
+            { return symbol(sym.SLASH);
             }
           case 25: break;
           case 7: 
-            { System.out.print(":");
-    return symbol(sym.DOUBLE);
+            { return symbol(sym.DOUBLE);
             }
           case 26: break;
           case 8: 
-            { System.out.print(" AT");
-    return symbol(sym.AT);
+            { return symbol(sym.AT);
             }
           case 27: break;
           case 9: 
-            { System.out.print(" TO");
-    return symbol(sym.TO);
+            { return symbol(sym.TO);
             }
           case 28: break;
           case 10: 
@@ -720,13 +713,11 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 30: break;
           case 12: 
-            { System.out.print(" WORK");
-    return symbol(sym.WORK,yytext().toString());
+            { return symbol(sym.WORK,yytext().toString());
             }
           case 31: break;
           case 13: 
-            { System.out.print(" WITH");
-    return symbol(sym.WITH,yytext().toString()  );
+            { return symbol(sym.WITH,yytext().toString()  );
             }
           case 32: break;
           case 14: 
@@ -738,23 +729,19 @@ class LexicalAnalyzer implements java_cup.runtime.Scanner {
             }
           case 34: break;
           case 16: 
-            { System.out.print(" MEETING");
-    return symbol(sym.MEETING,yytext().toString());
+            { return symbol(sym.MEETING,yytext().toString());
             }
           case 35: break;
           case 17: 
-            { System.out.print(" MEDICAL");
-    return symbol(sym.MEDICAL,yytext().toString());
+            { return symbol(sym.MEDICAL,yytext().toString());
             }
           case 36: break;
           case 18: 
-            { System.out.print(" SCHEDULE");
-    return symbol(sym.SCHEDULE);
+            { return symbol(sym.SCHEDULE);
             }
           case 37: break;
           case 19: 
-            { System.out.print(" PERSONAL");
-    return symbol(sym.PERSONAL,yytext().toString());
+            { return symbol(sym.PERSONAL,yytext().toString());
             }
           case 38: break;
           default:

@@ -9,7 +9,7 @@ import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import parser.Interpreter;
-
+import tools.EventArray;
 /**
  *
  * @author gamaa_000
@@ -33,10 +33,13 @@ public class Assistant extends Agent
                     Instruction instruction = Interpreter.generateInstruction( inputMsg.getContent() );
                     switch(instruction.command){
                         case SCHEDULE:
-                            System.out.println("[Assistant]: Schedule request received");
+                            /*System.out.println("[Assistant]: Schedule request received");
                             System.out.println("[Assistant]: Description -> "+instruction.event.getDescription());
-                            System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
+                            System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());*/
                             Agenda.Agenda.registerEvent(instruction.event);
+                            System.out.println("[Assistant]: These are your scheduled events: \n");
+                            EventArray.sortEvents();
+                            Agenda.Agenda.showRegistry();
                             break;
                         case REMOVE:
                             System.out.println("[Assistant]: Remove request received");
@@ -44,11 +47,13 @@ public class Assistant extends Agent
                             System.out.println("[Assistant]: Instruction -> "+instruction.getCommandString());
                             break;
                         case SHOW:
-                            System.out.println("[Assistant]: These are your scheduled events");
+                            System.out.println("\n[Assistant]: These are your scheduled events:");
+                            EventArray.sortEvents();
                             Agenda.Agenda.showRegistry();
                             break;
                         case NOTHING:
                             System.out.println("[Assistant]: Nothing to do...");
+                            Agenda.Agenda.showRegistry();
                             break;
                         default:
                             System.out.println("[Assistant]: I dont understand the instruction");
