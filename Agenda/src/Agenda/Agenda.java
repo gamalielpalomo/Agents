@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package Agenda;
+import tools.SerializableArrayList;
 import java.io.File;
-import java.util.ArrayList;
-import java.io.Serializable;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +18,7 @@ import java.util.Iterator;
  */
 public class Agenda {
     
-    static SerializableArrayList registry = new SerializableArrayList();
+    public static SerializableArrayList registry = new SerializableArrayList();
     
     public static void initRegistry()
     {
@@ -68,7 +67,7 @@ public class Agenda {
             registry = (SerializableArrayList) ois.readObject();
         }
         catch(IOException|ClassNotFoundException ioe)
-        {            System.out.println("[Agenda/readRegistryFromFile]: Exception");        }
+        {            System.out.println("[Agenda/readRegistryFromFile]: Exception"); ioe.printStackTrace();        }
     }
     
     public static void showRegistry()
@@ -85,7 +84,3 @@ public class Agenda {
     
 }
 
-class SerializableArrayList extends ArrayList implements Serializable
-{
-    private static final long serializableUID = 1L;
-}
