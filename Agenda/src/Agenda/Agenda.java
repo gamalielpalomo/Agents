@@ -83,7 +83,7 @@ public class Agenda {
             Object element = it.next();
             Event event = (Event) element;
             System.out.println("---------------------------------------------");
-            System.out.println("Event:\t"+event.getDescription());
+            System.out.println("Event:\t"+event.getDescription()+" with "+event.companion);
             System.out.println("Start:\t"+event.getStartDate().getTime().toString());
             System.out.println("Finish:\t"+event.getFinishDate().getTime().toString());
         }

@@ -24,6 +24,7 @@ public class Assistant extends Agent
     protected void setup()
     {
         Belief.initBeliefs();
+        Knowledge.initKnowledge();
         Agenda.Agenda.initRegistry();
         addBehaviour( new CyclicBehaviour( this )
         {

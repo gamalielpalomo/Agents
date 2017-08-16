@@ -3,6 +3,7 @@ import java_cup.runtime.*;
 import java.io.FileReader;
 import Agenda.Event;
 import Agent.Instruction;
+import Agent.Knowledge;
 
 parser code{:
     public static void main(String args[])
@@ -23,6 +24,8 @@ parser code{:
 action code{:
     Event event;
     Instruction instruction;
+    java.util.HashMap ntpt = Knowledge.nameToPersonType;
+    java.util.HashMap ptdt = Knowledge.personTypeToDateType;
 :}
 
 terminal SEMI, SCHEDULE, FREE, SLASH, REMOVE, SHOW, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN;
@@ -34,10 +37,10 @@ todo ::= create|agend|rem|free1|display;
 agend ::= schedule1|schedule2;
 
 schedule1 ::= 
-SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+SCHEDULE WORK:description AT INT:month SLASH INT:day INT:hour DOUBLE INT:minutes 
 {:
     //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description, "nobody");
+    event = new Event(hour, hour+1, month-1, month-1, day, day, description, "nobody");
     //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
     Event spliceResult = tools.EventArray.checkSplice(event);
     if(spliceResult != null)
@@ -51,10 +54,10 @@ SCHEDULE WORK:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOU
     
 :}
 |
-SCHEDULE PERSONAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+SCHEDULE PERSONAL:description AT INT:month SLASH INT:day INT:hour DOUBLE INT:minutes 
 {:
     //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description, "nobody");
+    event = new Event(hour, hour+1, month-1, month-1, day, day, description, "nobody");
     //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
     Event spliceResult = tools.EventArray.checkSplice(event);
     if(spliceResult != null)
@@ -67,10 +70,10 @@ SCHEDULE PERSONAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour
         instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :}
 |
-SCHEDULE MEDICAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+SCHEDULE MEDICAL:description AT INT:month SLASH INT:day INT:hour DOUBLE INT:minutes 
 {:
     //System.out.format("\n%s date scheduled at %d:%d on %d-%d-%d\n",description,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, description, "nobody");
+    event = new Event(hour, hour+1, month-1, month-1, day, day, description, "nobody");
     //System.out.println("Comparing result: "+tools.EventArray.checkSplice(event));
     Event spliceResult = tools.EventArray.checkSplice(event);
     if(spliceResult != null)
@@ -84,23 +87,30 @@ SCHEDULE MEDICAL:description AT INT:month SLASH INT:day SLASH INT:year INT:hour 
 :};
 
 schedule2 ::= 
-SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+SCHEDULE MEETING WITH STR:companion AT INT:month SLASH INT:day FROM INT:hour DOUBLE INT:minutes TO INT:hour2 DOUBLE INT:minutes2
 {:
-    System.out.format("\nMeeting with %s scheduled at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, "personal", companion);
-    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
+    //System.out.format("\nMeeting with %s scheduled at %d:%d on %d-%d-%d\n",companion,hour,minutes,month,day,year);
+    String personType = (String)ntpt.get(companion);
+    String dateType = "personal";
+    if(!personType.equals(""))
+    {
+        dateType = (String)ptdt.get(personType);
+    }
+    event = new Event(hour, hour2, month-1, month-1, day, day, dateType, companion);
+    Event spliceResult = tools.EventArray.checkSplice(event);
+    if(spliceResult != null)
+    {
+        System.out.println("[Assistant]: You have another event at that date");
+        Event majorPriority = Agent.Decision.decideEvent(event, spliceResult);
+        instruction = new Instruction(Instruction.Command.CHANGE,spliceResult,majorPriority);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.SCHEDULE,event);
 :}
 |
-SCHEDULE MEETING AT INT:month SLASH INT:day SLASH INT:year INT:hour DOUBLE INT:minutes 
+SCHEDULE MEETING AT INT:month SLASH INT:day FROM INT:hour DOUBLE INT:minutes TO  INT:hour2 DOUBLE INT:minutes2
 {:
-    System.out.format("\nMeeting at %d:%d on %d-%d-%d\n",hour,minutes,month,day,year);
-    event = new Event(hour, hour+1, day, day, "meeting", "nobody");
-    instruction = new Instruction(Instruction.Command.SCHEDULE,event);
-:}
-|
-SCHEDULE MEETING AT INT:month SLASH INT:day SLASH INT:year FROM INT:hour DOUBLE INT:minutes TO  INT:hour2 DOUBLE INT:minutes2
-{:
-    event = new Event(hour, hour2, day, day, "personal", "nobody");
+    event = new Event(hour, hour2, month-1, month-1, day, day, "personal", "nobody");
     Event spliceResult = tools.EventArray.checkSplice(event);
     if(spliceResult != null)
     {
@@ -123,7 +133,7 @@ rem ::=  REMOVE STR:description AT INT:month SLASH INT:day SLASH INT:year INT:ho
 
 free1 ::= FREE AT INT:month SLASH INT:day SLASH INT:year FROM INT:hour DOUBLE INT:minutes TO INT:hour2 DOUBLE INT:minutes2
 {:
-    event = new Event(hour, hour2, day, day, "free", "nobody");
+    event = new Event(hour, hour2, month-1, month-1, day, day, "free", "nobody");
     java.util.ArrayList spliceResult = tools.EventArray.checkSplices(event);
     if(spliceResult.size() != 0)
     {

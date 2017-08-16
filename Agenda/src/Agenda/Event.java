@@ -25,11 +25,12 @@ public class Event implements Serializable
     {
         this.description = description;
     }
-    public Event( int hInitial, int hFinal, int dInitial, int dFinal,  String description, String companion )
+    public Event( int hInitial, int hFinal, int mInitial, int mFinal, int dInitial, int dFinal,  String description, String companion )
     {
         start = Calendar.getInstance();
         finish = Calendar.getInstance();
         start.set( Calendar.HOUR_OF_DAY, hInitial );
+        start.set( Calendar.MONTH, mInitial);
         start.set( Calendar.MINUTE, 0 );
         start.set( Calendar.SECOND, 0 );
         start.set( Calendar.MILLISECOND, 0 );
@@ -39,8 +40,9 @@ public class Event implements Serializable
         finish.set( Calendar.SECOND, 0 );
         finish.set( Calendar.MILLISECOND, 0 );
         finish.set( Calendar.DATE, dFinal );
+        finish.set( Calendar.MONTH, mFinal);
         this.description = description;
-        this.companion = "";
+        this.companion = companion;
     }
     public String getDescription()
     {
