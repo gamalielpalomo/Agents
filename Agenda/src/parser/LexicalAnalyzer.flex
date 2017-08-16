@@ -52,6 +52,10 @@ string  = [a-zA-Z]+
 {
     return symbol(sym.CHANGE);
 }
+"free"
+{
+    return symbol(sym.FREE);
+}
 "at"
 {
     return symbol(sym.AT);

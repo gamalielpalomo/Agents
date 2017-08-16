@@ -5,9 +5,11 @@
  */
 package Agent;
 
+import Agenda.Event;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
+import java.util.Iterator;
 import parser.Interpreter;
 import tools.EventArray;
 
@@ -46,8 +48,20 @@ public class Assistant extends Agent
                             break;
                         case REMOVE:
                             System.out.println( "[Assistant]: Remove request received" );
-                            System.out.println( "[Assistant]: Description -> " + instruction.event.getDescription() );
-                            System.out.println( "[Assistant]: Instruction -> " + instruction.getCommandString() );
+                            Agenda.Agenda.removeEvent( instruction.event );
+                            EventArray.sortEvents();
+                            Agenda.Agenda.showRegistry();
+                            break;
+                        case FREE:
+                            System.out.println( "[Assistant]: FREE request received" );
+                            for(Iterator it = instruction.events.iterator(); it.hasNext();)
+                            {
+                                Object element = it.next();
+                                Event event = (Event) element;
+                                Agenda.Agenda.removeEvent( event );                                
+                            }
+                            EventArray.sortEvents();
+                            Agenda.Agenda.showRegistry();
                             break;
                         case CHANGE:
                             System.out.println( "[Assistant]: Change request received" );
@@ -56,7 +70,6 @@ public class Assistant extends Agent
                             EventArray.sortEvents();
                             Agenda.Agenda.showRegistry();
                             break;
-                            
                         case SHOW:
                             System.out.println( "\n[Assistant]: These are your scheduled events:" );
                             EventArray.sortEvents();

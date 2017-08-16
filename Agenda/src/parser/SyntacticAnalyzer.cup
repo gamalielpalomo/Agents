@@ -25,12 +25,12 @@ action code{:
     Instruction instruction;
 :}
 
-terminal SEMI, SCHEDULE, SLASH, REMOVE, SHOW, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN;
+terminal SEMI, SCHEDULE, FREE, SLASH, REMOVE, SHOW, DOUBLE, CHANGE, AT, FROM, TO, SPACE, GEN;
 terminal int INT;
 terminal String WORK, MEDICAL, PERSONAL, WITH, MEETING, STR;
-non terminal Object create, nothing, todo, agend, rem, display, schedule1, schedule2;
+non terminal Object create, nothing, todo, agend, rem, free1, display, schedule1, schedule2;
 
-todo ::= create|agend|rem|display;
+todo ::= create|agend|rem|free1|display;
 agend ::= schedule1|schedule2;
 
 schedule1 ::= 
@@ -121,6 +121,19 @@ rem ::=  REMOVE STR:description AT INT:month SLASH INT:day SLASH INT:year INT:ho
 :}
 ;
 
+free1 ::= FREE AT INT:month SLASH INT:day SLASH INT:year FROM INT:hour DOUBLE INT:minutes TO INT:hour2 DOUBLE INT:minutes2
+{:
+    event = new Event(hour, hour2, day, day, "free", "nobody");
+    java.util.ArrayList spliceResult = tools.EventArray.checkSplices(event);
+    if(spliceResult.size() != 0)
+    {
+        System.out.println("[Assistant]: That matches with an event, freeing agenda.");
+        instruction = new Instruction(Instruction.Command.FREE,spliceResult);
+    }
+    else
+        instruction = new Instruction(Instruction.Command.NOTHING);
+:}
+;
 display ::= SHOW
 {:
     instruction = new Instruction(Instruction.Command.SHOW);

@@ -55,7 +55,7 @@ public class Agenda {
             try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(registry);
             }
-            System.out.println("[Agenda/objectWritter]: Saved");
+            //System.out.println("[Agenda/objectWritter]: Saved");
         }
         catch(IOException ioe)
         {            

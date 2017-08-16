@@ -9,6 +9,7 @@ import Agenda.Event;
 import java.util.Iterator;
 import Agenda.Agenda;
 import static Agenda.Agenda.registry;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 /**
@@ -47,6 +48,42 @@ public class EventArray {
                 if(finishDateComp < 0)
                     //event comienza antes de que newEvent termine, hay empalme
                     return event;
+            }
+            
+        }
+        return result;
+    }
+    public static ArrayList checkSplices(Event newEvent)
+    {
+        SerializableArrayList localRegistry = registry;
+        ArrayList result = new ArrayList<Event>();
+        for (Iterator it = localRegistry.iterator(); it.hasNext();)
+        {
+            Object element = it.next();
+            Event event = (Event) element;
+            int compResult = event.getStartDate().compareTo(newEvent.getStartDate());
+            if( compResult == 0 ) 
+            {
+                //Inician en la misma fecha, hay empalme
+                result.add( event );
+            }
+            else if ( compResult < 0 ) 
+            {
+                //event comienza antes que newEvent
+                int finishDateComp = event.getFinishDate().compareTo(newEvent.getStartDate());
+                if(finishDateComp > 0)
+                {
+                    //event termina despues que newEvent comience, hay empalme
+                    result.add( event );
+                }
+            } 
+            else
+            {
+                //event comienza despues que newEvent
+                int finishDateComp = event.getStartDate().compareTo(newEvent.getFinishDate());
+                if(finishDateComp < 0)
+                    //event comienza antes de que newEvent termine, hay empalme
+                    result.add( event );
             }
             
         }
