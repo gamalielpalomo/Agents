@@ -22,6 +22,17 @@ public class Opinions extends Agent
             public void action()
             {
                 ACLMessage inputMsg = receive();
+                if ( inputMsg != null && inputMsg.getPerformative() == ACLMessage.REQUEST )
+                {
+                    
+                    System.out.format("\nI'm agent %s and i received request information from %s: %s",this.getAgent().getName(),inputMsg.getSender().getName(),inputMsg.getContent());
+                    ACLMessage reply = inputMsg.createReply();
+                    reply.setContent(inputMsg.getContent()+" is a student");
+                    send(reply);
+                }
+                else if(inputMsg != null){
+                    System.out.format("\nI'm agent %s and i received a message of type %d from %s: %s",this.getAgent().getName(),inputMsg.getPerformative(),inputMsg.getSender().getName(),inputMsg.getContent());
+                }
             }
         });
     }
