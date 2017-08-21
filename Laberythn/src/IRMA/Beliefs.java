@@ -29,13 +29,13 @@ public class Beliefs {
         desires = new Desire(goal);
     }
     
-    void updateScenarioBelief()
+    void updateScenarioBelief(Coordinate actual)
     {
-        ArrayList newDiscoveries = perception.discoverNeighborhood(actualPos, scenario.getSize());
+        ArrayList newDiscoveries = perception.discoverNeighborhood(actual, scenario.getSize());
         for(Object element: newDiscoveries)
         {
             Coordinate cell = (Coordinate)element;
-            System.out.format("Updating cell [%d][%d] = %s\n",cell.getColumn(),cell.getRow(),cell.getStatus());
+            //System.out.format("Updating cell [%d][%d] = %s\n",cell.getColumn(),cell.getRow(),cell.getStatus());
             scenario.updateCell(cell);
         }
     }
@@ -58,18 +58,18 @@ class Perception
         int ColInitial = central.getColumn()-1;
         int RowInitial = central.getRow()-1;
         
-        for(int row = ColInitial ; row<=ColInitial+2; row++)
+        for(int row = RowInitial ; row<=RowInitial+2; row++)
         {
             if( row>-1 && row<scenarioSize ) //Revisar l?mites de escenario
             {
-                for(int column = RowInitial; column<=RowInitial+2; column++)
+                for(int column = ColInitial; column<=ColInitial+2; column++)
                 {
                     if(column>-1 && column<scenarioSize)
                     {
                         //NOTA: Recordar que x,y en la clase Coordinate est?n en ese orden,
                         //mientras que en una matriz es y,x
                         //System.out.format("Neighbor cell [%d][%d] = %s\n",y,x,Globals.Globals.GlobalMap[y][x]);
-                        Coordinate tmp = new Coordinate(column,row,Globals.Globals.GlobalMap[row][column]);
+                        Coordinate tmp = new Coordinate(row,column,Globals.Globals.GlobalMap[row][column]);
                         discovery.add(tmp);
                     }
                 }

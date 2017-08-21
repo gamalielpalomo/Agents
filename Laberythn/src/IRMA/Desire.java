@@ -16,5 +16,9 @@ public class Desire {
     {
         this.goalCoordinate = goal;
     }
+    public Coordinate getDesire()
+    {
+        return this.goalCoordinate;
+    }
     
 }

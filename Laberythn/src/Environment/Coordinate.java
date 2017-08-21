@@ -27,5 +27,7 @@ public class Coordinate {
     public int getWeight(){return this.weight;}
     public CellStatus getStatus(){return this.status;}
     public void setWeight(int w){this.weight = w;}
+    public void setRow(int r){this.row = r;}
+    public void setColumn(int c){this.column = c;}
     
 }

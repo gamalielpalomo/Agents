@@ -18,6 +18,7 @@ public class Intention {
     Coordinate actual;
     Scenario scenario;
     Coordinate [][]CoordGrid;
+    Path path;
     boolean done = false;
     
     ArrayList mainList;
@@ -43,27 +44,27 @@ public class Intention {
         CoordGrid[goal.getRow()][goal.getColumn()].setWeight(0);
         mainList.add(CoordGrid[goal.getRow()][goal.getColumn()]);
         algorithm();
-        System.out.println("[Intention]: Weighted List: ");
-        Globals.Printer.printCoordList(mainList);
-        Path path = new Path(mainList, actual, goal);
+        //System.out.println("[Intention]: Weighted List: ");
+        //Globals.Printer.printCoordList(mainList);
+        path = new Path(mainList, actual, goal);
         path.buildPath();
-        System.out.println("[Intention]: Path: ");
-        Globals.Printer.printCoordList(path.getPath());
+        //System.out.println("[Intention]: Path: ");
+        //Globals.Printer.printCoordList(path.getPath());
         /*algorithm();
         System.out.println("[Intention]: Actual weighted List: ");
         Globals.Printer.printCoordList(mainList);*/
     }
-    
+    public Path getPath(){return this.path;}
     void algorithm()
     {
         ArrayList copy = new ArrayList(mainList);
         if(!done){
             for(Object element: mainList){
                 Coordinate tmpElement = (Coordinate)element;
-                //System.out.format("[algorithm]: Neighbors of [%d][%d]\n",tmp2.getRow(),tmp2.getColumn());
+                //System.out.format("[algorithm]: Neighbors of [%d][%d]\n",tmpElement.getRow(),tmpElement.getColumn());
                 ArrayList eNeighbors = getNeighbors(tmpElement);
                 int tmpWeight = tmpElement.getWeight();
-                Globals.Printer.printCoordList(eNeighbors);
+                //Globals.Printer.printCoordList(eNeighbors);
                 for(Object n: eNeighbors){ //Filtrar a los vecinos del elemento en an?lisis
                     Coordinate nCell = (Coordinate)n; 
                     int searchResult = contains(copy,nCell);
@@ -83,7 +84,7 @@ public class Intention {
                     }
                         
                     if(nCell.getRow() == actual.getRow() && nCell.getColumn() == actual.getColumn()){
-                        System.out.println("[Intention]: Startcell reached");
+                        //System.out.println("[Intention]: Startcell reached");
                         done = true;
                     }
                         
@@ -135,7 +136,7 @@ public class Intention {
         {
             //System.out.println("[getNeighbors/option4]");
             //CoordGrid[centralRow][centralColumn+1].setWeight(central.getWeight()+1);
-            result.add( CoordGrid[centralRow][centralRow+1] );
+            result.add( CoordGrid[centralRow+1][centralColumn] );
         }
         return result;
     }
@@ -174,7 +175,7 @@ class Path
         while(!done){
             Coordinate last = (Coordinate)path.get(path.size()-1);
             Coordinate next = getNextStep(last);
-            System.out.format("[Path]: NextStep->[%d][%d]\n",next.getRow(),next.getColumn());
+            //System.out.format("[Path]: NextStep->[%d][%d]\n",next.getRow(),next.getColumn());
             path.add(next);
             if(next.getColumn() == goal.getColumn() && next.getRow()==goal.getRow())
                 done=true;
@@ -183,6 +184,8 @@ class Path
     Coordinate getNextStep(Coordinate cell)
     {
         ArrayList possible = new ArrayList();
+        //System.out.println("[getNextStep]: weightedList.size()->"+weightedList.size());
+        //Globals.Printer.printCoordList(weightedList);
         for(Object element:weightedList){
             Coordinate tmp = (Coordinate)element;
             if(tmp.getRow()==cell.getRow() && Math.abs(tmp.getColumn()-cell.getColumn())==1)
@@ -190,13 +193,13 @@ class Path
             else if(tmp.getColumn()==cell.getColumn() && Math.abs(tmp.getRow()-cell.getRow())==1)
                 possible.add(tmp);
         }
-        
+        //System.out.println("[getNextStep]: possible.size()->"+possible.size());
         Coordinate result = null;
         if(possible.size()>0){
             Coordinate min = (Coordinate)possible.get(0);
             for(Object element:possible){
                 Coordinate tmp = (Coordinate)element;
-                System.out.format("[getNextStep]: possible->[%d][%d]\n",tmp.getRow(),tmp.getColumn());
+                //System.out.format("[getNextStep]: possible->[%d][%d]\n",tmp.getRow(),tmp.getColumn());
                 if(tmp.getWeight()<min.getWeight())
                     min = tmp;
             }

@@ -8,7 +8,8 @@ import Environment.Coordinate;
 import Globals.Globals.*;
 import jade.core.Agent;
 import jade.core.behaviours.*;
-import jade.lang.acl.ACLMessage;
+import IRMA.Action.MOVE;
+import GUI.LabGUI;
 /**
  *
  * @author gamaa
@@ -20,23 +21,41 @@ public class Robot extends Agent{
         Globals.Globals.readMapFromFile();
         Coordinate goal = new Coordinate(4,2,CellStatus.CLEAR);
         Coordinate start = new Coordinate(0,0,CellStatus.CLEAR);
+        Coordinate actual = start;
         Beliefs beliefs = new Beliefs(5, goal);
         Desire desire = new Desire( goal );
-        Globals.Printer.printMatrix(Globals.Globals.GlobalMap,start,goal);
-        beliefs.printBeliefMatrix();
+        LabGUI gui = new LabGUI(5);
+        //Globals.Printer.printMatrix(Globals.Globals.GlobalMap,actual,goal);
+        //beliefs.printBeliefMatrix();
         
-        addBehaviour( new CyclicBehaviour (this){
+        addBehaviour( new TickerBehaviour (this,2000){
+
             @Override
-            public void action()
-            {
-                ACLMessage inputMsg = receive();
-                if( inputMsg!= null && inputMsg.getPerformative() == ACLMessage.REQUEST){
-                    beliefs.updateScenarioBelief();
-                    beliefs.printBeliefMatrix();
-                    Intention intention = new Intention(goal, start, beliefs.getScenario());
-                    intention.generateWeights();
+            protected void onTick() {
+                beliefs.updateScenarioBelief(actual);
+                gui.updateGrid(beliefs.getScenario(),actual,start,goal);
+                beliefs.printBeliefMatrix();
+                Intention intention = new Intention(goal, actual, beliefs.getScenario());
+                intention.generateWeights();
+                Action a = new Action(goal);
+                System.out.println("[Robot]: Route: ");
+                Globals.Printer.printCoordList(intention.getPath().getPath());
+                MOVE action = a.getAction(intention.getPath());
+                System.out.println("[Robot]: Action->"+action);
+                switch(action){
+                    case UP:
+                        actual.setRow(actual.getRow()-1);break;
+                    case RIGHT:
+                        actual.setColumn(actual.getColumn()+1);break;
+                    case DOWN:
+                        actual.setRow(actual.getRow()+1);break;
+                    case LEFT:
+                        actual.setColumn(actual.getColumn()-1);break;
+                        
                 }
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
+            
         });
         
     }
