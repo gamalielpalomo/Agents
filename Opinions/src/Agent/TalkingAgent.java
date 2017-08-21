@@ -30,7 +30,10 @@ public class TalkingAgent extends jade.core.Agent
                 if ( inputMsg != null && inputMsg.getPerformative() == ACLMessage.REQUEST )
                 {
                     System.out.format("\nI'm agent %s and i received request information from %s: %s\n",this.getAgent().getName(),inputMsg.getSender().getName(),inputMsg.getContent());
-                    ACLMessage reply = inputMsg.createReply();
+                    ACLMessage reply = new ACLMessage();
+                    reply.setSender(this.getAgent().getAID());
+                    reply.addReceiver(inputMsg.getSender());
+                    reply.setPerformative(ACLMessage.CONFIRM);
                     String name = inputMsg.getContent();
                     String kldge = knowledge.getKnoledge( name );
                     String think;
