@@ -15,13 +15,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Globals.Globals.CellStatus;
 import Globals.Globals.*;
-import javax.swing.SwingUtilities;
+import IRMA.Intention;
+import java.util.ArrayList;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class LabGUI extends JPanel {
 
@@ -34,10 +36,32 @@ public class LabGUI extends JPanel {
         addButtons(this.gridSize);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
-        frame.setSize(400, 400);
+        frame.setSize(800, 800);
         frame.setVisible(true);
     }
-
+    public void updateGridRoute(Environment.Scenario scenario, ArrayList path){
+        CellStatus [][]grid = scenario.getGrid();
+        for(Object element:path){
+            Coordinate coord = (Coordinate)element;
+            int index = coord.getColumn()+(coord.getRow()*gridSize);
+            /*JButton button = new JButton();
+            button.setPreferredSize(new Dimension(55, 55));
+            switch (grid[coord.getRow()][coord.getColumn()]) {
+                case CLEAR:
+                    button.setBackground(Color.WHITE);
+                    break;
+                case BLOCKED:
+                    button.setBackground(Color.BLACK);
+                    break;
+                default:
+                    button.setBackground(Color.GRAY);
+                    break;
+            }*/
+            Border border = new LineBorder(Color.RED, 2);
+            JButton tmp = (JButton)getComponent( index );
+            tmp.setBorder( border );
+        }
+    }
     public void updateGrid(Environment.Scenario scenario, Coordinate actual, Coordinate start, Coordinate goal){
         CellStatus [][]grid = scenario.getGrid();
         for(int row=0;row<gridSize;row++){

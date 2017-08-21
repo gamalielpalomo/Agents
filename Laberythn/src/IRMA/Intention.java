@@ -46,7 +46,7 @@ public class Intention {
         algorithm();
         //System.out.println("[Intention]: Weighted List: ");
         //Globals.Printer.printCoordList(mainList);
-        path = new Path(mainList, actual, goal);
+        path = new Path(mainList, actual, goal);        
         path.buildPath();
         //System.out.println("[Intention]: Path: ");
         //Globals.Printer.printCoordList(path.getPath());

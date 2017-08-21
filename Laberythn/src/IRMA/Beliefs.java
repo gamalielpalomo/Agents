@@ -19,9 +19,9 @@ public class Beliefs {
     Perception perception;
     Desire desires;
     
-    public Beliefs(int size, Coordinate goal)
+    public Beliefs(int size, Coordinate actual, Coordinate goal)
     {
-        actualPos = new Coordinate(0,0,CellStatus.CLEAR);
+        actualPos = actual;
         scenario = new Scenario(size);
         scenario.updateCell(actualPos);
         perception = new Perception();

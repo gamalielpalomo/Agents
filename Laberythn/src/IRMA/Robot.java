@@ -19,16 +19,16 @@ public class Robot extends Agent{
     protected void setup()
     {
         Globals.Globals.readMapFromFile();
-        Coordinate goal = new Coordinate(4,2,CellStatus.CLEAR);
-        Coordinate start = new Coordinate(0,0,CellStatus.CLEAR);
+        Coordinate goal = new Coordinate(8,1,CellStatus.CLEAR);
+        Coordinate start = new Coordinate(0,9,CellStatus.CLEAR);
         Coordinate actual = start;
-        Beliefs beliefs = new Beliefs(5, goal);
+        Beliefs beliefs = new Beliefs(10, actual, goal);
         Desire desire = new Desire( goal );
-        LabGUI gui = new LabGUI(5);
+        LabGUI gui = new LabGUI(10);
         //Globals.Printer.printMatrix(Globals.Globals.GlobalMap,actual,goal);
         //beliefs.printBeliefMatrix();
         
-        addBehaviour( new TickerBehaviour (this,2000){
+        addBehaviour( new TickerBehaviour (this,1000){
 
             @Override
             protected void onTick() {
@@ -42,6 +42,7 @@ public class Robot extends Agent{
                 Globals.Printer.printCoordList(intention.getPath().getPath());
                 MOVE action = a.getAction(intention.getPath());
                 System.out.println("[Robot]: Action->"+action);
+                gui.updateGridRoute( beliefs.getScenario(), intention.getPath().getPath());
                 switch(action){
                     case UP:
                         actual.setRow(actual.getRow()-1);break;

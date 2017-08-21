@@ -18,7 +18,7 @@ public class Printer {
         for(int row =0 ;row<matrix.length;row++){
             for(int column=0; column<matrix.length;column++){
                 if( row==start.getRow() && column==start.getColumn())
-                    System.out.print("\tSTART");
+                    System.out.print("\tACTUAL");
                 else if( row==goal.getRow() && column==goal.getColumn())
                     System.out.print("\tGOAL");
                 else
