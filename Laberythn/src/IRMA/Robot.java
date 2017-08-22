@@ -15,23 +15,30 @@ import GUI.LabGUI;
  * @author gamaa
  */
 public class Robot extends Agent{
+    Desire desire;
+    Beliefs beliefs;
     @Override
     protected void setup()
     {
         Globals.Globals.readMapFromFile();
-        Coordinate goal = new Coordinate(8,1,CellStatus.CLEAR);
-        Coordinate start = new Coordinate(0,9,CellStatus.CLEAR);
+        Coordinate goal = new Coordinate(2,0,CellStatus.CLEAR);
+        Coordinate start = new Coordinate(0,19,CellStatus.CLEAR);
         Coordinate actual = start;
-        Beliefs beliefs = new Beliefs(10, actual, goal);
-        Desire desire = new Desire( goal );
-        LabGUI gui = new LabGUI(10);
+        beliefs = new Beliefs(20, actual, goal);
+        desire = new Desire( goal );
+        LabGUI gui = new LabGUI(20,goal);
+        
         //Globals.Printer.printMatrix(Globals.Globals.GlobalMap,actual,goal);
         //beliefs.printBeliefMatrix();
         
-        addBehaviour( new TickerBehaviour (this,1000){
+        addBehaviour( new TickerBehaviour (this,700){
 
             @Override
             protected void onTick() {
+                goal.setRow(gui.getGoal().getRow());
+                goal.setColumn(gui.getGoal().getColumn());
+                desire.updateDesire(goal);
+                beliefs.updateGoal(goal);
                 beliefs.updateScenarioBelief(actual);
                 gui.updateGrid(beliefs.getScenario(),actual,start,goal);
                 beliefs.printBeliefMatrix();

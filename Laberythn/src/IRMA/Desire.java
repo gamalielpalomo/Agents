@@ -20,5 +20,9 @@ public class Desire {
     {
         return this.goalCoordinate;
     }
+    public void updateDesire(Coordinate goal)
+    {
+        this.goalCoordinate = goal;
+    }
     
 }

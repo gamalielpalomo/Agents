@@ -30,8 +30,8 @@ public class Intention {
         this.actual = actual;
         this.scenario = inputScenario;
     }
-    
-    void generateWeights()
+     
+    void generateWeights() 
     {
         CoordGrid = new Coordinate[scenario.getSize()][scenario.getSize()];
         for(int row = 0; row < scenario.getSize() ;  row++){
@@ -54,7 +54,9 @@ public class Intention {
         System.out.println("[Intention]: Actual weighted List: ");
         Globals.Printer.printCoordList(mainList);*/
     }
-    public Path getPath(){return this.path;}
+    public Path getPath(){
+        return this.path;    
+    }
     void algorithm()
     {
         ArrayList copy = new ArrayList(mainList);

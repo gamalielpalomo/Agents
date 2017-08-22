@@ -43,7 +43,7 @@ public class Beliefs {
     void printBeliefMatrix(){
         Globals.Printer.printMatrix(scenario.getGrid(),actualPos,goal);
     }
-    
+    public void updateGoal(Coordinate goal){this.goal = goal;}
     public Scenario getScenario(){return this.scenario;}
     
 }
