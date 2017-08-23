@@ -1,0 +1,30 @@
+sim/flightmodel2/wing/elevator1_deg 					Deflection elevator degrees							(degrees)	[-20, 10]
+sim/flightmodel2/wing/aileron1_deg						Deflection aileron 1 degrees						(degrees)	[-20, 10]
+sim/flightmodel2/wing/aileron2_deg						Deflection aileron 2 degrees						(degrees)	[-20, 10]
+sim/flightmodel2/wing/rudder1_deg						Deflection rudder  1 degrees						(degrees)	[-25, 25]
+sim/flightmodel2/wing/rudder2_deg						Deflection rudder  2 degrees						(degrees)	[-25, 25]
+sim/flightmodel/position/Qrad							The pitch rotation rates (relative to the flight)	(rad/s)
+sim/flightmodel/position/Prad							The roll rotation rates (relative to the flight)	(rad/s)
+sim/flightmodel/position/Rrad							The yaw rotation rates (relative to the flight)		(rad/s)
+sim/flightmodel/position/theta							Actual aircraft pitch in degrees 					(degrees)
+sim/flightmodel/position/phi							Actual aircraft roll in degrees						(degrees)	
+sim/flightmodel/position/psi 							Actual aircraft heading in degrees					(degrees)
+sim/flightmodel/position/elevation						Actual aircraft elevation 							(m/sl)
+sim/cockpit2/engine/actuators/throttle_ratio_all		Throttle possition (all engines)					(relative)	[0.0, 1.0]
+sim/multiplayer/controls/parking_brake					Ground brake status (all tires)						(boolean)	[0 or 1]
+sim/time/local_time_sec									Time elapsed since midnight							(seconds)
+sim/flightmodel/position/local_x						The location of the plane in OpenGL coordinates		(meters)
+sim/flightmodel/position/local_y						The location of the plane in OpenGL coordinates		(meters)
+sim/flightmodel/position/local_z						The location of the plane in OpenGL coordinates		(meters)
+sim/flightmodel/position/local_vx						The velocity in local OGL coordinates				(m/s)
+sim/flightmodel/position/local_vy						The velocity in local OGL coordinates				(m/s)
+sim/flightmodel/position/local_vz						The velocity in local OGL coordinates				(m/s)
+sim/flightmodel/position/local_ax						The acceleration in local OGL coordinates			(m/s2)
+sim/flightmodel/position/local_ay						The acceleration in local OGL coordinates			(m/s2)
+sim/flightmodel/position/local_az						The acceleration in local OGL coordinates			(m/s2)
+sim/multiplayer/position/plane1_x						Plane 1 x location									(meters)
+sim/multiplayer/position/plane1_y						Plane 1 y location									(meters)
+sim/multiplayer/position/plane1_z						Plane 1 z location									(meters)
+sim/multiplayer/position/plane1_the						Plane 1 theta (pitch)								(degrees)
+sim/multiplayer/position/plane1_phi						Plane 1 phi (roll)									(degrees)
+sim/multiplayer/position/plane1_psi						Plane 1 psi (heading)								(degrees)
