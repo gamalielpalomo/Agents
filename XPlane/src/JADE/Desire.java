@@ -8,21 +8,21 @@ package JADE;
  *
  * @author gamaa
  */
+import Globals.Globals;
+
 public class Desire
 {
     
-    static Float fc	= -100f;	//Predefined forward clearance between leader and wingman in meters.
-    static Float lc	= 100f;         //Predefined lateral clearance between leader and wingman in meters.
-    static Float vc	= 100f;         //Predefined vertical clearance between leader and wingman in meters.
+    
     static Float desiredPosX;           //Desired X position in OGL coordinates.
     static Float desiredPosY;           //Desired Y position in OGL coordinates.
     static Float desiredPosZ;           //Desired Z position in OGL coordinates.
     
-    public static void updateDP(Float leaderPosX, Float leaderPosY, Float leaderHeading)
+    public static void updateDesiredPossition(Float leaderPosX, Float leaderPosY, Float leaderHeading)
     { 
         
         Double rad_leaderHeading = Math.toRadians(leaderHeading);
-        Float hypotenuse = (float)Math.sqrt(Math.pow((double)fc, 2)+Math.pow((double)lc,2));
+        Float hypotenuse = (float)Math.sqrt(Math.pow((double)Globals.fc, 2)+Math.pow((double)Globals.lc,2));
         
         desiredPosX = ((float)Math.cos(rad_leaderHeading))*hypotenuse;
         desiredPosX = desiredPosX + leaderPosX;
