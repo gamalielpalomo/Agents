@@ -4,30 +4,41 @@
  * and open the template in the editor.
  */
 package JADE;
-import Globals.Globals;
 import jade.core.Agent;
 import jade.core.behaviours.*;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 /**
  *
  * @author gamaa
  */
 public class Pilot extends Agent
 {
+    
+    Perception perceptions;
+    Desire desires;
+    Belief beliefs;
+    Intention intentions;
+    
+    
     @Override
     protected void setup()
     {
-	
+        
+	perceptions = new Perception();
+        desires = new Desire();
+        intentions = new Intention();
+        beliefs = new Belief();
+        
 	addBehaviour( new CyclicBehaviour( this )
 	{
 	    
 	    @Override
 	    public void action()
 	    {
-		
+		perceptions.executePerception();
+                desires.updateDesires(perceptions);
+                beliefs.updateBeliefs(perceptions,desires);
+                //intentions.updateIntentions(desires,beliefs);
+                //intentions.executeActions();
 	    }
 
 	});
@@ -35,7 +46,7 @@ public class Pilot extends Agent
     
     private void update(Float []values)
     {
-        Desire.updateDesiredPossition(values[24], values[25], values[26]);
+        //Desire.updateDesiredPossition(values[24], values[25], values[26]);
     }
     
     

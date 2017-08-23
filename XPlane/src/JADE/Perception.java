@@ -18,12 +18,9 @@ import java.net.DatagramSocket;
 public class Perception
 {
     
-    Float fce = 0f;	    //Forward clearance error between leader and wingman
-    Float lce = 0f;	    //Lateral clearance error between leader and wingman
-    Float vce = 0f;	    //Vertical clearance error between leader and wingman
-    
     //Variables needed for environment sensing
-    byte[] inputData = new byte[509];
+    int length = Globals.DREF_LENGTH;
+    byte[] inputData = new byte[length];
     byte[] XPData;
     int quantity = Globals.DREF_VARS;
     
@@ -42,26 +39,46 @@ public class Perception
     Float plane1_psi;	    //REMOTE HEADING
     
     
+    public Perception(){ }
     
-    public Perception(Float[] values)
+    public void executePerception()
     {
-	
+        Float []values = Sense();
+        if(values != null)
+        {
+            
+            this.local_x    =   values[15];
+            this.local_y    =   values[16];
+            this.local_z    =   values[17];
+            this.local_theta=   values[8];	    
+            this.local_phi  =   values[9];	    
+            this.local_psi  =   values[10];	    
+            this.plane1_x   =   values[24];
+            this.plane1_y   =   values[25];
+            this.plane1_z   =   values[26];
+            this.plane1_theta=  values[27];	    
+            this.plane1_phi =   values[28];	    
+            this.plane1_psi =   values[29];	    
+            
+        }
     }
     
     Float[] Sense(){
+        Float [] result = null;
 	try
 	{
 	    DatagramSocket serverSocket = new DatagramSocket(Globals.RECEIVE_PORT);
 	    DatagramPacket receivePacket = new DatagramPacket(inputData, inputData.length);
 	    serverSocket.receive(receivePacket);
 	    XPData = receivePacket.getData();
-	    Float []values = dataFilter(XPData,quantity);
+	    result = dataFilter(XPData,quantity);
 	    serverSocket.close();
 	}
-	catch ( IOException ioe ){}
+	catch ( IOException ioe ){return null;}
+        return null;
     }
     
-    private Float[] dataFilter(byte[] data, int q){
+    Float[] dataFilter(byte[] data, int q){
 	Float [] values = new Float[q];
 	try{
 	    FileWriter dataFile = new FileWriter("data.log",true);
@@ -95,24 +112,6 @@ public class Perception
 	
 	System.out.println("\n");
 	return values;
-    }
-    
-    public Float getForwardError(Float actual)
-    {
-	fce = Desire.desiredPosX - actual;
-	return fce;
-    }
-    
-    public Float getLateralError(Float actual)
-    {
-	lce = Desire.desiredPosY - actual;
-	return lce;
-    }
-    
-    public Float getVerticalError(Float actual)
-    {
-	vce = Desire.desiredPosZ - actual;
-	return vce;
     }
     
 }

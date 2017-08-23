@@ -18,9 +18,12 @@ public class Globals {
     //X-PLANE connection variables
     public static String    XPLANE_ADDR     =   "localhost";
     public static int       PORT            =   49000; 
-    public static int	    DREF_VARS	    =	30;
-    //Local variables
     public static int	    RECEIVE_PORT    =	49005;
+    public static int	    DREF_VARS	    =	30;
+    public static int       DREF_LENGTH     =   509;
+    
+    //Local variables
+    
     //Agent based simulation variables
     public static Float fc	= -100f;	//Predefined forward clearance between leader and wingman in meters.
     public static Float lc	= 100f;         //Predefined lateral clearance between leader and wingman in meters.

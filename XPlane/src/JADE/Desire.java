@@ -13,12 +13,23 @@ import Globals.Globals;
 public class Desire
 {
     
+    Float desiredPosX;           //Desired X position in OGL coordinates.
+    Float desiredPosY;           //Desired Y position in OGL coordinates.
+    Float desiredPosZ;           //Desired Z position in OGL coordinates.
+    Float desiredLC = Globals.lc;
+    Float desiredFC = Globals.fc;
+    Float desiredVC = Globals.vc;
+    Perception actualPerception;
     
-    static Float desiredPosX;           //Desired X position in OGL coordinates.
-    static Float desiredPosY;           //Desired Y position in OGL coordinates.
-    static Float desiredPosZ;           //Desired Z position in OGL coordinates.
+    public Desire(){}
     
-    public static void updateDesiredPossition(Float leaderPosX, Float leaderPosY, Float leaderHeading)
+    public void updateDesires(Perception perception)
+    {
+        this.actualPerception = perception;
+        updateDesiredPossition(actualPerception.plane1_x, actualPerception.plane1_y, actualPerception.plane1_z, actualPerception.plane1_theta);
+    }
+    
+    void updateDesiredPossition(Float leaderPosX, Float leaderPosY, Float leaderPosZ, Float leaderHeading)
     { 
         
         Double rad_leaderHeading = Math.toRadians(leaderHeading);
@@ -28,6 +39,8 @@ public class Desire
         desiredPosX = desiredPosX + leaderPosX;
         desiredPosY = ((float)Math.sin(rad_leaderHeading))*hypotenuse;   
         desiredPosY = desiredPosY + leaderPosY;
+        //desiredPosZ
+        
         
         /*
         System.out.println("Hypotenuse: "+hypotenuse);
@@ -35,7 +48,10 @@ public class Desire
         System.out.println("COS(theta): "+Math.cos(rad_leaderHeading));
         System.out.println("Desired X: "+desiredPosX);
         System.out.println("Desired Y: "+desiredPosY);
-        */
-        
+        */   
     }
+    
+    public Float getDesiredX(){return this.desiredPosX;}
+    public Float getDesiredY(){return this.desiredPosY;}
+    
 }
