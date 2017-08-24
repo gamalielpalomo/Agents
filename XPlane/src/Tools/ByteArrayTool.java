@@ -112,9 +112,14 @@ public class ByteArrayTool
     }
     public static void printArray(byte [] array){
 	System.out.println("----------------------------------");
-	for(byte element:array){
+	/*for(byte element:array){
 	    System.out.print(element+" ");
+	}*/
+	for(int i=0;i<array.length;i++){
+	    char var = (char)array[i];
+	    System.out.print(var+" ");
 	}
+	
 	System.out.println("\n----------------------------------");
     }
 }

@@ -34,8 +34,9 @@ public class Pilot extends Agent
 	    @Override
 	    public void action()
 	    {
-		perceptions.executePerception();
-                desires.updateDesires(perceptions);
+		boolean perceptionSuccess = perceptions.executePerception();
+		if(perceptionSuccess)
+		    desires.updateDesires(perceptions);
                 beliefs.updateBeliefs(perceptions,desires);
                 //intentions.updateIntentions(desires,beliefs);
                 //intentions.executeActions();

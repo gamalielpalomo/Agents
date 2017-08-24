@@ -17,6 +17,10 @@ public class Belief {
     Float lce = 0f;	    //Lateral clearance error between leader and wingman
     Float vce = 0f;	    //Vertical clearance error between leader and wingman
     
+    Float goalPossitionX;
+    Float goalPossitionZ;
+    Float actualPossitionX;
+    Float actualPossitionZ;
     
     public Belief(){    }
     
@@ -24,18 +28,34 @@ public class Belief {
     {
         this.perceptions = perceptions;
         this.desires = desires;
+	this.goalPossitionX = desires.desiredPosX;
+	this.goalPossitionZ = desires.desiredPosZ;
+	this.actualPossitionX = perceptions.plane0_x;
+	this.actualPossitionZ = perceptions.plane0_z;
+	this.fce = getForwardError();
+	this.lce = getLateralError();
+	
+	//System.out.println("[Beliefs]: Forward Clearance Error -> "+this.fce);
+	//System.out.println("[Beliefs]: Lateral Clearance Error -> "+this.lce);
+	
     }
     
-    public Float getForwardError()
+    public Double getForwardError()
     {
-	fce = desires.getDesiredX() - perceptions.local_x;
-	return fce;
+	Double result = 0d;
+	Float deltaX = goalPossitionX-actualPossitionX;
+	Float deltaZ = goalPossitionZ-actualPossitionZ;
+	return result;
     }
     
-    public Float getLateralError()
+    Double getLateralError()
     {
-	lce = desires.getDesiredY() - perceptions.local_y;
-	return lce;
+	Double result = 0d;
+	Float deltaX = goalPossitionX-actualPossitionX;
+	Float deltaZ = goalPossitionZ-actualPossitionZ;
+	
+	result = ((Double)Math.sqrt(Math.pow(deltaX, 2)+Math.pow(deltaZ, 2)));
+	return result;
     }
     
     /*

@@ -26,21 +26,26 @@ public class Desire
     public void updateDesires(Perception perception)
     {
         this.actualPerception = perception;
-        updateDesiredPossition(actualPerception.plane1_x, actualPerception.plane1_y, actualPerception.plane1_z, actualPerception.plane1_theta);
+        updateDesiredPossition(actualPerception.plane1_x, actualPerception.plane1_y, actualPerception.plane1_z, actualPerception.plane1_psi);
     }
     
     void updateDesiredPossition(Float leaderPosX, Float leaderPosY, Float leaderPosZ, Float leaderHeading)
     { 
         
         Double rad_leaderHeading = Math.toRadians(leaderHeading);
+	Float deg_leaderHeading = leaderHeading;
         Float hypotenuse = (float)Math.sqrt(Math.pow((double)Globals.fc, 2)+Math.pow((double)Globals.lc,2));
         
-        desiredPosX = ((float)Math.cos(rad_leaderHeading))*hypotenuse;
+        //desiredPosX = ((float)Math.cos(rad_leaderHeading))*hypotenuse;
+	desiredPosX = ((float)Math.cos(deg_leaderHeading))*Globals.lc;
         desiredPosX = desiredPosX + leaderPosX;
-        desiredPosY = ((float)Math.sin(rad_leaderHeading))*hypotenuse;   
-        desiredPosY = desiredPosY + leaderPosY;
+	desiredPosY = leaderPosY; 
+        //desiredPosZ = ((float)Math.sin(rad_leaderHeading))*hypotenuse;   
+	desiredPosZ = ((float)Math.sin(deg_leaderHeading))*Globals.fc;
+        desiredPosZ = desiredPosZ + leaderPosZ;
         //desiredPosZ
-        
+        System.out.println("[Desire]: Desired possition in X -> "+desiredPosX);
+	System.out.println("[Desire]: Desired possition in Z -> "+desiredPosZ);
         
         /*
         System.out.println("Hypotenuse: "+hypotenuse);
@@ -53,5 +58,6 @@ public class Desire
     
     public Float getDesiredX(){return this.desiredPosX;}
     public Float getDesiredY(){return this.desiredPosY;}
+    public Float getDesiredZ(){return this.desiredPosZ;}
     
 }
