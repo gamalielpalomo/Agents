@@ -32,8 +32,8 @@ public class Belief {
 	this.goalPossitionZ = desires.desiredPosZ;
 	this.actualPossitionX = perceptions.plane0_x;
 	this.actualPossitionZ = perceptions.plane0_z;
-	this.fce = getForwardError();
-	this.lce = getLateralError();
+	//this.fce = getForwardError();
+	this.lce = new Float(getLateralError());
 	
 	//System.out.println("[Beliefs]: Forward Clearance Error -> "+this.fce);
 	//System.out.println("[Beliefs]: Lateral Clearance Error -> "+this.lce);
@@ -51,10 +51,14 @@ public class Belief {
     Double getLateralError()
     {
 	Double result = 0d;
-	Float deltaX = goalPossitionX-actualPossitionX;
-	Float deltaZ = goalPossitionZ-actualPossitionZ;
-	
-	result = ((Double)Math.sqrt(Math.pow(deltaX, 2)+Math.pow(deltaZ, 2)));
+        Double degrees = new Double(perceptions.plane1_theta);
+        Double rad_leaderTheta = Math.toRadians(degrees);
+        Double rad_leaderAlpha = (Math.PI/2)-rad_leaderTheta;
+        result = Math.abs((Math.tan(rad_leaderAlpha)*actualPossitionX)+goalPossitionZ+(Math.tan(rad_leaderAlpha)*goalPossitionX)-goalPossitionZ);
+        result = result/Math.sqrt(Math.pow(Math.tan(rad_leaderAlpha),2)+1);
+	//Float deltaX = goalPossitionX-actualPossitionX;
+	//Float deltaZ = goalPossitionZ-actualPossitionZ;
+	//result = ((Double)Math.sqrt(Math.pow(deltaX, 2)+Math.pow(deltaZ, 2)));
 	return result;
     }
     
