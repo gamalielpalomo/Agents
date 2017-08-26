@@ -64,6 +64,8 @@ public class Perception
 	    System.out.println("\n[Perception]: plane0_x -> "+plane0_x);
 	    System.out.println("[Perception]: plane0_y -> "+plane0_y);
 	    System.out.println("[Perception]: plane0_z -> "+plane0_z);
+	    System.out.println("[Perception]: plane0_beta -> "+values[30]);
+	    System.out.println("[Perception]: plane0_hpath -> "+values[31]);
 	    System.out.println("[Perception]: plane1_x -> "+plane1_x);
 	    System.out.println("[Perception]: plane1_y -> "+plane1_y);
 	    System.out.println("[Perception]: plane1_z -> "+plane1_z);
