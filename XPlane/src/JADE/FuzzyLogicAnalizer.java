@@ -33,14 +33,14 @@ public class FuzzyLogicAnalizer {
     
     public void setValues(String Forward_error, float Forward_error_value, String Lateral_error, float Lateral_error_value, String Vertical_error, float Vertical_error_value, 
         String Velocidad_forward, float Velocidad_forward_value, String Velocidad_lateral, float Velocidad_lateral_value, String Velocidad_vertical, float Velocidad_vertical_value){
-        functionBlock.setVariable(Forward_error, Forward_error_value);
-        functionBlock.setVariable(Lateral_error, Lateral_error_value);
-        functionBlock.setVariable(Vertical_error, Vertical_error_value);
-        functionBlock.setVariable(Velocidad_forward, Velocidad_forward_value);
-        functionBlock.setVariable(Velocidad_lateral, Velocidad_lateral_value);
-        functionBlock.setVariable(Velocidad_vertical, Velocidad_vertical_value);
-	System.out.println("[Intention]: Ailerons -> "+functionBlock.getVariable("Alerones").getValue());
-	System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());
+        functionBlock.setVariable(Forward_error, (double)Forward_error_value);
+        functionBlock.setVariable(Lateral_error, (double)Lateral_error_value);
+        functionBlock.setVariable(Vertical_error, (double)Vertical_error_value);
+        functionBlock.setVariable(Velocidad_forward, (double)Velocidad_forward_value);
+        functionBlock.setVariable(Velocidad_lateral, (double)Velocidad_lateral_value);
+        functionBlock.setVariable(Velocidad_vertical, (double)Velocidad_vertical_value);
+	//System.out.println("[Intention]: Ailerons -> "+functionBlock.getVariable("Alerones").getValue());
+	//System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());
     }
     
     public ArrayList<Float> getForwardValues(){
@@ -50,15 +50,15 @@ public class FuzzyLogicAnalizer {
         return values;
     }
     
-    public float getLateralValue(){        
-        System.out.println("[Intention]: Ailerons -> "+Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()))); 
-        return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()));
+    public void getLateralValue(){        
+        System.out.println("[Intention]: Ailerons -> "+functionBlock.getVariable("Alerones").getValue()); 
+        //return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()));
     }
     
 
-    public float getVerticalValue(){
-	System.out.println("[Intention]: Elevator -> "+Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Elevadores").getValue())));        
-        return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Elevadores").getValue()));
+    public void getVerticalValue(){
+	System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());        
+        //return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Elevadores").getValue()));
 
     }
       
