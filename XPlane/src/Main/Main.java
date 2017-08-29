@@ -15,6 +15,6 @@ public class Main
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {Globals.Globals.controls.setVisible(true);});
         Thread ArduinoControl = new Thread(new ArduinoMain());
-        ArduinoControl.start();
+        //ArduinoControl.start();
     }
 }

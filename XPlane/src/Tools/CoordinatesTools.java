@@ -54,8 +54,12 @@ public class CoordinatesTools
 	    }
 	}
 	System.out.println("r->"+r);
-	newPosX = h*(float)Math.cos(360+theta-r+90);
-	newPosZ = -h*(float)Math.sin(360+theta-r+90);
+	System.out.println("real Angle->"+(360-(theta+r)+90));
+	System.out.println("after rotation real angle->"+(360-(theta+r)+90+theta));
+	float realAngleAfterRotation = 360-(theta+r)+90+theta;
+	
+	newPosX = h*(float)Math.cos(Math.toRadians(realAngleAfterRotation));
+	newPosZ = -h*(float)Math.sin(Math.toRadians(realAngleAfterRotation));
 	result = new Coordinate(newPosX,newPosZ);
 	System.out.println("[rotateOverCircle]: newPosX->"+newPosX);
 	System.out.println("[rotateOverCircle]: newPosZ->"+newPosZ);
