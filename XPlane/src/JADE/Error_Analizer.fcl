@@ -43,21 +43,21 @@ FUZZIFY Vertical_error	// Fuzzify input variable 'Vertical_error': {'V_muy_abajo
 END_FUZZIFY
 
 FUZZIFY Velocidad_forward	// Fuzzify input variable 'Velocidad': { 'F_lento', 'F_normal', 'F_rapido' }
-	TERM F_lento := (0, 1) (150, 1) (275,0) ;
-	TERM F_normal := (250,0) (300,1) (400,1) (450,0);
+	TERM F_lento := (0, 1) (150, 1) (250,0) ;
+	TERM F_normal := (100,0) (300,1) (400,1) (550,0);
 	TERM F_rapido := (425,0) (500,1) (800,1);
 END_FUZZIFY
 
 FUZZIFY Velocidad_lateral	// Fuzzify input variable 'Velocidad': { 'L_lento', 'L_normal', 'L_rapido' }
-	TERM L_lento := (0, 1) (150, 1) (275,0) ;
-	TERM L_normal := (250,0) (300,1) (400,1) (450,0);
-	TERM L_rapido := (425,0) (500,1) (800,1);
+	TERM L_lento := (-5, 1) (-2, 1) (-0.5,0) ;
+	TERM L_normal := (-3,0) (-1,1) (1,1) (3,0);
+	TERM L_rapido := (0.5,0) (2,1) (5,1);
 END_FUZZIFY
 
 FUZZIFY Velocidad_vertical	// Fuzzify input variable 'Velocidad': { 'V_lento', 'V_normal', 'V_rapido' }
-	TERM V_lento := (0, 1) (150, 1) (275,0) ;
-	TERM V_normal := (250,0) (300,1) (400,1) (450,0);
-	TERM V_rapido := (425,0) (500,1) (800,1);
+	TERM V_lento := (-50, 1) (17, 1) (18.5,0) ;
+	TERM V_normal := (-20,0) (19,1) (21,1) (60,0);
+	TERM V_rapido := (21.5,0) (23,1) (110,1);
 END_FUZZIFY
 
 DEFUZZIFY Acelerador			// Defzzzify output variable 'tip' : {'cheap', 'average', 'generous' }
