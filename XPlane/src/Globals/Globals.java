@@ -19,7 +19,7 @@ public class Globals {
     public static String    XPLANE_ADDR     =   "10.0.5.212";
     public static int       PORT            =   49000; 
     public static int	    RECEIVE_PORT    =	49005;
-    public static int	    DREF_VARS	    =	32;
+    public static int	    DREF_VARS	    =	34;
     public static int       DREF_LENGTH     =   509;
     
     //Local variables
@@ -27,6 +27,6 @@ public class Globals {
     //Agent based simulation variables
     public static float fc	= 1000;	//Predefined forward clearance between leader and wingman in OGL coordinate points.
     public static float lc	= 0;		//Predefined lateral clearance between leader and wingman in OGL coordinate points.
-    public static Float vc	= 1000f;        //Predefined vertical clearance between leader and wingman in OGL coordinate points.
+    public static float vc	= 0;        //Predefined vertical clearance between leader and wingman in OGL coordinate points.
     
 }

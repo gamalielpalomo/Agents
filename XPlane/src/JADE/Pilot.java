@@ -27,6 +27,7 @@ public class Pilot extends Agent
         desires = new Desire();
         intentions = new Intention();
         beliefs = new Belief();
+	intentions = new Intention();
         
 	addBehaviour( new CyclicBehaviour( this )
 	{
@@ -38,7 +39,7 @@ public class Pilot extends Agent
 		if(perceptionSuccess)
 		    desires.updateDesires(perceptions);
                 beliefs.updateBeliefs(perceptions,desires);
-                //intentions.updateIntentions(desires,beliefs);
+                intentions.createActionPlan(desires,beliefs);
                 //intentions.executeActions();
 	    }
 

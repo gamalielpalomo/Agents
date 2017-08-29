@@ -38,9 +38,11 @@ public class Belief {
 	
 	this.fce = (float)getForwardError();
 	this.lce = (float)getLateralError();
+	this.vce = (float)getVerticalError();
 	
 	System.out.println("[Beliefs]: Forward Clearance Error -> "+this.fce);
 	System.out.println("[Beliefs]: Lateral Clearance Error -> "+this.lce);
+	System.out.println("[Beliefs]: Vertical Clearance Error->"+this.vce);
 	
     }
     
@@ -71,12 +73,10 @@ public class Belief {
 	return result;
     }
     
-    /*
-    public Float getVerticalError(Float actual)
+    public float getVerticalError()
     {
-	vce = Desire.desiredPosZ - actual;
+	this.vce = perceptions.plane0_y-desires.desiredPosY;
 	return vce;
     }
-    */
 
 }
