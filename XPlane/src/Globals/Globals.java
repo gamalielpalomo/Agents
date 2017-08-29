@@ -16,7 +16,7 @@ public class Globals {
     //Controls static GUI
     public static Controls controls = new Controls();
     //X-PLANE connection variables
-    public static String    XPLANE_ADDR     =   "localhost";
+    public static String    XPLANE_ADDR     =   "10.0.5.212";
     public static int       PORT            =   49000; 
     public static int	    RECEIVE_PORT    =	49005;
     public static int	    DREF_VARS	    =	32;
