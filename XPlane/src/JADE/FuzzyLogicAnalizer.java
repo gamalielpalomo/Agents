@@ -5,6 +5,7 @@
  */
 package JADE;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.FunctionBlock;
@@ -42,21 +43,23 @@ public class FuzzyLogicAnalizer {
 	System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());
     }
     
-    public ArrayList<Double> getForwardValues(){
-        ArrayList<Double> values = new ArrayList<>();
-        values.add(functionBlock.getVariable("Acelerador").getValue());
-        values.add(functionBlock.getVariable("Freno").getValue());
+    public ArrayList<Float> getForwardValues(){
+        ArrayList<Float> values = new ArrayList<>();        
+        values.add(Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Acelerador").getValue())));
+        values.add(Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Freno").getValue())));
         return values;
     }
     
-    public Double getLateralValue(){
-	
-        return functionBlock.getVariable("Alerones").getValue();
+    public float getLateralValue(){        
+        System.out.println("[Intention]: Ailerons -> "+Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()))); 
+        return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()));
     }
     
-    public Double getVerticalValue(){
-	
-        return functionBlock.getVariable("Elevadores").getValue();
+
+    public float getVerticalValue(){
+	System.out.println("[Intention]: Elevator -> "+Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Elevadores").getValue())));        
+        return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Elevadores").getValue()));
+
     }
       
 }
