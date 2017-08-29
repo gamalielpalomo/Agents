@@ -5,6 +5,7 @@ import Tools.Messenger;
 import Tools.ByteArrayTool;
 import DREF.DREF_Builders;
 import jade.Boot;
+import javax.sound.midi.ShortMessage;
 
 
 /**
@@ -678,6 +679,11 @@ public class Controls extends javax.swing.JFrame {
 	}
 	
     }
+    public void updateElevator(float value){this.pitch.setValue((int)value*10);}
+    public void updateAileron(float value){this.roll.setValue((int)value*10);}
+    public void updateYaw(float value){this.yaw.setValue((int)value*10);}
+    public void updateThrottle(float value){this.eng_throttle.setValue((int)value*100);}
+    public void updateFlaps(float value){this.flapSlider.setValue((int)value*100);}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame Frame_multiplayer;
@@ -687,9 +693,9 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JButton cRoll;
     private javax.swing.JButton cYaw;
     private javax.swing.JSpinner craft;
-    private javax.swing.JSlider eng_throttle;
+    public javax.swing.JSlider eng_throttle;
     private javax.swing.JButton flapClearButton;
-    private javax.swing.JSlider flapSlider;
+    public javax.swing.JSlider flapSlider;
     private javax.swing.JButton harvestData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -710,9 +716,9 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JSlider mult_elev_slider;
     private javax.swing.JButton mult_ruddr_clear;
     private javax.swing.JSlider mult_ruddr_slider;
-    private javax.swing.JSlider pitch;
+    public javax.swing.JSlider pitch;
     private javax.swing.JButton playSim;
-    private javax.swing.JSlider roll;
-    private javax.swing.JSlider yaw;
+    public javax.swing.JSlider roll;
+    public javax.swing.JSlider yaw;
     // End of variables declaration//GEN-END:variables
 }

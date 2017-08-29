@@ -21,8 +21,8 @@ public class FuzzyLogicAnalizer {
     FunctionBlock functionBlock;
     
     public FuzzyLogicAnalizer(){
-        //String fileName = "C:/Users/Adrian Gonzalez/Desktop/Distribuidos II - Simulator/Agents/XPlane/src/JADE/Error_Analizer.fcl"; //fcl file path
-        String fileName = "C:/Users/Yolanda/Documents/3er Cuatrimestre/Sistemas Distribuidos II/Proyecto FINAL/Agents/XPlane/src/JADE/Error_Analizer.fcl";
+        String fileName = "C:/Users/Adrian Gonzalez/Desktop/Distribuidos II - Simulator/Agents/XPlane/src/JADE/Error_Analizer.fcl"; //fcl file path
+        //String fileName = "C:/Users/Yolanda/Documents/3er Cuatrimestre/Sistemas Distribuidos II/Proyecto FINAL/Agents/XPlane/src/JADE/Error_Analizer.fcl";
         
         fis = FIS.load(fileName,true);
         
