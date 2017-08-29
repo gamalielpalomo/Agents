@@ -27,9 +27,10 @@ public class Intention
 	System.out.println("[Intention]: Velocidad_lateral -> "+beliefs.perceptions.plane0_XSpeed);
 	System.out.println("[Intention]: Velocidad_vertical -> "+beliefs.perceptions.plane0_YSpeed);
 	this.fuzzy = new FuzzyLogicAnalizer();
-	this.fuzzy.setValues("Forward_error", beliefs.fce, "Lateral_error", beliefs.lce, "Vertical_error", beliefs.vce, "Velocidad_forward",beliefs.perceptions.plane0_speed , "Velocidad_lateral", beliefs.perceptions.plane0_XSpeed, "Velocidad_vertical", beliefs.perceptions.plane0_YSpeed);
+	this.fuzzy.setValues("Forward_error", beliefs.fce, "Lateral_error", beliefs.lce, "Vertical_error", beliefs.vce, "Velocidad_forward",beliefs.perceptions.plane0_speed , "Velocidad_lateral", beliefs.perceptions.plane0_XSpeed, "Velocidad_vertical", -1*beliefs.perceptions.plane0_YSpeed);
 	//Fix vertical clearance error
-	float fixingValueElevator = new Float(fuzzy.getVerticalValue());
+	fuzzy.getVerticalValue();
+	fuzzy.getLateralValue();
 	//System.out.println("[Intention]: Elevator -> "+fixingValueElevator);
 	//Fix lateral clearance error
 	

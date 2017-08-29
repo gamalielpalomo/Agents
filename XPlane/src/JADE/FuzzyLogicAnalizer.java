@@ -19,7 +19,7 @@ public class FuzzyLogicAnalizer {
     FunctionBlock functionBlock;
     
     public FuzzyLogicAnalizer(){
-        String fileName = "src/JADE/Error_Analizer.fcl"; //fcl file path
+        String fileName = "C:/Users/Adrian Gonzalez/Desktop/Distribuidos II - Simulator/Agents/XPlane/src/JADE/Error_Analizer.fcl"; //fcl file path
         fis = FIS.load(fileName,true);
         
         if( fis == null ) { 
@@ -38,6 +38,8 @@ public class FuzzyLogicAnalizer {
         functionBlock.setVariable(Velocidad_forward, Velocidad_forward_value);
         functionBlock.setVariable(Velocidad_lateral, Velocidad_lateral_value);
         functionBlock.setVariable(Velocidad_vertical, Velocidad_vertical_value);
+	System.out.println("[Intention]: Ailerons -> "+functionBlock.getVariable("Alerones").getValue());
+	System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());
     }
     
     public ArrayList<Double> getForwardValues(){
@@ -48,11 +50,12 @@ public class FuzzyLogicAnalizer {
     }
     
     public Double getLateralValue(){
+	
         return functionBlock.getVariable("Alerones").getValue();
     }
     
     public Double getVerticalValue(){
-	System.out.println("[Intention]: Elevator -> "+functionBlock.getVariable("Elevadores").getValue());
+	
         return functionBlock.getVariable("Elevadores").getValue();
     }
       

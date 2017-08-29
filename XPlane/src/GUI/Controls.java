@@ -45,6 +45,9 @@ public class Controls extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         brakeSwitch = new javax.swing.JToggleButton();
+        flapSlider = new javax.swing.JSlider();
+        flapClearButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         Frame_multiplayer = new javax.swing.JInternalFrame();
         craft = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
@@ -170,6 +173,35 @@ public class Controls extends javax.swing.JFrame {
             }
         });
 
+        flapSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        flapSlider.setPaintLabels(true);
+        flapSlider.setValue(0);
+        flapSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                flapSliderStateChanged(evt);
+            }
+        });
+
+        flapClearButton.setText("C");
+        flapClearButton.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
+                flapClearButtonStateChanged(evt);
+            }
+        });
+        flapClearButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                flapClearButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("FLAP");
+
         javax.swing.GroupLayout Frame_principalLayout = new javax.swing.GroupLayout(Frame_principal.getContentPane());
         Frame_principal.getContentPane().setLayout(Frame_principalLayout);
         Frame_principalLayout.setHorizontalGroup(
@@ -181,17 +213,31 @@ public class Controls extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Frame_principalLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6))
-                            .addGroup(Frame_principalLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel4))
-                            .addComponent(brakeSwitch)))
+                            .addComponent(brakeSwitch)
+                            .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(flapClearButton)
+                                .addGroup(Frame_principalLayout.createSequentialGroup()
+                                    .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(Frame_principalLayout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel2)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                        .addGroup(Frame_principalLayout.createSequentialGroup()
+                                            .addComponent(eng_throttle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(37, 37, 37)))
+                                    .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(Frame_principalLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(flapSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel11)))))
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(Frame_principalLayout.createSequentialGroup()
                         .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Frame_principalLayout.createSequentialGroup()
@@ -203,15 +249,14 @@ public class Controls extends javax.swing.JFrame {
                             .addGroup(Frame_principalLayout.createSequentialGroup()
                                 .addComponent(cRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cYaw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(Frame_principalLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)
                                 .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(eng_throttle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(7, 7, 7))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         Frame_principalLayout.setVerticalGroup(
             Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,20 +270,23 @@ public class Controls extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(yaw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(roll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(pitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(flapSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eng_throttle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Frame_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cPitch)
                     .addComponent(cYaw)
-                    .addComponent(cRoll))
-                .addContainerGap())
+                    .addComponent(cRoll)
+                    .addComponent(flapClearButton))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         Frame_multiplayer.setVisible(true);
@@ -418,9 +466,9 @@ public class Controls extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(playSim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loadScenario, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                    .addComponent(harvestData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loadScenario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(harvestData, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +484,7 @@ public class Controls extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Frame_multiplayer)
                         .addComponent(Frame_principal)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -588,6 +636,26 @@ public class Controls extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_brakeSwitchStateChanged
 
+    private void flapSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_flapSliderStateChanged
+    {//GEN-HEADEREND:event_flapSliderStateChanged
+        // TODO add your handling code here:
+        float sensor = ((float)flapSlider.getModel().getValue())/100;
+        byte[] XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/flap_handle_deploy_ratio[0]", sensor);
+        //System.out.println("Throttle: "+sensor*100+"%");
+        Messenger.sendMessage(XPData);	
+    }//GEN-LAST:event_flapSliderStateChanged
+
+    private void flapClearButtonStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_flapClearButtonStateChanged
+    {//GEN-HEADEREND:event_flapClearButtonStateChanged
+        // TODO add your handling code here
+    }//GEN-LAST:event_flapClearButtonStateChanged
+
+    private void flapClearButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_flapClearButtonActionPerformed
+    {//GEN-HEADEREND:event_flapClearButtonActionPerformed
+        // TODO add your handling code here:
+	flapSlider.setValue(0);
+    }//GEN-LAST:event_flapClearButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -620,9 +688,12 @@ public class Controls extends javax.swing.JFrame {
     private javax.swing.JButton cYaw;
     private javax.swing.JSpinner craft;
     private javax.swing.JSlider eng_throttle;
+    private javax.swing.JButton flapClearButton;
+    private javax.swing.JSlider flapSlider;
     private javax.swing.JButton harvestData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
