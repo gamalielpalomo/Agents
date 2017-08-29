@@ -25,7 +25,7 @@ public class Globals {
     //Local variables
     
     //Agent based simulation variables
-    public static float fc	= -1000;	//Predefined forward clearance between leader and wingman in OGL coordinate points.
+    public static float fc	= 1000;	//Predefined forward clearance between leader and wingman in OGL coordinate points.
     public static float lc	= 0;		//Predefined lateral clearance between leader and wingman in OGL coordinate points.
     public static Float vc	= 1000f;        //Predefined vertical clearance between leader and wingman in OGL coordinate points.
     

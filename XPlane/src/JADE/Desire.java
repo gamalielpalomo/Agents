@@ -35,41 +35,46 @@ public class Desire
         Double rad_leaderHeading = Math.toRadians(leaderHeading);
 	float fc = Globals.fc;
 	float lc = Globals.lc;
-	System.out.println("FC->"+fc);
-	System.out.println("LC->"+lc);
+	//System.out.println("FC->"+fc);
+	//System.out.println("LC->"+lc);
 	float deg_leaderHeading = leaderHeading;
 	float fc2 = (float)Math.pow(fc, 2);
-	System.out.println("FC2->"+fc2);
+	//System.out.println("FC2->"+fc2);
         float hyp = (float)Math.sqrt(Math.pow(fc, 2)+Math.pow(lc,2));
-	System.out.println("hyp->"+hyp);
+	//System.out.println("hyp->"+hyp);
 	float hypotenuse = (float)Math.sqrt(Math.pow(fc, 2)+Math.pow(lc,2));
 	//float alpha=(float)Math.toDegrees(Math.asin(0.7071));
 	float normalized = Globals.fc/hypotenuse;
-	System.out.println("HYPOTENUSE->"+hypotenuse);
-	System.out.println("NORMALIZED->"+normalized);
+	//System.out.println("HYPOTENUSE->"+hypotenuse);
+	//System.out.println("NORMALIZED->"+normalized);
 	float alpha;
-	if(Globals.lc>=0f){
-	    if(Globals.fc>=0f)
-		alpha = (float)Math.toDegrees(90-Math.asin(Math.toRadians(normalized)));
-	    else
-		alpha = (float)Math.toDegrees((Math.asin(Math.toRadians(normalized))*-1)+90);
+	if(Globals.lc>=0){
+	    if(Globals.fc<0)
+		alpha = 90-(float)Math.toDegrees(Math.asin(normalized));
+	    else{
+		//float theta = (float) Math.toDegrees(Math.asin(normalized));
+		//System.out.println("THETA->"+theta);
+	    	alpha = (float)Math.toDegrees(Math.abs(Math.asin(normalized)))+90;
+	    }	
 	}
 	else{
-	    if(Globals.fc>=0f)
-		alpha = (float)Math.toDegrees(Math.asin(Math.toRadians(normalized))+270);
+	    if(Globals.fc<0)
+		alpha = (float)Math.toDegrees(Math.asin(normalized))+270;
 	    else
-		alpha = (float)Math.toDegrees((Math.asin(Math.toRadians(normalized))+90)+180);
+		alpha = (float)Math.toDegrees(Math.abs(Math.asin(normalized)))+180;
 	}
-        System.out.println("ALPHA->"+alpha);
+        //System.out.println("ALPHA->"+alpha);
         //desiredPosX = ((float)Math.cos(rad_leaderHeading))*hypotenuse;
-	desiredPosX = ((float)Math.sin(deg_leaderHeading))*hypotenuse;
+	desiredPosX = ((float)Math.sin(Math.toRadians(deg_leaderHeading+alpha)))*hypotenuse;
         desiredPosX = desiredPosX + leaderPosX;
 	desiredPosY = leaderPosY; 
         //desiredPosZ = ((float)Math.sin(rad_leaderHeading))*hypotenuse;   
-	desiredPosZ = ((float)Math.cos(deg_leaderHeading))*hypotenuse;
+	//Multiplicado por -1 ya que las coordenadas en Z decrementan hacia arriba e incrementan hacia abajo
+	desiredPosZ = ((float)Math.cos(Math.toRadians(deg_leaderHeading+alpha)))*hypotenuse*-1;
         desiredPosZ = desiredPosZ + leaderPosZ;
         //desiredPosZ
         System.out.println("[Desire]: Desired possition in X -> "+desiredPosX);
+	System.out.println("[Desire]: Desired possition in Y -> "+desiredPosY);
 	System.out.println("[Desire]: Desired possition in Z -> "+desiredPosZ);
         
         /*

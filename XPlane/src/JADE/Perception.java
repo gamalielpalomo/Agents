@@ -53,19 +53,17 @@ public class Perception
             this.plane0_z    =   values[17];
             this.plane0_theta=   values[8];	    
             this.plane0_phi  =   values[9];	    
-            this.plane0_psi  =   values[10];	    
+            this.plane0_psi  =   values[10]%360;	    
             this.plane1_x   =   values[24];
             this.plane1_y   =   values[25];
             this.plane1_z   =   values[26];
             this.plane1_theta=  values[27];	    
             this.plane1_phi =   values[28];	    
-            this.plane1_psi =   values[29];	    
+            this.plane1_psi =   values[29]%360;	    
          
 	    System.out.println("\n[Perception]: plane0_x -> "+plane0_x);
 	    System.out.println("[Perception]: plane0_y -> "+plane0_y);
 	    System.out.println("[Perception]: plane0_z -> "+plane0_z);
-	    System.out.println("[Perception]: plane0_beta -> "+values[30]);
-	    System.out.println("[Perception]: plane0_hpath -> "+values[31]);
 	    System.out.println("[Perception]: plane1_x -> "+plane1_x);
 	    System.out.println("[Perception]: plane1_y -> "+plane1_y);
 	    System.out.println("[Perception]: plane1_z -> "+plane1_z);

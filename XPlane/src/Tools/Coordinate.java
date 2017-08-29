@@ -12,10 +12,12 @@ package Tools;
 public class Coordinate
 {
     float x;
-    float y;
-    public Coordinate(float x, float y)
+    float z;
+    public Coordinate(float x, float z)
     {
 	this.x = x;
-	this.y = y;
+	this.z = z;
     }
+    public float getX(){return this.x;}
+    public float getZ(){return this.z;}
 }
