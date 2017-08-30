@@ -7,6 +7,8 @@ package JADE;
 
 import Tools.Coordinate;
 import Tools.CoordinatesTools;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -29,6 +31,7 @@ public class Belief {
     
     public void updateBeliefs(Perception perceptions, Desire desires)
     {
+	
         this.perceptions = perceptions;
         this.desires = desires;
 	this.goalPossitionX = desires.desiredPosX;
@@ -43,6 +46,16 @@ public class Belief {
 	System.out.println("[Beliefs]: Forward Clearance Error -> "+this.fce);
 	System.out.println("[Beliefs]: Lateral Clearance Error -> "+this.lce);
 	System.out.println("[Beliefs]: Vertical Clearance Error->"+this.vce);
+	
+	try{
+	    String line = System.currentTimeMillis()+","+this.fce+","+this.lce+","+this.vce;
+	    FileWriter dataFile = new FileWriter("data.log",true);
+	    dataFile.write(line+"\n");
+	    dataFile.flush();
+	    dataFile.close();
+	    
+	}
+	catch(IOException ioe){}
 	
     }
     
