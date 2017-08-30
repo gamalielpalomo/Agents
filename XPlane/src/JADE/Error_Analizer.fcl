@@ -19,27 +19,27 @@ VAR_OUTPUT
 END_VAR
 
 FUZZIFY Forward_error	// Fuzzify input variable 'Forward_error': {'F_muy_atrasado', 'F_atrasado' , 'F_bien', 'F_adelantado', 'F_muy_adelantado'}
-	TERM F_muy_atrasado := (-20000, 1) (-3000, 1) (-2250, 0) ; 
+	TERM F_muy_atrasado := (-100000, 1) (-3000, 1) (-2250, 0) ; 
 	TERM F_atrasado := (-2750, 0) (-2000, 1) (-500,0);
 	TERM F_bien := (-1000, 0) (0,1) (1000,1) (1750,0);
 	TERM F_adelantado := (1250,0) (2000,1) (2750, 0);
-	TERM F_muy_adelantado := (2250, 0) (3000, 1) (20000, 1);
+	TERM F_muy_adelantado := (2250, 0) (3000, 1) (100000, 1);
 END_FUZZIFY
 
 FUZZIFY Lateral_error	// Fuzzify input variable 'Lateral_error': {'L_muy_izquierda', 'L_izquierda' , 'L_bien', 'L_derecha', 'L_muy_derecha'}
-	TERM L_muy_izquierda := (-20000, 1) (-3000, 1) (-2250, 0) ; 
-	TERM L_izquierda := (-2750, 0) (-2000, 1) (-500,0);
-	TERM L_bien := (-1000, 0) (0,1) (1000,1) (1750,0);
-	TERM L_derecha := (1250,0) (2000,1) (2750, 0);
-	TERM L_muy_derecha := (2250, 0) (3000, 1) (20000, 1);
+	TERM L_muy_izquierda := (-5000, 1) (-300, 1) (-220, 0) ; 
+	TERM L_izquierda := (-350, 0) (-200, 1) (-120,0);
+	TERM L_bien := (-150, 0) (-100,1) (100,1) (150,0);
+	TERM L_derecha := (120,0) (200,1) (350, 0);
+	TERM L_muy_derecha := (220, 0) (300, 1) (5000, 1);
 END_FUZZIFY
 
 FUZZIFY Vertical_error	// Fuzzify input variable 'Vertical_error': {'V_muy_abajo', 'V_abajo' , 'V_bien', 'V_arriba', 'V_muy_arriba'}
-	TERM V_muy_abajo := (-20000, 1) (-3000, 1) (-2250, 0) ; 
-	TERM V_abajo := (-2750, 0) (-2000, 1) (-500,0);
-	TERM V_bien := (-1000, 0) (0,1) (1000,1) (1750,0);
-	TERM V_arriba := (1250,0) (2000,1) (2750, 0);
-	TERM V_muy_arriba := (2250, 0) (3000, 1) (20000, 1);
+	TERM V_muy_abajo := (-8000, 1) (-230, 1) (-150, 0) ; 
+	TERM V_abajo := (-220, 0) (-130, 1) (-120,0);
+	TERM V_bien := (-80, 0) (-30,1) (30,1) (80,0);
+	TERM V_arriba := (120,0) (130,1) (220, 0);
+	TERM V_muy_arriba := (150, 0) (230, 1) (8000, 1);
 END_FUZZIFY
 
 FUZZIFY Velocidad_forward	// Fuzzify input variable 'Velocidad': { 'F_lento', 'F_normal', 'F_rapido' }
@@ -61,24 +61,24 @@ FUZZIFY Velocidad_vertical	// Fuzzify input variable 'Velocidad': { 'V_lento', '
 END_FUZZIFY
 
 DEFUZZIFY Acelerador			// Defzzzify output variable 'tip' : {'cheap', 'average', 'generous' }
-	TERM normal := (0,1) (0.3,1) (0.6,0);
-	TERM rapido := (0.4,0) (0.7,1) (1,1);
+	TERM normal := (0,1) (0.5,1) (0.75,0);
+	TERM rapido := (0.6,0) (0.85,1) (1,1);
 	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
 	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
 END_DEFUZZIFY
 
 DEFUZZIFY Elevadores			// Defzzzify output variable 'tip' : {'cheap', 'average', 'generous' }
-	TERM abajo := (-1,1) (-0.7,1) (-0.25,0);
-	TERM normal := (-0.5,0) (0,1) (0.5,0);
-	TERM arriba := (0.25,0) (0.7,1) (1,1);
+	TERM abajo := (-1,1) (-0.85,1) (-0.4,0);
+	TERM normal := (-0.7,0) (0,1) (0.7,0);
+	TERM arriba := (0.4,0) (0.85,1) (1,1);
 	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
 	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
 END_DEFUZZIFY
 
 DEFUZZIFY Alerones			// Defzzzify output variable 'tip' : {'cheap', 'average', 'generous' }
-	TERM izquierda := (-0.2,1) (-0.15,1) (0,0);
+	TERM izquierda := (-0.2,1) (-0.15,1) (-0.12,0);
 	TERM normal := (-0.1,0) (0,1) (0.1,0);
-	TERM derecha := (0,0) (0.15,1) (0.2,1);
+	TERM derecha := (0.12,0) (0.15,1) (0.2,1);
 	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
 	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
 END_DEFUZZIFY

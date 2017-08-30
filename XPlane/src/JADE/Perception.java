@@ -31,6 +31,7 @@ public class Perception
     float plane0_theta;	    //LOCAL PITCH
     float plane0_phi;	    //LOCAL ROLL
     float plane0_psi;	    //LOCAL HEADING
+    float plane0_rollAngle; //LOCAL ROLL ANGLE
     float plane0_speed;	    //LOCAL SPEED
     float plane0_XSpeed;
     float plane0_YSpeed;
@@ -61,6 +62,7 @@ public class Perception
             this.plane0_theta=   values[8];	    
             this.plane0_phi  =   values[9];	    
             this.plane0_psi  =   values[10]%360;
+	    this.plane0_rollAngle = values[9];
 	    this.plane0_speed = values[30]*2.23694f;
 	    this.plane0_XSpeed = values[31]*2.23694f;
 	    this.plane0_YSpeed = values[32]*2.23694f;
@@ -78,6 +80,7 @@ public class Perception
 	    System.out.println("[Perception]: plane0_y -> "+plane0_y);
 	    System.out.println("[Perception]: plane0_z -> "+plane0_z);
 	    System.out.println("[Perception]: plane0_GroundSpeed -> "+plane0_speed);
+	    System.out.println("[Perception]: plane0_rollAngle -> "+plane0_rollAngle);
 	    System.out.println("[Perception]: plane0_XVelocity -> "+plane0_XSpeed);
 	    System.out.println("[Perception]: plane0_YVelocity -> "+plane0_YSpeed);
 	    System.out.println("[Perception]: plane0_ZVelocity -> "+plane0_ZSpeed);

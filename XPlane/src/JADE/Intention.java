@@ -37,6 +37,10 @@ public class Intention
 	ArrayList forward = fuzzy.getForwardValues();
 	float throttle = (float)forward.get(0);
 	float flap = (float)forward.get(1);
+	System.out.println("[Intention]: Elevators -> "+elevators); 
+	System.out.println("[Intention]: Ailerons -> "+ailerons); 
+	System.out.println("[Intention]: Throttle -> "+throttle); 
+	System.out.println("[Intention]: Flaps -> "+flap); 
 	//////////////////////////////////////////////////////////
 	float sensor = elevators;
 	Globals.Globals.controls.updateElevator(sensor);
@@ -58,7 +62,35 @@ public class Intention
 	Globals.Globals.controls.updateFlaps(sensor);
 	XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/flap_handle_deploy_ratio[0]", sensor);
 	Messenger.sendMessage(XPData);
+	/////////////////////////////////////////////////////////
+	/*if(beliefs.perceptions.plane0_rollAngle>=-2&&beliefs.perceptions.plane0_rollAngle<=2)
+	    sensor = 0.0f;
+	else if(beliefs.perceptions.plane0_rollAngle<-2)
+	    sensor = 0.1f;
+	else {
+	    sensor = -0.1f;
+	}*/
 	
+	if(beliefs.perceptions.plane0_rollAngle<-10)
+	    sensor = 0.17f;
+	else if(beliefs.perceptions.plane0_rollAngle>=-10&&beliefs.perceptions.plane0_rollAngle<-5)
+	    sensor = 0.15f;
+	else if(beliefs.perceptions.plane0_rollAngle>=-5&&beliefs.perceptions.plane0_rollAngle<-2)
+	    sensor = 0.1f;
+	else if(beliefs.perceptions.plane0_rollAngle>=-2&&beliefs.perceptions.plane0_rollAngle<2)
+	    sensor = 0.0f;
+	else if(beliefs.perceptions.plane0_rollAngle>=2&&beliefs.perceptions.plane0_rollAngle<5)
+	    sensor = -0.1f;
+	else if(beliefs.perceptions.plane0_rollAngle>=5&&beliefs.perceptions.plane0_rollAngle<10)
+	    sensor = -0.15f;
+	else {
+	    sensor = -0.17f;
+	}
+	
+	    
+	    
+	XPData = DREF_Builders.createDREF("sim/flightmodel2/controls/heading_ratio[0]", sensor);
+	Messenger.sendMessage(XPData);
 	//System.out.println("[Intention]: Elevator -> "+fixingValueElevator);
 	//Fix lateral clearance error
 	

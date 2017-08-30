@@ -19,7 +19,7 @@ public class Belief {
     float fce = 0;	    //Forward clearance error between leader and wingman
     float lce = 0;	    //Lateral clearance error between leader and wingman
     float vce = 0;	    //Vertical clearance error between leader and wingman
-    
+    float rollAngle;
     float goalPossitionX;
     float goalPossitionZ;
     float actualPossitionX;
@@ -35,7 +35,7 @@ public class Belief {
 	this.goalPossitionZ = desires.desiredPosZ;
 	this.actualPossitionX = perceptions.plane0_x;
 	this.actualPossitionZ = perceptions.plane0_z;
-	
+	this.rollAngle = perceptions.plane0_rollAngle;
 	this.fce = (float)getForwardError();
 	this.lce = (float)getLateralError();
 	this.vce = (float)getVerticalError();
@@ -54,7 +54,7 @@ public class Belief {
 	Coordinate floating1 = new Coordinate(perceptions.plane0_x,perceptions.plane0_z);
 	Coordinate fixed = new Coordinate(perceptions.plane1_x,perceptions.plane1_z);
 	Coordinate rot_actual = CoordinatesTools.rotateOverCircle(floating1, fixed, theta);
-	float deltaZ = rot_actual.getZ()-Globals.Globals.fc;
+	float deltaZ = Globals.Globals.fc-rot_actual.getZ();
 	result = deltaZ;
 	return result;
     }

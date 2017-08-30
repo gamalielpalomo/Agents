@@ -52,8 +52,7 @@ public class FuzzyLogicAnalizer {
         return values;
     }
     
-    public float getLateralValue(){        
-        System.out.println("[Intention]: Ailerons -> "+functionBlock.getVariable("Alerones").getValue()); 
+    public float getLateralValue(){               
         return Float.parseFloat(new DecimalFormat("#.##").format(functionBlock.getVariable("Alerones").getValue()));
     }
     
